@@ -1,6 +1,6 @@
 <!-- Contient les requêtes récupérant les données de l'événement choisi et affiche les données -->
 <?php
-    //include "bdd.php";
+    include "bdd.php";
 ?>
 
 <!DOCTYPE html> 

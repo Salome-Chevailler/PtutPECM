@@ -1,6 +1,6 @@
 <!-- Permet d'accéder à la déclaration d'un événement, à la liste de tous les événements ou au tableau de bord -->
 <?php
-    //include "bdd.php";
+    include "bdd.php";
 ?>
 
 <!DOCTYPE html> 
@@ -25,7 +25,7 @@
             <div class="row justify-content-center">
                 <div class="col-4 text-center"><a href="tableauBord.php"><input class="btn btn-outline-primary" type="submit" value="Tableau de bord"></a></div>
             </div>
-            
+
         </div>
     </body>
 </html>

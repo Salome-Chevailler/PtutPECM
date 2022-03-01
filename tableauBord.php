@@ -1,6 +1,6 @@
 <!-- Contient les requêtes SQL obtenant les données à afficher et les fonctions créant les graphiques et permet d'appliquer des filtres -->
 <?php
-    //include "bdd.php";
+    include "bdd.php";
 ?>
 
 <!DOCTYPE html> 

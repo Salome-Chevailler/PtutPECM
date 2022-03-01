@@ -1,6 +1,6 @@
 <!-- Affiche le formulaire de déclaration d'un événement et enregistre l'événement dans la base de données après validation -->
 <?php
-    //include "bdd.php";
+    include "bdd.php";
 ?>
 
 <!DOCTYPE html> 

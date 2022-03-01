@@ -1,6 +1,6 @@
 <!-- Affiche la liste de tous les événements, permet de passer à l'analyse d'un événement ou de consulter un élément voulu -->
 <?php
-    // include "bdd.php";
+    include "bdd.php";
 ?>
 
 <!DOCTYPE html> 

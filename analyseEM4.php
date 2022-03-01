@@ -1,6 +1,6 @@
 <!-- Affiche la quatrième page du formulaire d'analyse de l'événement et amène à la page 5 -->
 <?php
-    //include "bdd.php";
+    include "bdd.php";
 ?>
 
 <!DOCTYPE html> 
