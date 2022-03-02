@@ -21,65 +21,73 @@
             </div>
         </div>
         <div class="container-fluid">
-            <div class="row mb-1">
-                <!-- Service -->
-                <div class="col-2 md-auto">
-                    <label for="service">Service :</label>
-				    <select class="col-7" name="service" size="1"></select>
+            <form method="POST" action="">
+                <div class="row mb-1">
+                    <!-- Date de l'événement -->
+                    <div class="col-3 md-auto">
+                        <label for="date">Date de l'événement : </label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <!-- Service -->
+                    <div class="col-4 md-auto">
+                        <label for="departement">Service :</label>
+                        <select name="departement" size="1">
+                        <?php
+                        // Requête SQL pour remplir le select avec les départements de la base
+                        $rechercheDepartement="SELECT nom FROM departement ORDER BY nom";
+                        $params = array();
+                        $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+                        $stmt = sqlsrv_query($conn, $rechercheDepartement, $params, $options);
+                        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+                            echo "<option>",utf8_encode(implode("",$row)),"</option>";
+                        }
+                        ?>
+                        </select>
+                    </div>
                 </div>
-                <!-- Numéro fiche -->
-                <div class="col-3 md-auto">
-                    <label for="num">N° fiche de recueil :</label>
-                    <input class="col-2" type="number" id="num" name="num" required>
+                <!-- Description -->
+                <div class="row mb-1"> 	
+                    <label class="col-md-auto" for="details">Description de l'événement et de ses conséquences : </label>
+                    <textarea class="col-4" maxlength="1000" id="details" name="details" required></textarea>
                 </div>
-            </div>
-            <!-- Date de l'événement -->
-            <div class="row mb-1">
-                <label class="col-md-auto" for="date">Date de l'événement : </label>
-                <input type="date" id="date" name="date" required>
-            </div>
-            <!-- Description -->
-            <div class="row mb-1"> 	
-                <label class="col-md-auto" for="description">Description de l'événement et de ses conséquences : </label>
-                <textarea class="col-4" maxlength="1000" id="description" name="description" required></textarea>
-            </div>
-            <!-- Never event -->
-            <div class="md-auto">
-                <label for="neverevent">Est-ce un never-event (NE) ?</label>
-                <input type="radio" id="neverevent" name="neverevent" value="Oui" required>
-                <label for="Oui">Oui</label>
-                <input type="radio" id="neverevent" name="neverevent" value="Non" required>
-                <label for="Non">Non</label> 
-                <input type="radio" id="neverevent" name="neverevent" value="Jenesaispas" required>
-                <label for="Jenesaispas">Je ne sais pas</label>       
-            </div>
-            <div class="row mb-1">
-                <!-- Patient à risque -->
-                <div class="col-2 md-auto">
-                    <input type="checkbox" id="patient" name="patient" required>
-                    <label for="patient">Patient à risque</label>
+                <!-- Never event -->
+                <div class="md-auto">
+                    <label for="est_neverevent">Est-ce un never-event (NE) ?</label>
+                    <input type="radio" id="est_neverevent" name="est_neverevent" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="est_neverevent" name="est_neverevent" value="Non" required>
+                    <label for="Non">Non</label> 
+                    <input type="radio" id="est_neverevent" name="est_neverevent" value="Jenesaispas" required>
+                    <label for="Jenesaispas">Je ne sais pas</label>       
                 </div>
-                <!-- Médicament à risque -->
-                <div class="col-2 md-auto">
-                    <input type="checkbox" id="medicament" name="medicament" required>
-                    <label for="medicament">Médicament à risque</label>
+                <div class="row mb-1">
+                    <!-- Patient à risque -->
+                    <div class="col-2 md-auto">
+                        <input type="checkbox" id="patient_risque" name="patient_risque" required>
+                        <label for="patient_risque">Patient à risque</label>
+                    </div>
+                    <!-- Médicament à risque -->
+                    <div class="col-2 md-auto">
+                        <input type="checkbox" id="medicament" name="medicament" required>
+                        <label for="medicament">Médicament à risque</label>
+                    </div>
                 </div>
-            </div>
-            <div class="row mb-1">
-                <!-- Voie d'administration risquée -->
-                <div class="col-2 md-auto">
-                    <input type="checkbox" id="administration" name="administration" required>
-                    <label for="administration">Voie d'administration risquée</label>
+                <div class="row mb-1">
+                    <!-- Voie d'administration risquée -->
+                    <div class="col-2 md-auto">
+                        <input type="checkbox" id="administration" name="administration" required>
+                        <label for="administration">Voie d'administration risquée</label>
+                    </div>
+                    <!-- Précisions -->
+                    <div class="col-3 md-auto">
+                        <label for="precisions">Précisions :</label>
+                        <input type="text" id="precisions" name="precisions">
+                    </div>
                 </div>
-                <!-- Précisions -->
-                <div class="col-3 md-auto">
-                    <label for="precisions">Précisions :</label>
-                    <input type="text" id="precisions" name="precisions">
-                </div>
-            </div>
+            </form>
             <!-- Bouton d'ajout -->
             <div class="row justify-content-center">
-                <div class="ajouter"><a href="listeEM.php"><input type="submit" value="Ajouter l'événement"></a></div>
+                <div class="ajouter"><a href="listeEM.php"><input type="submit" value="Ajouter l'événement" name="nouvelEvenement"></a></div>
             </div>
         </div>
     </body>

@@ -63,7 +63,18 @@
                     <!-- Service -->
                     <div class="col-3 md-auto">
                         <label for="service">Service :</label>
-                        <select class="col-7" name="service" size="1"></select>
+                        <select class="col-7" name="service" size="1">
+                        <?php
+                        // Requête SQL pour remplir le select avec les départements de la base
+                        $rechercheDepartement="SELECT nom FROM departement ORDER BY nom";
+                        $params = array();
+                        $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+                        $stmt = sqlsrv_query($conn, $rechercheDepartement, $params, $options);
+                        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+                            echo "<option>",utf8_encode(implode("",$row)),"</option>";
+                        }
+                        ?>
+                        </select>
                     </div>
                 </div>
             </div>

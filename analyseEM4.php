@@ -34,31 +34,115 @@
                 </div>
                 <div class="md-auto">
                     <label for="facteur">L'erreur est-elle liée à des facteurs propres aux patients ?</label>
-                    <select class="col-2" name="facteur" size="1"></select>
+                    <select class="md-auto" name="facteur" size="1">
+                    <?php
+                        // Requête SQL pour remplir le select avec les facteurs propres aux patients
+                        $facteurPatient="SELECT libelle FROM facteur WHERE categorie='Patient'";
+                        $params = array();
+                        $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+                        $stmt = sqlsrv_query($conn, $facteurPatient, $params, $options);
+                        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+                            echo "<option>",utf8_encode(implode("",$row)),"</option>";
+                        }
+                    ?>
+                    <option>Autre</option>
+                    </select>
                 </div>
                 <div class="md-auto">
                     <label for="facteur2">L'erreur est-elle liée à des facteurs individuels ?</label>
-                    <select class="col-2" name="facteur2" size="1"></select>
+                    <select class="md-auto" name="facteur2" size="1">
+                    <?php
+                        // Requête SQL pour remplir le select avec les facteurs individuels
+                        $facteurIndividuel="SELECT libelle FROM facteur WHERE categorie='Individuel'";
+                        $params = array();
+                        $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+                        $stmt = sqlsrv_query($conn, $facteurIndividuel, $params, $options);
+                        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+                            echo "<option>",utf8_encode(implode("",$row)),"</option>";
+                        }
+                    ?>
+                    <option>Autre</option>
+                    </select>
                 </div>
                 <div class="md-auto">
                     <label for="facteur3">L'erreur est-elle liée à des facteurs concernant l'équipe ?</label>
-                    <select class="col-2" name="facteur3" size="1"></select>
+                    <select class="md-auto" name="facteur3" size="1">
+                    <?php
+                        // Requête SQL pour remplir le select avec les facteurs concernant l'équipe
+                        $facteurEquipe="SELECT libelle FROM facteur WHERE categorie='Equipe'";
+                        $params = array();
+                        $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+                        $stmt = sqlsrv_query($conn, $facteurEquipe, $params, $options);
+                        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+                            echo "<option>",utf8_encode(implode("",$row)),"</option>";
+                        }
+                    ?>
+                    <option>Autre</option>
+                    </select>
                 </div>
                 <div class="md-auto">
                     <label for="facteur4">L'erreur est-elle liée à des tâches à accomplir ?</label>
-                    <select class="col-2" name="facteur4" size="1"></select>
+                    <select class="md-auto" name="facteur4" size="1">
+                    <?php
+                        // Requête SQL pour remplir le select avec les facteurs liés aux tâches à accomplir
+                        $facteurTache="SELECT libelle FROM facteur WHERE categorie='Tache'";
+                        $params = array();
+                        $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+                        $stmt = sqlsrv_query($conn, $facteurTache, $params, $options);
+                        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+                            echo "<option>",utf8_encode(implode("",$row)),"</option>";
+                        }
+                    ?>
+                    <option>Autre</option>
+                    </select>
                 </div>
                 <div class="md-auto">
                     <label for="facteur5">L'erreur est-elle liée à des facteurs concernant l'environnement ?</label>
-                    <select class="col-2" name="facteur5" size="1"></select>
+                    <select class="md-auto" name="facteur5" size="1">
+                    <?php
+                        // Requête SQL pour remplir le select avec les facteurs environnementaux
+                        $facteurEnvironnemental="SELECT libelle FROM facteur WHERE categorie='Environnemental'";
+                        $params = array();
+                        $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+                        $stmt = sqlsrv_query($conn, $facteurEnvironnemental, $params, $options);
+                        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+                            echo "<option>",utf8_encode(implode("",$row)),"</option>";
+                        }
+                    ?>
+                    <option>Autre</option>
+                    </select>
                 </div>
                 <div class="md-auto">
                     <label for="facteur6">L'erreur est-elle liée à des facteurs concernant l'organisation ?</label>
-                    <select class="col-2" name="facteur6" size="1"></select>
+                    <select class="md-auto" name="facteur6" size="1">
+                    <?php
+                        // Requête SQL pour remplir le select avec les facteurs organisationnels
+                        $facteurOrganisationnel="SELECT libelle FROM facteur WHERE categorie='Organisationnel'";
+                        $params = array();
+                        $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+                        $stmt = sqlsrv_query($conn, $facteurOrganisationnel, $params, $options);
+                        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+                            echo "<option>",utf8_encode(implode("",$row)),"</option>";
+                        }
+                    ?>
+                    <option>Autre</option>
+                    </select>
                 </div>
                 <div class="md-auto">
                     <label for="facteur7">L'erreur est-elle liée à des facteurs concernant le contexte institutionnel ?</label>
-                    <select class="col-2" name="facteur7" size="1"></select>
+                    <select class="md-auto" name="facteur7" size="1">
+                    <?php
+                        // Requête SQL pour remplir le select avec les facteurs institutionnels
+                        $facteurInstitutionnel="SELECT libelle FROM facteur WHERE categorie='Institutionnel'";
+                        $params = array();
+                        $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+                        $stmt = sqlsrv_query($conn, $facteurInstitutionnel, $params, $options);
+                        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+                            echo "<option>",utf8_encode(implode("",$row)),"</option>";
+                        }
+                    ?>
+                    <option>Autre</option>
+                    </select>
                 </div>
             </div>
         </div>
