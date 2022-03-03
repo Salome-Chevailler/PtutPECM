@@ -1,7 +1,43 @@
 <!-- Affiche le formulaire de déclaration d'un événement et enregistre l'événement dans la base de données après validation -->
 <?php
     include "bdd.php";
+
+    // Récupération des données entrées dans le formulaire
+    $date = isset($_POST['date']) ? $_POST['date'] : '';
+    $depart=isset($_POST['departement']) ? utf8_decode($_POST['departement']) : 'Urgences';
+    $queryDepartement = "SELECT id FROM departement WHERE nom='$depart'";
+    $stmt = sqlsrv_query($conn, $queryDepartement);
+    sqlsrv_fetch($stmt);
+    $departement = sqlsrv_get_field($stmt, 0);
+    $details = isset($_POST['details']) ? $_POST['details'] : '';
+    $est_neverevent = isset($_POST['est_neverevent']) ? $_POST['est_neverevent'] : '';
+    if(isset($_POST['patient_risque'])){
+        $patient_risque = 1;
+    } else {
+        $patient_risque = 0;
+    }
+    if(isset($_POST['medicament_risque'])){
+        $medicament_risque = 1;
+    } else {
+        $medicament_risque = 0;
+    }
+    if(isset($_POST['administration_risque'])){
+        $administration_risque = 1;
+    } else {
+        $administration_risque = 0;
+    }
+    $precisions = isset($_POST['precisions']) ? $_POST['precisions'] : '';
+
+    // Création d'un nouvel événement dans la base à partir des données entrées dans le formulaire
+    $insertEvenement="INSERT INTO evenement(date_em,details,est_neverevent,patient_risque,departement,medicament_risque,administration_risque,administration_precisions) VALUES (?,?,?,?,?,?,?,?)";
+    $values=array($date,$details,$est_neverevent,$patient_risque,$departement,$medicament_risque,$administration_risque,$precisions);
+    $stmt=sqlsrv_query($conn,$insertEvenement,$values);
+    if( $stmt === false ) {
+        die( print_r( sqlsrv_errors(), true));
+    }
+
 ?>
+
 
 <!DOCTYPE html> 
 <html lang="fr">
@@ -57,26 +93,26 @@
                     <label for="Oui">Oui</label>
                     <input type="radio" id="est_neverevent" name="est_neverevent" value="Non" required>
                     <label for="Non">Non</label> 
-                    <input type="radio" id="est_neverevent" name="est_neverevent" value="Jenesaispas" required>
+                    <input type="radio" id="est_neverevent" name="est_neverevent" value="Je ne sais pas" required>
                     <label for="Jenesaispas">Je ne sais pas</label>       
                 </div>
                 <div class="row mb-1">
                     <!-- Patient à risque -->
                     <div class="col-2 md-auto">
-                        <input type="checkbox" id="patient_risque" name="patient_risque" required>
+                        <input type="checkbox" id="patient_risque" name="patient_risque" >
                         <label for="patient_risque">Patient à risque</label>
                     </div>
                     <!-- Médicament à risque -->
                     <div class="col-2 md-auto">
-                        <input type="checkbox" id="medicament" name="medicament" required>
-                        <label for="medicament">Médicament à risque</label>
+                        <input type="checkbox" id="medicament_risque" name="medicament_risque">
+                        <label for="medicament_risque">Médicament à risque</label>
                     </div>
                 </div>
                 <div class="row mb-1">
                     <!-- Voie d'administration risquée -->
                     <div class="col-2 md-auto">
-                        <input type="checkbox" id="administration" name="administration" required>
-                        <label for="administration">Voie d'administration risquée</label>
+                        <input type="checkbox" id="administration_risque" name="administration_risque">
+                        <label for="administration_risque">Voie d'administration risquée</label>
                     </div>
                     <!-- Précisions -->
                     <div class="col-3 md-auto">
@@ -84,11 +120,13 @@
                         <input type="text" id="precisions" name="precisions">
                     </div>
                 </div>
-            </form>
+            
             <!-- Bouton d'ajout -->
             <div class="row justify-content-center">
-                <div class="ajouter"><a href="listeEM.php"><input type="submit" value="Ajouter l'événement" name="nouvelEvenement"></a></div>
-            </div>
+                <div class="ajouter"><input type="submit" value="Ajouter l'événement" name="nouvelEvenement"></div>
+            </div>   
+            </form>
         </div>
     </body>
 </html>
+

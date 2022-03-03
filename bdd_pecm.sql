@@ -12,10 +12,7 @@ DROP TABLE IF EXISTS DEGREREALISATION;
 DROP TABLE IF EXISTS ETAPECIRCUIT;
 DROP TABLE IF EXISTS COTATION;
 DROP TABLE IF EXISTS DEPARTEMENT;
-DROP TABLE IF EXISTS VOIEADMINISTRATION;
 DROP TABLE IF EXISTS NEVEREVENT;
-DROP TABLE IF EXISTS TYPEMED;
-DROP TABLE IF EXISTS MEDICAMENT;
 DROP TABLE IF EXISTS PLANACTION;
 DROP TABLE IF EXISTS PILOTE;
 DROP TABLE IF EXISTS REFPILOTE;
@@ -46,18 +43,6 @@ CREATE TABLE ETAPECIRCUIT (
 );
 
 -- -----------------------------------------------------------------------------
---       TABLE : COTATION
--- -----------------------------------------------------------------------------
-DROP TABLE IF EXISTS COTATION;
-CREATE TABLE COTATION (
-    ID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-    GRAVITE INT NOT NULL,
-    OCCURRENCE INT NOT NULL,
-    NIVEAU_MAITRISE INT NOT NULL,
-    CRITICITE INT NOT NULL
-);
-
--- -----------------------------------------------------------------------------
 --       TABLE : DEPARTEMENT
 -- -----------------------------------------------------------------------------
 DROP TABLE IF EXISTS DEPARTEMENT;
@@ -68,41 +53,12 @@ CREATE TABLE DEPARTEMENT (
 );
 
 -- -----------------------------------------------------------------------------
---       TABLE : VOIEADMINISTRATION
--- -----------------------------------------------------------------------------
-DROP TABLE IF EXISTS VOIEADMINISTRATION;
-CREATE TABLE VOIEADMINISTRATION (
-    ID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-    NOM VARCHAR(50),
-    RISQUE BIT NOT NULL
-);
-
--- -----------------------------------------------------------------------------
 --       TABLE : NEVEREVENT
 -- -----------------------------------------------------------------------------
 DROP TABLE IF EXISTS NEVEREVENT;
 CREATE TABLE NEVEREVENT (
     NUMERO INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
     NOM VARCHAR(50) NOT NULL
-);
-
--- -----------------------------------------------------------------------------
---       TABLE : TYPEMED
--- -----------------------------------------------------------------------------
-DROP TABLE IF EXISTS TYPEMED;
-CREATE TABLE TYPEMED (
-    ID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-    NOM VARCHAR(50) NOT NULL
-);
-
--- -----------------------------------------------------------------------------
---       TABLE : MEDICAMENT
--- -----------------------------------------------------------------------------
-DROP TABLE IF EXISTS MEDICAMENT;
-CREATE TABLE MEDICAMENT (
-    ID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-    RISQUE BIT NOT NULL,
-    TYPE_MED INT FOREIGN KEY REFERENCES TYPEMED(ID)
 );
 
 -- -----------------------------------------------------------------------------
@@ -151,12 +107,27 @@ CREATE TABLE EVENEMENT(
     EST_NEVEREVENT VARCHAR(50),
     JUSTIFICATION VARCHAR(500),
     PATIENT_RISQUE BIT,
+    MEDICAMENT_RISQUE BIT,
+    MEDICAMENT_TYPE VARCHAR(50),
+    EST_REFRIGERE BIT,
+    ADMINISTRATION_RISQUE BIT,
+    ADMINISTRATION_PRECISIONS VARCHAR(100),
     DEPARTEMENT INT FOREIGN KEY REFERENCES DEPARTEMENT(ID),
-    VOIE_ADMINISTRATION INT FOREIGN KEY REFERENCES VOIEADMINISTRATION(ID),
-    MEDICAMENT INT FOREIGN KEY REFERENCES MEDICAMENT(ID),
     DEGRE_REALISATION INT FOREIGN KEY REFERENCES DEGREREALISATION(ID),
     ETAPE_CIRCUIT INT FOREIGN KEY REFERENCES ETAPECIRCUIT(ID),
-    COTATION INT FOREIGN KEY REFERENCES COTATION(ID)
+);
+
+-- -----------------------------------------------------------------------------
+--       TABLE : COTATION
+-- -----------------------------------------------------------------------------
+DROP TABLE IF EXISTS COTATION;
+CREATE TABLE COTATION (
+    ID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    GRAVITE INT NOT NULL,
+    OCCURRENCE INT NOT NULL,
+    NIVEAU_MAITRISE INT NOT NULL,
+    CRITICITE INT NOT NULL,
+    EVENEMENT INT FOREIGN KEY REFERENCES EVENEMENT(NUMERO)
 );
 
 -- -----------------------------------------------------------------------------
