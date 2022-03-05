@@ -1,6 +1,87 @@
 <!-- Contient les requêtes récupérant les données de l'événement choisi et affiche les données -->
 <?php
     include "bdd.php";
+
+    // Récupération du numéro dans l'URL de l'événement choisi 
+    $numero = trim($_GET['numero']);
+    $analyse = trim($_GET['analyse']);
+    
+    // Si l'événement n'a pas été analysé, on récupère les infos correspondantes
+    if ($analyse==0){
+        $sql = "SELECT date_EM, d.nom as departement, details, administration_risque, administration_precisions, patient_risque, medicament_risque, est_neverevent FROM evenement e JOIN departement d ON e.departement=d.id WHERE e.numero='$numero'";
+        $stmt = sqlsrv_query( $conn, $sql);
+        if( $stmt === false ) {
+            die( print_r( sqlsrv_errors(), true));
+        }
+        if( sqlsrv_fetch( $stmt ) === false) {
+            die( print_r( sqlsrv_errors(), true));
+        }
+        $date_EM = sqlsrv_get_field( $stmt, 0)->format('d/m/Y');
+        $departement = sqlsrv_get_field($stmt, 1);
+        $details = sqlsrv_get_field($stmt, 2);
+        $administration_risque = sqlsrv_get_field($stmt, 3);
+        // On transforme le bit en string
+        if ($administration_risque===0){
+            $administration_risque = "Non";
+        } else {
+            $administration_risque = "Oui";
+        }
+        $administration_precisions = sqlsrv_get_field($stmt, 4);
+        $patient_risque = sqlsrv_get_field($stmt, 5);
+        // On transforme le bit en string
+        if ($patient_risque===0){
+            $patient_risque = "Non";
+        } else {
+            $patient_risque = "Oui";
+        }
+        $medicament_risque = sqlsrv_get_field($stmt, 6);
+        // On transforme le bit en string
+        if ($medicament_risque===0){
+            $medicament_risque = "Non";
+        } 
+        else {
+            $medicament_risque = "Oui";
+        }
+        $est_neverevent = sqlsrv_get_field($stmt, 7);
+    } 
+    // ATTENTION, PARTIE NON COMPLETE --> A FAIRE
+    // Si l'événement a été analysé, on récupère les infos correspondantes
+    else {
+        $sql = "SELECT date_EM, d.nom as departement, details, administration_risque, administration_precisions, patient_risque, medicament_risque, est_neverevent FROM evenement e JOIN departement d ON e.departement=d.id WHERE e.numero='$numero'";
+        $stmt = sqlsrv_query( $conn, $sql);
+        if( $stmt === false ) {
+            die( print_r( sqlsrv_errors(), true));
+        }
+        if( sqlsrv_fetch( $stmt ) === false) {
+            die( print_r( sqlsrv_errors(), true));
+        }
+        $date_EM = sqlsrv_get_field( $stmt, 0)->format('d/m/Y');
+        $departement = sqlsrv_get_field($stmt, 1);
+        $details = sqlsrv_get_field($stmt, 2);
+        $administration_risque = sqlsrv_get_field($stmt, 3);
+        if ($administration_risque===0){
+            $administration_risque = "Non";
+        } else {
+            $administration_risque = "Oui";
+        }
+        $administration_precisions = sqlsrv_get_field($stmt, 4);
+        $patient_risque = sqlsrv_get_field($stmt, 5);
+        if ($patient_risque===0){
+            $patient_risque = "Non";
+        } else {
+            $patient_risque = "Oui";
+        }
+        $medicament_risque = sqlsrv_get_field($stmt, 6);
+        if ($medicament_risque===0){
+            $medicament_risque = "Non";
+        } 
+        else {
+            $medicament_risque = "Oui";
+        }
+        $est_neverevent = sqlsrv_get_field($stmt, 7);
+    }
+
+
 ?>
 
 <!DOCTYPE html> 
@@ -22,38 +103,38 @@
         </div>
         <div class="container-fluid">
             <div class="row mb-1">
-                <label class="col-6" for="Numero"><strong>Numéro fiche de recueil : </strong></label>
-            </div>
-            <div class="row mb-1">
                 <label class="col-6" for="DateAnalyse"><strong>Date de l'analyse : </strong></label>
-                <label class="col-6" for="DateModif"><strong>Date de la dernière modification : </strong></label>
+                <label class="col-6" for="DateCrex"><strong>Présenté au CREX du : </strong></label>
             </div>
             <div class="row mb-1">
-                <label class="col-6" for="DateEM"><strong>Date de l'événement : </strong></label>
-                <label class="col-6" for="Service"><strong>Service : </strong></label>
+                <label class="col-6" for="DateEM"><strong>Date de l'événement : </strong><?php echo $date_EM; ?></label>
+                <label class="col-6" for="Service"><strong>Service : </strong><?php echo $departement ?></label>
             </div>
             <div class="row mb-1">
-                <label class="col-6" for="Description"><strong>Description : </strong></label>
+                <label class="col-6" for="Description"><strong>Description : </strong><?php echo $details ?></label>
             </div>
             <div class="row mb-1">
-                <label class="col-6" for="PremierTemps"><strong>Qu'a-t-il été fait dans un premier temps ? </strong></label>
+                <label class="col-6" for="Qui"><strong>Qui est concerné ? </strong></label>
+            </div>
+            <div class="row mb-1">
+                <label class="col-6" for="Probleme"><strong>En quoi est-ce un problème ? </strong></label>
             </div>
             <div class="md-auto">
                 <h4>Caractérisation de l'erreur médicamenteuse</h4>
             </div>
             <div class="row mb-1">
-                <label class="col-6" for="Administration"><strong>Voie d'administration à risque : </strong></label>
-                <label class="col-6" for="Precisions"><strong>Précisions : </strong></label>
+                <label class="col-6" for="Administration"><strong>Voie d'administration à risque : </strong><?php echo $administration_risque ?></label>
+                <label class="col-6" for="Precisions"><strong>Précisions : </strong><?php echo $administration_precisions ?></label>
             </div>
             <div class="row mb-1">
-                <label class="col-6" for="Patient"><strong>Patient à risque : </strong></label>
-                <label class="col-6" for="Medicament"><strong>Médicament à risque : </strong></label>
+                <label class="col-6" for="Patient"><strong>Patient à risque : </strong><?php echo $patient_risque ?></label>
+                <label class="col-6" for="Medicament"><strong>Médicament à risque : </strong><?php echo $medicament_risque ?></label>
             </div>
             <div class="row mb-1">
                 <label class="col-6" for="Type"><strong>L'erreur médicamenteuse concerne : </strong></label>
             </div>
             <div class="row mb-1">
-                <label class="col-6" for="Neverevent"><strong>Est-ce un never-event (NE) ? </strong></label>
+                <label class="col-6" for="Neverevent"><strong>Est-ce un never-event (NE) ? </strong><?php echo $est_neverevent ?></label>
                 <label class="col-6" for="NE"><strong>Le(s)quel(s) ? </strong></label>
             </div>
             <div class="row mb-1">

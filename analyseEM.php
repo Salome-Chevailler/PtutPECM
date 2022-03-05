@@ -22,13 +22,6 @@
         </div>
         <div class="container-fluid">
             <div class="row mb-1">
-                <!-- Numéro analyse -->
-                <div class="col-3 md-auto">
-                    <label for="num">Analyse systémique n° : </label>
-                    <input class="col-2" type="number" id="num" name="num" required>
-                </div>
-            </div>
-            <div class="row mb-1">
                 <!-- Date de l'analyse -->
                 <div class="col-3 md-auto">
                     <label for="date">Date de l'analyse : </label>
@@ -46,8 +39,13 @@
                 </div>
                 <!-- Que s'est-il passé ? -->
                 <div class="row mb-1">
-                    <label class="col-md-auto" for="quoi">Quoi ? Que s'est-il passé ? Qui est concerné ?</label>
+                    <label class="col-md-auto" for="quoi">Quoi ? Que s'est-il passé ?</label>
                     <textarea class="col-4" maxlength="1000" id="quoi" name="quoi" required></textarea>
+                </div>
+                <!-- Qui est concerné ? -->
+                <div class="row mb-1">
+                    <label class="col-md-auto" for="quoi">Qui est concerné ?</label>
+                    <input class="col-3" maxlength="100" id="quoi" name="qui" required></textarea>
                 </div>
                 <!-- En quoi est-ce un problème ?-->
                 <div class="row mb-1">

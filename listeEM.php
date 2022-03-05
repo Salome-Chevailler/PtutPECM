@@ -64,12 +64,14 @@
                                 $patient_risque = "Oui";
                             }
                             $medicament_risque = sqlsrv_get_field( $stmt, 4);
+                            // On transforme le bit en string
                             if ($medicament_risque===0){
                                 $medicament_risque = "Non";
                             } else {
                                 $medicament_risque = "Oui";
                             }
                             $administration_risque = sqlsrv_get_field( $stmt, 5);
+                            // On transforme le bit en string
                             if ($administration_risque===0){
                                 $administration_risque = "Non";
                             } else {
@@ -87,10 +89,10 @@
                             echo "<td>$details</td>";
                             // Si l'événement n'a jamais été analysé, on affiche un bouton menant à l'analyse
                             if ($analyse==0){
-                                // On récupère le numéro de l'événement dans l'URL
-                                echo '<td><a href="analyseEM.php?numero='.$numero.'"><input class="boutonthird" type="submit" value="Analyser"><a href="consultationEM.php?numero='.$numero.'"><input class="boutonthird" type="submit" value="Consulter"></td>';
+                                // On récupère dans l'URL le numéro de l'événement et s'il a été analysé 
+                                echo '<td><a href="analyseEM.php?numero='.$numero.'"><input class="boutonthird" type="submit" value="Analyser"><a href="consultationEM.php?numero='.$numero.'&analyse='.$analyse.'"><input class="boutonthird" type="submit" value="Consulter"></td>';
                             } else {
-                                echo '<td><a href="consultationEM.php?numero='.$numero.'"><input class="boutonthird" type="submit" value="Consulter"></td>';
+                                echo '<td><a href="consultationEM.php?numero='.$numero.'&analyse='.$analyse.'"><input class="boutonthird" type="submit" value="Consulter"></td>';
                             }
                             echo '</tr>';
                         }
