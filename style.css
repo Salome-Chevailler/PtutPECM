@@ -106,3 +106,7 @@ border-color: #5EA79E ;
     padding-left: 15px;
     margin-right: auto;
   }
+
+  img {
+    object-position: 0%;
+  }

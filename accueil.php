@@ -8,13 +8,15 @@
     <head>
         <meta charset="utf-8">
         <title>Accueil</title>
+        <link rel="icon" type="image/png" href="iconeCHIC.png">
         <link rel="stylesheet" href="bootstrap.min.css" type="text/css" media="screen">
 		<link rel="stylesheet" href="bootstrap.css" type="text/css" media="screen">
         <link rel="stylesheet" href="style.css" type="text/css" media="screen">
+        
     </head>
     <body>
         
-        <div class="header" style="height: 100px"><h1>Erreurs médicamenteuses</h1></div>
+        <div class="header" style="height: 100px"><img src=logoCHIC.png/><h1>Erreurs médicamenteuses</h1></div>
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-4 text-center" style="height: 50px"><a href="listeEM.php"><input class="btn btn-outline-primary" type="submit" value="Consulter les événements"></a></div>
