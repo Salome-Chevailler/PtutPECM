@@ -1,8 +1,8 @@
 <!-- Permet de se connecter à la base de données Microsoft SQL Server -->
 
 <?php
-//$serverName = "LAPTOP-RCTMJQ1M\SQLEXPRESS"; //serverName\instanceName
-     $serverName = "DESKTOP-OJ289NC\SQLEXPRESS";
+$serverName = "LAPTOP-RCTMJQ1M\SQLEXPRESS"; //serverName\instanceName
+    // $serverName = "DESKTOP-OJ289NC\SQLEXPRESS";
 // Since UID and PWD are not specified in the $connectionInfo array,
 // The connection will be attempted using Windows Authentication.
 $connectionInfo = array( "Database"=>"master");

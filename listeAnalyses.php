@@ -1,4 +1,4 @@
-<!-- Affiche la liste de tous les événements déclarés, permet de passer à l'analyse d'un événement ou de consulter un élément voulu -->
+<!-- Affiche la liste de tous les événements analysés et permet de consulter un élément voulu -->
 <?php
     include "bdd.php";
 ?>
@@ -9,43 +9,18 @@
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
         <link rel="stylesheet" href="bootstrap.min.css" type="text/css" media="screen">
 		<link rel="stylesheet" href="bootstrap.css" type="text/css" media="screen">
-        <title>Consultation des événements déclarés</title>
+        <title>Consultation des événements analysés au CREX</title>
     </head>
     <body>
         <div class="row justify-content-center">
             <div class="col-auto">
-                <h1>Consultation des événements déclarés</h1>
+                <h1>Consultation des événements analysés au CREX</h1>
             </div>
             <div class="col-auto">
                 <a href="accueil.php"><input type="submit" value="Retour"></a>
             </div>
         </div>
         <div>
-        <!-- Formulaire pour le filtrage des événements -->
-            <form method="POST">
-                <!-- Filtrage par date -->
-                <label class="col-auto ml-2" for="date">Filtrer par date : </label>
-                <input class="col-auto nom mr-2" type="date" name="dateDebut">
-                <label class="col-auto mr-2">au</label>
-                <input class="col-auto nom mr-3" type="date" name="dateFin">
-                <label class="col-auto mr-2">et/ou par service : </label>
-                <!-- Filtrage par service -->
-                <select name="departement" size="1">
-                    <?php
-                    // Requête SQL pour remplir le select avec les départements de la base
-                    $rechercheDepartement="SELECT nom FROM departement ORDER BY nom";
-                    $params = array();
-                    $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
-                    $stmt = sqlsrv_query($conn, $rechercheDepartement, $params, $options);
-                    while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-                        echo "<option>",utf8_encode(implode("",$row)),"</option>";
-                    }
-                    ?>
-                </select>        
-                <!-- Bouton lançant la recherche -->        
-                <input class="col-auto boutonpetit ml-3" type="submit" name="Rechercher" value="Rechercher">
-            </form>
-        </div>
         <div class="container-fluid">
             <table class="table table-striped table-sm mb-4">
                 <thead>
@@ -56,13 +31,13 @@
                         <th class="col-md-2">Médicament à risque <input class="videB" type="submit" name="triMedicament" value="v"/></th>
                         <th class="col-md-3">Voie d'administration à risque <input class="videB" type="submit" name="triAdministration" value="v"/></th>
                         <th class="col-md-3">Description</th>
-                        <th class="col-md-2">Consulter/Analyser</th>
+                        <th class="col-md-2">Consulter</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                         // Récupération des événements déclarés à afficher dans le tableau
-                        $sql = "SELECT numero, d.nom as departement, date_EM, patient_risque, medicament_risque, administration_risque, details, est_analyse FROM evenement e JOIN departement d ON e.departement=d.id WHERE  est_analyse=0";
+                        $sql = "SELECT numero, d.nom as departement, date_EM, patient_risque, medicament_risque, administration_risque, details, est_analyse FROM evenement e JOIN departement d ON e.departement=d.id WHERE  est_analyse=1";
                         $params = array();
                         $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
                         $stmt = sqlsrv_query( $conn, $sql, $params, $options);
@@ -114,7 +89,7 @@
                             echo "<td>$administration_risque</td>";
                             echo "<td>$details</td>";
                             // Boutons permettant d'analyser un événement ou de le consulter
-                            echo '<td><a href="analyseEM.php?numero='.$numero.'"><input class="boutonthird" type="submit" value="Analyser"><a href="consultationEM.php?numero='.$numero.'&analyse='.$analyse.'"><input class="boutonthird" type="submit" value="Consulter"></td>';
+                            echo '<td><a href="consultationEManalyse.php?numero='.$numero.'&analyse='.$analyse.'"><input class="boutonthird" type="submit" value="Consulter"></td>';
                             echo '</tr>';
                         }
                     ?>
@@ -122,7 +97,7 @@
             </table>
         </div>
         <div class="col-auto">
-                <a href="tableauPriorisation.php"><input type="submit" value="Tableau de bord"></a>
+                <a href="tableauBord.php"><input type="submit" value="Tableau de bord"></a>
         </div>
     </body>
 </html>

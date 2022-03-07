@@ -17,7 +17,7 @@
                 <h1>Tableau de bord des événements analysés</h1>
             </div>
             <div class="col-auto">
-                <a href="accueil.php"><input type="submit" value="Retour"></a>
+                <a href="listeAnalyses.php"><input type="submit" value="Retour"></a>
             </div>
         </div>
     </body>

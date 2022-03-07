@@ -16,16 +16,16 @@
     </head>
     <body>
         
-        <div class="header" style="height: 100px"><img src=logoCHIC.png/><h1>Erreurs médicamenteuses</h1></div>
+        <div class="header" style="height: 100px"><img src=logoCHIC.png/><h1>Outil de déclaration et d'analyse des erreurs médicamenteuses</h1></div>
         <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-4 text-center" style="height: 50px"><a href="listeEM.php"><input class="btn btn-outline-primary" type="submit" value="Consulter les événements"></a></div>
-            </div>
             <div class="row justify-content-center">
                 <div class="col-4 text-center" style="height: 50px"><a href="ajoutEM.php"><input class="btn btn-outline-primary" type="submit" value="Déclarer un événement"></a></div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-4 text-center"><a href="tableauBord.php"><input class="btn btn-outline-primary" type="submit" value="Tableau de bord"></a></div>
+                <div class="col-4 text-center" style="height: 50px"><a href="listeEM.php"><input class="btn btn-outline-primary" type="submit" value="Consulter les événements déclarés"></a></div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-4 text-center"><a href="listeAnalyses.php"><input class="btn btn-outline-primary" type="submit" value="Consulter les événements analysés"></a></div>
             </div>
 
         </div>
