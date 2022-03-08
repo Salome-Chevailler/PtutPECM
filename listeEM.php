@@ -7,17 +7,18 @@
 <html lang="fr">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <link rel="icon" type="image/png" href="iconeCHIC.png">
         <link rel="stylesheet" href="bootstrap.min.css" type="text/css" media="screen">
 		<link rel="stylesheet" href="bootstrap.css" type="text/css" media="screen">
         <title>Consultation des événements déclarés</title>
     </head>
     <body>
         <div class="row justify-content-center">
-            <div class="col-auto">
+            <div class="header">
                 <h1>Consultation des événements déclarés</h1>
             </div>
             <div class="col-auto">
-                <a href="accueil.php"><input type="submit" value="Retour"></a>
+                <a href="accueil.php"><input class="btn btn-outline-primary" type="submit" value="Retour"></a>
             </div>
         </div>
         <div>
@@ -43,7 +44,7 @@
                     ?>
                 </select>        
                 <!-- Bouton lançant la recherche -->        
-                <input class="col-auto boutonpetit ml-3" type="submit" name="Rechercher" value="Rechercher">
+                <input class="btn btn-outline-primary" type="submit" name="Rechercher" value="Rechercher">
             </form>
         </div>
         <div class="container-fluid">
@@ -117,7 +118,7 @@
                             echo "<td>$details</td>";
                             echo "<td>$consequences</td>";
                             // Boutons permettant d'analyser un événement ou de le consulter
-                            echo '<td><a href="analyseEM.php?numero='.$numero.'"><input class="boutonthird" type="submit" value="Analyser"><a href="consultationEM.php?numero='.$numero.'&analyse='.$analyse.'"><input class="boutonthird" type="submit" value="Consulter"></td>';
+                            echo '<td><a href="analyseEM.php?numero='.$numero.'"><input class="btn btn-outline-primary" type="submit" value="Analyser"><a href="consultationEM.php?numero='.$numero.'&analyse='.$analyse.'"><input class="boutonthird" type="submit" value="Consulter"></td>';
                             echo '</tr>';
                         }
                     ?>
@@ -125,7 +126,7 @@
             </table>
         </div>
         <div class="col-auto">
-                <a href="tableauPriorisation.php"><input type="submit" value="Tableau de bord"></a>
+                <a href="tableauPriorisation.php"><input class="btn btn-outline-primary" type="submit" value="Tableau de bord"></a>
         </div>
     </body>
 </html>

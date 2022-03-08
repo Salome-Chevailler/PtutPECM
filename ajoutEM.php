@@ -3,7 +3,7 @@
     include "bdd.php";
 
     // Récupération des données entrées dans le formulaire
-    $date_declaration = isset($_POST['date_declaration']) ? $_POST['date_declaration'] : '';
+   /* $date_declaration = isset($_POST['date_declaration']) ? $_POST['date_declaration'] : '';
     $date = isset($_POST['date']) ? $_POST['date'] : '';
     $depart=isset($_POST['departement']) ? utf8_decode($_POST['departement']) : 'Urgences';
     $queryDepartement = "SELECT id FROM departement WHERE nom='$depart'";
@@ -30,7 +30,7 @@
     $stmt=sqlsrv_query($conn,$insertEvenement,$values);
     if( $stmt === false ) {
         die( print_r( sqlsrv_errors(), true));
-    }
+    }*/
 
 ?>
 
@@ -39,17 +39,18 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
+        <link rel="icon" type="image/png" href="iconeCHIC.png">
         <link rel="stylesheet" href="bootstrap.min.css" type="text/css" media="screen">
 		<link rel="stylesheet" href="bootstrap.css" type="text/css" media="screen">
         <title>Déclarer un événement</title>
     </head>
     <body>
         <div class="row justify-content-center">
-            <div class="col-auto">
+            <div class="header">
                 <h1>Déclarer un événement</h1>
             </div>
             <div class="col-auto">
-                <a href="accueil.php"><input type="submit" value="Retour"></a>
+                <a href="accueil.php"><input class="btn btn-outline-primary" type="submit" value="Retour"></a>
             </div>
         </div>
         <div class="container-fluid">
@@ -59,14 +60,14 @@
                         <label for="date_declaration">Date de la déclaration : </label>
                         <input type="date" id="date_declaration" name="date_declaration" required>
                 </div>
-                <div class="row mb-1">
+                <div class="md-auto">
                     <!-- Date de l'événement -->
-                    <div class="col-3 md-auto">
+                    <div class="md-auto">
                         <label for="date">Date de l'événement : </label>
                         <input type="date" id="date" name="date" required>
                     </div>
                     <!-- Service -->
-                    <div class="col-4 md-auto">
+                    <div class="md-auto">
                         <label for="departement">Service :</label>
                         <select name="departement" size="1">
                         <?php
@@ -89,7 +90,7 @@
                 </div>
                 <!-- Never event -->
                 <div class="md-auto">
-                    <label for="est_neverevent">Est-ce un never-event (NE) ?</label>
+                    <label for="est_neverevent">S'agit-il d'un never-event (NE) ?</label>
                     <input type="radio" id="est_neverevent" name="est_neverevent" value="Oui" required>
                     <label for="Oui">Oui</label>
                     <input type="radio" id="est_neverevent" name="est_neverevent" value="Non" required>
@@ -186,7 +187,7 @@
             
             <!-- Bouton d'ajout -->
             <div class="row justify-content-center">
-                <div class="ajouter"><input type="submit" value="Ajouter l'événement" name="nouvelEvenement"></div>
+                <div class="ajouter"><input class="btn btn-outline-primary" type="submit" value="Ajouter l'événement" name="nouvelEvenement"></div>
             </div>   
             </form>
         </div>

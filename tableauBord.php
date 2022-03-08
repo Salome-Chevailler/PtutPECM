@@ -7,17 +7,18 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
+        <link rel="icon" type="image/png" href="iconeCHIC.png">
         <link rel="stylesheet" href="bootstrap.min.css" type="text/css" media="screen">
 		<link rel="stylesheet" href="bootstrap.css" type="text/css" media="screen">
         <title>Tableau de bord</title>
     </head>
     <body>
         <div class="row justify-content-center">
-            <div class="col-auto">
+            <div class="header">
                 <h1>Tableau de bord des événements analysés</h1>
             </div>
             <div class="col-auto">
-                <a href="listeAnalyses.php"><input type="submit" value="Retour"></a>
+                <a href="listeAnalyses.php"><input class="btn btn-outline-primary" type="submit" value="Retour"></a>
             </div>
         </div>
     </body>

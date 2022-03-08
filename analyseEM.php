@@ -7,17 +7,18 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
+        <link rel="icon" type="image/png" href="iconeCHIC.png">
         <link rel="stylesheet" href="bootstrap.min.css" type="text/css" media="screen">
 		<link rel="stylesheet" href="bootstrap.css" type="text/css" media="screen">
         <title>Analyse des causes d'une erreur médicamenteuse</title>
     </head>
     <body>
         <div class="row justify-content-center">
-            <div class="col-auto">
+            <div class="header">
                 <h1>Analyse des causes d'une erreur médicamenteuse</h1>
             </div>
             <div class="col-auto">
-                <a href="listeEM.php"><input type="submit" value="Retour"></a>
+                <a href="listeEM.php"><input class="btn btn-outline-primary" type="submit" value="Retour"></a>
             </div>
         </div>
         <div class="container-fluid">
@@ -408,11 +409,11 @@
                 </tbody>
             </table>
             <div class="md-auto">
-                <input type="submit" value="Ajouter une action">
+                <input class="btn btn-outline-primary" type="submit" value="Ajouter une action">
             </div>
             <!-- Bouton de validation -->
             <div class="row justify-content-center">
-                <div class="valider"><a href="listeEM.php"><input type="submit" value="Valider"></a></div>
+                <div class="valider"><a href="listeEM.php"><input class="btn btn-outline-primary" type="submit" value="Valider"></a></div>
             </div>
         </div>
     </body>

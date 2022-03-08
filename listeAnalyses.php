@@ -7,17 +7,18 @@
 <html lang="fr">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <link rel="icon" type="image/png" href="iconeCHIC.png">
         <link rel="stylesheet" href="bootstrap.min.css" type="text/css" media="screen">
 		<link rel="stylesheet" href="bootstrap.css" type="text/css" media="screen">
         <title>Consultation des événements analysés au CREX</title>
     </head>
     <body>
         <div class="row justify-content-center">
-            <div class="col-auto">
+            <div class="header">
                 <h1>Consultation des événements analysés au CREX</h1>
             </div>
             <div class="col-auto">
-                <a href="accueil.php"><input type="submit" value="Retour"></a>
+                <a href="accueil.php"><input class="btn btn-outline-primary" type="submit" value="Retour"></a>
             </div>
         </div>
         <div>
@@ -89,7 +90,7 @@
                             echo "<td>$administration_risque</td>";
                             echo "<td>$details</td>";
                             // Boutons permettant d'analyser un événement ou de le consulter
-                            echo '<td><a href="consultationEManalyse.php?numero='.$numero.'&analyse='.$analyse.'"><input class="boutonthird" type="submit" value="Consulter"></td>';
+                            echo '<td><a href="consultationEManalyse.php?numero='.$numero.'&analyse='.$analyse.'"><input class="btn btn-outline-primary" type="submit" value="Consulter"></td>';
                             echo '</tr>';
                         }
                     ?>
@@ -97,7 +98,7 @@
             </table>
         </div>
         <div class="col-auto">
-                <a href="tableauBord.php"><input type="submit" value="Tableau de bord"></a>
+                <a href="tableauBord.php"><input class="btn btn-outline-primary" type="submit" value="Tableau de bord"></a>
         </div>
     </body>
 </html>

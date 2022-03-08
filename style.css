@@ -66,12 +66,12 @@ background-color: #D3ECE6;
 border-color: #D3ECE6;
 }
 
-.btn-outline-primary {
+.btn-outline-primary .videB {
 color: #5EA79E ;
 border-color: #5EA79E ;
 }
 
-.btn-outline-primary:hover {
+.btn-outline-primary:hover .videB:hover{
 color: #fff;
 background-color: #5EA79E ;
 border-color: #5EA79E ;
