@@ -3,6 +3,7 @@
     include "bdd.php";
 
     // Récupération des données entrées dans le formulaire
+    $date_declaration = isset($_POST['date_declaration']) ? $_POST['date_declaration'] : '';
     $date = isset($_POST['date']) ? $_POST['date'] : '';
     $depart=isset($_POST['departement']) ? utf8_decode($_POST['departement']) : 'Urgences';
     $queryDepartement = "SELECT id FROM departement WHERE nom='$depart'";
@@ -10,27 +11,24 @@
     sqlsrv_fetch($stmt);
     $departement = sqlsrv_get_field($stmt, 0);
     $details = isset($_POST['details']) ? $_POST['details'] : '';
+    $consequences = isset($_POST['consequences']) ? $_POST['consequences'] : '';
+    $personne_concernee = isset($_POST['personne_concernee']) ? $_POST['personne_concernee'] : '';
     $est_neverevent = isset($_POST['est_neverevent']) ? $_POST['est_neverevent'] : '';
-    if(isset($_POST['patient_risque'])){
-        $patient_risque = 1;
-    } else {
-        $patient_risque = 0;
-    }
-    if(isset($_POST['medicament_risque'])){
-        $medicament_risque = 1;
-    } else {
-        $medicament_risque = 0;
-    }
-    if(isset($_POST['administration_risque'])){
-        $administration_risque = 1;
-    } else {
-        $administration_risque = 0;
-    }
+    $patient_risque = isset($_POST['patient_risque']) ? $_POST['patient_risque'] : '';
+    $precisions_patient = isset($_POST['precisions_patient']) ? $_POST['precisions_patient'] : '';
+    $medicament_risque = isset($_POST['medicament_risque']) ? $_POST['medicament_risque'] : '';
+    $precisions_medicament = isset($_POST['precisions_medicament']) ? $_POST['precisions_medicament'] : '';
+    $administration_risque = isset($_POST['administration_risque']) ? $_POST['administration_risque'] : '';
     $precisions = isset($_POST['precisions']) ? $_POST['precisions'] : '';
 
+    // A MODIFIER 
+    $degre = isset($_POST['degre']) ? $_POST['degre'] : '';
+    $etape = isset($_POST['etape']) ? $_POST['etape'] : '';
+
     // Création d'un nouvel événement dans la base à partir des données entrées dans le formulaire
-    $insertEvenement="INSERT INTO evenement(date_em,details,est_neverevent,patient_risque,departement,medicament_risque,administration_risque,administration_precisions) VALUES (?,?,?,?,?,?,?,?)";
-    $values=array($date,$details,$est_neverevent,$patient_risque,$departement,$medicament_risque,$administration_risque,$precisions);
+    // RAJOUTER DEGRE ET ETAPE
+    $insertEvenement="INSERT INTO evenement(date_declaration,date_em,details,est_neverevent,patient_risque,departement,medicament_risque,administration_risque,administration_precisions,consequences,personne_concernee,precisions_patient,precisions_medicament) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    $values=array($date_declaration,$date,$details,$est_neverevent,$patient_risque,$departement,$medicament_risque,$administration_risque,$precisions,$consequences,$personne_concernee,$precisions_patient,$precisions_medicament);
     $stmt=sqlsrv_query($conn,$insertEvenement,$values);
     if( $stmt === false ) {
         die( print_r( sqlsrv_errors(), true));
@@ -88,8 +86,8 @@
                 </div>
                 <!-- Qui est concerné ? -->
                 <div class="md-auto">
-                    <label for="qui">Qui est concerné ?</label>
-                    <input class="col-3" maxlength="100" id="qui" name="qui" required></textarea>
+                    <label for="personne_concernee">Qui est concerné ?</label>
+                    <input class="col-3" maxlength="100" id="personne_concernee" name="personne_concernee" required></textarea>
                 </div>
                 <!-- Never event -->
                 <div class="md-auto">
@@ -151,29 +149,29 @@
                 <!-- Degré de réalisation -->
                 <div class="md-auto">
                         <label for="degre">Degré de réalisation :</label>
-                        <input type="radio" id="degre" name="degre" value="EM avérée et identifiée après atteinte du patient" required>
+                        <input type="radio" id="degre" name="degre" value="EM avérée et identifiée après atteinte du patient">
                         <label for="EM avérée et identifiée après atteinte du patient">EM avérée et identifiée après atteinte du patient</label>
-                        <input type="radio" id="degre" name="degre" value="EM avérée et interceptée avant atteinte du patient" required>
+                        <input type="radio" id="degre" name="degre" value="EM avérée et interceptée avant atteinte du patient">
                         <label for="EM avérée et interceptée avant atteinte du patient">EM avérée et interceptée avant atteinte du patient</label> 
-                        <input type="radio" id="degre" name="degre" value="EM potentielle" required>
+                        <input type="radio" id="degre" name="degre" value="EM potentielle">
                         <label for="EM potentielle">EM potentielle</label> 
-                        <input type="radio" id="degre" name="degre" value="Je ne sais pas" required>
+                        <input type="radio" id="degre" name="degre" value="Je ne sais pas">
                         <label for="Jenesaispas">Je ne sais pas</label>  
                 </div>
                 <!-- Etape de survenue dans le circuit médicament -->
                 <div class="md-auto">
                         <label for="etape">Etape de survenue dans le circuit médicament :</label>
-                        <input type="radio" id="etape" name="etape" value="Administration" required>
+                        <input type="radio" id="etape" name="etape" value="Administration">
                         <label for="Administration">Administration</label>
-                        <input type="radio" id="etape" name="etape" value="Dispensation" required>
+                        <input type="radio" id="etape" name="etape" value="Dispensation">
                         <label for="Dispensation">Dispensation</label> 
-                        <input type="radio" id="etape" name="etape" value="Information du patient" required>
+                        <input type="radio" id="etape" name="etape" value="Information du patient">
                         <label for="Information du patient">Information du patient</label> 
-                        <input type="radio" id="etape" name="etape" value="Prescription" required>
+                        <input type="radio" id="etape" name="etape" value="Prescription">
                         <label for="Prescription">Prescription</label>
-                        <input type="radio" id="etape" name="etape" value="Transport" required>
+                        <input type="radio" id="etape" name="etape" value="Transport">
                         <label for="Transport">Transport</label>  
-                        <input type="radio" id="etape" name="etape" value="Je ne sais pas" required>
+                        <input type="radio" id="etape" name="etape" value="Je ne sais pas">
                         <label for="Jenesaispas">Je ne sais pas</label>  
                 </div>
                 <!-- Description -->
