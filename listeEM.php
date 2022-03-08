@@ -56,13 +56,14 @@
                         <th class="col-md-2">Médicament à risque <input class="videB" type="submit" name="triMedicament" value="v"/></th>
                         <th class="col-md-3">Voie d'administration à risque <input class="videB" type="submit" name="triAdministration" value="v"/></th>
                         <th class="col-md-3">Description</th>
+                        <th class="col-md-3">Conséquences</th>
                         <th class="col-md-2">Consulter/Analyser</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                         // Récupération des événements déclarés à afficher dans le tableau
-                        $sql = "SELECT numero, d.nom as departement, date_EM, patient_risque, medicament_risque, administration_risque, details, est_analyse FROM evenement e JOIN departement d ON e.departement=d.id WHERE  est_analyse=0";
+                        $sql = "SELECT numero, d.nom as departement, date_EM, patient_risque, medicament_risque, administration_risque, details, est_analyse, consequences FROM evenement e JOIN departement d ON e.departement=d.id WHERE est_analyse=0 OR est_analyse=''";
                         $params = array();
                         $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
                         $stmt = sqlsrv_query( $conn, $sql, $params, $options);
@@ -105,6 +106,7 @@
                             }
                             $details = sqlsrv_get_field( $stmt, 6);
                             $analyse = sqlsrv_get_field($stmt, 7);
+                            $consequences = sqlsrv_get_field($stmt, 8);
 
                             echo '<tr>';
                             echo "<td>$date</td>";
@@ -113,6 +115,7 @@
                             echo "<td>$medicament_risque</td>";
                             echo "<td>$administration_risque</td>";
                             echo "<td>$details</td>";
+                            echo "<td>$consequences</td>";
                             // Boutons permettant d'analyser un événement ou de le consulter
                             echo '<td><a href="analyseEM.php?numero='.$numero.'"><input class="boutonthird" type="submit" value="Analyser"><a href="consultationEM.php?numero='.$numero.'&analyse='.$analyse.'"><input class="boutonthird" type="submit" value="Consulter"></td>';
                             echo '</tr>';

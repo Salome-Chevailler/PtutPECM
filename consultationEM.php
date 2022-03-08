@@ -8,7 +8,7 @@
     
     // On récupère les infos correspondantes
     // RAJOUTER DEGRE ET ETAPE
-    $sql = "SELECT date_EM, d.nom as departement, details, administration_risque, administration_precisions, patient_risque, medicament_risque, est_neverevent, date_declaration, d.risque, consequences, personne_concernee, precisions_patient, precisions_medicament FROM evenement e JOIN departement d ON e.departement=d.id WHERE e.numero='$numero'";
+    $sql = "SELECT date_EM, d.nom as departement, details, administration_risque, administration_precisions, patient_risque, medicament_risque, est_neverevent, date_declaration, d.risque, consequences, personne_concernee, precisions_patient, precisions_medicament, degre_realisation, etape_circuit FROM evenement e JOIN departement d ON e.departement=d.id WHERE e.numero='$numero'";
     $stmt = sqlsrv_query( $conn, $sql);
     if( $stmt === false ) {
         die( print_r( sqlsrv_errors(), true));
@@ -36,6 +36,8 @@
     $personne_concernee = sqlsrv_get_field($stmt, 11);
     $precisions_patient = sqlsrv_get_field($stmt, 12);
     $precisions_medicament = sqlsrv_get_field($stmt, 13);
+    $degre_realisation = sqlsrv_get_field($stmt, 14);
+    $etape_circuit = sqlsrv_get_field($stmt, 15);
 ?>
 
 <!DOCTYPE html> 
@@ -89,8 +91,8 @@
                 <label class="col-6" for="Neverevent"><strong>Est-ce un never-event (NE) ? </strong><?php echo $est_neverevent ?></label>
             </div>
             <div class="row mb-1">
-                <label class="col-6" for="Degre"><strong>Degré de réalisation : </strong></label>
-                <label class="col-6" for="Etape"><strong>Etape de survenue dans le circuit médicament : </strong></label>
+                <label class="col-6" for="Degre"><strong>Degré de réalisation : </strong><?php echo $degre_realisation ?></label>
+                <label class="col-6" for="Etape"><strong>Etape de survenue dans le circuit médicament : </strong><?php echo $etape_circuit ?></label>
             </div>
         </div>        
     </body>
