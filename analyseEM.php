@@ -158,6 +158,7 @@
                     <input type="checkbox" id="n12" name="n12" required>
                     <label for="n12">NE12</label>
                 </div>
+                <!-- Degré de réalisation -->
                 <div class="md-auto">
                     <label for="degre">Degré de réalisation :</label>
                     <select class="md-auto" name="degre" size="1">
@@ -173,6 +174,7 @@
                     ?>
                     </select>
                 </div>
+                <!-- Etape de survenue dans le circuit médicament -->
                 <div class="md-auto">
                     <label for="etape">Etape de survenue dans le circuit médicament :</label>
                     <select class="md-auto" name="etape" size="1">
@@ -189,6 +191,7 @@
                     </select>
                 </div>
             </div>
+            <!-- Cotation -->
             <div class="cotation">
                 <div class="section2">
                     <h5>Cotation de l'événement</h5>

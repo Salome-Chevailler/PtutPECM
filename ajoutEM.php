@@ -111,8 +111,8 @@
                 </div>
                 <!-- Précisions sur le patient -->
                 <div class="md-auto">
-                        <label for="precisions_patient">Précisions sur le patient :</label>
-                        <input type="text" id="precisions_patient" name="precisions_patient">
+                    <label for="precisions_patient">Précisions sur le patient :</label>
+                    <input type="text" id="precisions_patient" name="precisions_patient">
                 </div>
                 <!-- Médicament à risque -->
                 <div class="md-auto">
