@@ -118,7 +118,7 @@
                             echo "<td>$details</td>";
                             echo "<td>$consequences</td>";
                             // Boutons permettant d'analyser un événement ou de le consulter
-                            echo '<td><a href="analyseEM.php?numero='.$numero.'"><input class="btn btn-outline-primary" type="submit" value="Analyser"><a href="consultationEM.php?numero='.$numero.'&analyse='.$analyse.'"><input class="boutonthird" type="submit" value="Consulter"></td>';
+                            echo '<td><a href="analyseEM.php?numero='.$numero.'"><input class="btn btn-outline-primary" type="submit" value="Analyser"><a href="consultationEM.php?numero='.$numero.'&analyse='.$analyse.'"><input class="btn btn-outline-primary" type="submit" value="Consulter"></td>';
                             echo '</tr>';
                         }
                     ?>

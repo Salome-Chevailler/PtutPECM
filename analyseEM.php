@@ -43,6 +43,11 @@
                     <label class="col-md-auto" for="quoi">Quoi ? Que s'est-il passé ?</label>
                     <textarea class="col-4" maxlength="1000" id="quoi" name="quoi" required></textarea>
                 </div>
+                <!-- Quelles sont les conséquences ? -->
+                <div class="row mb-1">
+                    <label class="col-md-auto" for="consequences">Quelles sont les conséquences de l'événement ?</label>
+                    <textarea class="col-4" maxlength="1000" id="consequences" name="consequences" required></textarea>
+                </div>
                 <!-- Qui est concerné ? -->
                 <div class="row mb-1">
                     <label class="col-md-auto" for="quoi">Qui est concerné ?</label>
@@ -95,6 +100,11 @@
                     <input type="radio" id="medicament" name="medicament" value="Non" required>
                     <label for="Non">Non</label> 
                 </div>
+                <!-- Précisions sur le médicament -->
+                <div class="md-auto">
+                        <label for="precisions_medicament">Précisions sur le médicament :</label>
+                        <input type="text" id="precisions_medicament" name="precisions_medicament">
+                </div>
                 <div class="md-auto">
                     <label for="medicament">Elle concerne :</label>
                 </div>
@@ -123,6 +133,34 @@
                     <input type="radio" id="refrigere2" name="refrigere2" value="nonrefrigere" required>
                     <label for="nonrefrigere">Non réfrigérée</label>
                 </div>
+                <!-- Patient à risque -->
+                <div class="md-auto">
+                    <label for="patient_risque">S'agit-il d'un patient à risque ?</label>
+                    <input type="radio" id="patient_risque" name="patient_risque" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="patient_risque" name="patient_risque" value="Non" required>
+                    <label for="Non">Non</label> 
+                    <input type="radio" id="patient_risque" name="patient_risque" value="Je ne sais pas" required>
+                    <label for="Jenesaispas">Je ne sais pas</label>       
+                </div>
+                <!-- Précisions sur le patient -->
+                <div class="md-auto">
+                    <label for="precisions_patient">Précisions sur le patient :</label>
+                    <input type="text" id="precisions_patient" name="precisions_patient">
+                </div>
+                <!-- Voie d'administration à risque -->
+                <div class="md-auto">
+                    <label for="patient">S'agit-il d'une voie d'administration à risque ?</label>
+                    <input type="radio" id="admin" name="admin" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="admin" name="admin" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- Précisions -->
+                <div class="md-auto">
+                        <label for="precisions">Précisions sur la voie d'administration :</label>
+                        <input type="text" id="precisions" name="precisions">
+                    </div>
                 <!-- Never event -->
                 <div class="md-auto">
                     <label for="neverevent">Est-ce un never-event (NE) ?</label>
@@ -163,32 +201,20 @@
                 <div class="md-auto">
                     <label for="degre">Degré de réalisation :</label>
                     <select class="md-auto" name="degre" size="1">
-                    <?php
-                        // Requête SQL pour remplir le select avec les degrés de réalisation de la base
-                        $rechercheDegre="SELECT nom FROM degrerealisation ORDER BY nom";
-                        $params = array();
-                        $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
-                        $stmt = sqlsrv_query($conn, $rechercheDegre, $params, $options);
-                        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-                            echo "<option>",utf8_encode(implode("",$row)),"</option>";
-                        }
-                    ?>
+                        <option>EM avérée et identifiée après atteinte du patient</option>
+                        <option>EM avérée et interceptée avant atteinte du patient</option>
+                        <option>EM potentielle</option>
                     </select>
                 </div>
                 <!-- Etape de survenue dans le circuit médicament -->
                 <div class="md-auto">
                     <label for="etape">Etape de survenue dans le circuit médicament :</label>
                     <select class="md-auto" name="etape" size="1">
-                    <?php
-                        // Requête SQL pour remplir le select avec les étapes de survenue de la base
-                        $rechercheEtape="SELECT nom FROM etapecircuit ORDER BY nom";
-                        $params = array();
-                        $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
-                        $stmt = sqlsrv_query($conn, $rechercheEtape, $params, $options);
-                        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-                            echo "<option>",utf8_encode(implode("",$row)),"</option>";
-                        }
-                    ?>
+                        <option>Administration</option>
+                        <option>Dispensation</option>
+                        <option>Information du patient</option>
+                        <option>Prescription</option>
+                        <option>Transport</option>
                     </select>
                 </div>
             </div>
@@ -360,17 +386,6 @@
                     </select>
                 </div>
             </div>
-            <h5>Récapitulatif des facteurs sélectionnés. Etaient-ils évitables ?</h5>
-            <table class="table table-striped table-sm mb-4">
-                <thead>
-                    <tr>
-                        <th>Facteurs</th>
-                        <th>Evitable ?</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
             <h4>ETAPE 4 : Qu'est-ce qui aurait pu empêcher la survenue de l'événement ? </h4>
             <!-- Est-ce que tout avait été mis en oeuvre pour éviter ce type d'EI ? -->
             <div class="md-auto">
@@ -399,12 +414,12 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td contenteditable="true">Exemple</td>
-                        <td contenteditable="true">Exemple</td>
-                        <td contenteditable="true">Exemple</td>
-                        <td contenteditable="true">Exemple</td>
-                        <td contenteditable="true">Exemple</td>
-                        <td contenteditable="true">Exemple</td>
+                        <td contenteditable="true">A compléter</td>
+                        <td contenteditable="true">A compléter</td>
+                        <td contenteditable="true">A compléter</td>
+                        <td contenteditable="true">A compléter</td>
+                        <td contenteditable="true">A compléter</td>
+                        <td contenteditable="true">A compléter</td>
                     </tr>
                 </tbody>
             </table>

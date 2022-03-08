@@ -7,7 +7,6 @@
     $analyse = trim($_GET['analyse']);
     
     // On récupère les infos correspondantes
-    // RAJOUTER DEGRE ET ETAPE
     $sql = "SELECT date_EM, d.nom as departement, details, administration_risque, administration_precisions, patient_risque, medicament_risque, est_neverevent, date_declaration, d.risque, consequences, personne_concernee, precisions_patient, precisions_medicament, degre_realisation, etape_circuit FROM evenement e JOIN departement d ON e.departement=d.id WHERE e.numero='$numero'";
     $stmt = sqlsrv_query( $conn, $sql);
     if( $stmt === false ) {

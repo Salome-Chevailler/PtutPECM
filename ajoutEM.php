@@ -3,7 +3,7 @@
     include "bdd.php";
 
     // Récupération des données entrées dans le formulaire
-   /* $date_declaration = isset($_POST['date_declaration']) ? $_POST['date_declaration'] : '';
+    $date_declaration = isset($_POST['date_declaration']) ? $_POST['date_declaration'] : '';
     $date = isset($_POST['date']) ? $_POST['date'] : '';
     $depart=isset($_POST['departement']) ? utf8_decode($_POST['departement']) : 'Urgences';
     $queryDepartement = "SELECT id FROM departement WHERE nom='$depart'";
@@ -24,13 +24,12 @@
     $etape = isset($_POST['etape_circuit']) ? $_POST['etape_circuit'] : '';
 
     // Création d'un nouvel événement dans la base à partir des données entrées dans le formulaire
-    // RAJOUTER DEGRE ET ETAPE
     $insertEvenement="INSERT INTO evenement(date_declaration,date_em,details,est_neverevent,patient_risque,departement,medicament_risque,administration_risque,administration_precisions,consequences,personne_concernee,precisions_patient,precisions_medicament,degre_realisation,etape_circuit,est_analyse) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     $values=array($date_declaration,$date,$details,$est_neverevent,$patient_risque,$departement,$medicament_risque,$administration_risque,$precisions,$consequences,$personne_concernee,$precisions_patient,$precisions_medicament,$degre,$etape,0);
     $stmt=sqlsrv_query($conn,$insertEvenement,$values);
     if( $stmt === false ) {
         die( print_r( sqlsrv_errors(), true));
-    }*/
+    }
 
 ?>
 
