@@ -274,69 +274,382 @@
                     <h4>ETAPE 3 : Pourquoi cela est-il arrivé ? (causes latentes systémiques)</h4>
                 </div>
                 <div class="md-auto">
-                    <label for="facteur">L'erreur est-elle liée à des facteurs propres aux patients ?</label>
-                    <select class="md-auto" name="facteur" size="1">
-                    <?php
-                        // Requête SQL pour remplir le select avec les facteurs propres aux patients
-                        $facteurPatient="SELECT libelle FROM facteur WHERE categorie='Patient'";
-                        $params = array();
-                        $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
-                        $stmt = sqlsrv_query($conn, $facteurPatient, $params, $options);
-                        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-                            echo "<option>",utf8_encode(implode("",$row)),"</option>";
-                        }
-                    ?>
-                    <option>Autre</option>
-                    </select>
+                    <label for="facteur"><strong>L'erreur est-elle liée à des facteurs propres aux patients ?</strong></label>
+                </div>
+                <!-- PA1 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA1" name="PA1" required>
+                    <label for="PA1">L'état de santé du patient est-il grave, complexe ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- PA2 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA2" name="PA2" required>
+                    <label for="PA2">L'EI est-il survenu dans un contexte de prise en charge en urgence ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- PA3 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA3" name="PA3" required>
+                    <label for="PA3">L'expression du patient ou la communication étaient-elles difficiles ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- PA4 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA4" name="PA4" required>
+                    <label for="PA4">La personnalité du patient est-elle particulière et peut-elle expliquer en partie le dysfonctionnement ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- PA5 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA5" name="PA5" required>
+                    <label for="PA5">Existe-t-il des facteurs sociaux particuliers susceptibles d'expliquer tout ou partie des dysfonctionnements ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- PA6 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Autre</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
                 </div>
                 <div class="md-auto">
-                    <label for="facteur2">L'erreur est-elle liée à des facteurs individuels ?</label>
-                    <select class="md-auto" name="facteur2" size="1">
-                    <?php
-                        // Requête SQL pour remplir le select avec les facteurs individuels
-                        $facteurIndividuel="SELECT libelle FROM facteur WHERE categorie='Individuel'";
-                        $params = array();
-                        $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
-                        $stmt = sqlsrv_query($conn, $facteurIndividuel, $params, $options);
-                        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-                            echo "<option>",utf8_encode(implode("",$row)),"</option>";
-                        }
-                    ?>
-                    <option>Autre</option>
-                    </select>
+                    <label for="facteur2"><strong>L'erreur est-elle liée à des facteurs individuels ?</strong></label>
+                </div>
+                <!-- IN1 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="IN1" name="IN1" required>
+                    <label for="IN1">Y a-t-il un défaut de qualification des personnes chargées du soin / de l'acte ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- IN2 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="IN2" name="IN2" required>
+                    <label for="IN2">Y a-t-il un défaut de connaissances théoriques ou techniques des professionnels ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- IN3 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="IN3" name="IN3" required>
+                    <label for="IN3">Y a-t-il un défaut d'aptitude, de compétence des professionnels chargés du soin / de l'acte ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- IN4 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="IN4" name="IN4" required>
+                    <label for="IN4">Les professionnels chargés des soins étaient-ils en mauvaise disposition physique et mentale ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- IN5 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="IN5" name="IN5" required>
+                    <label for="IN5">Y a-t-il eu une insuffisance d'échange d'information entre les professionnels de santé et le patient ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- IN6 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="IN6" name="IN6" required>
+                    <label for="IN6">Y a-t-il eu une insuffisance d'échange d'information entre les professionnels de santé et la famille du patient ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- IN7 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="IN7" name="IN7" required>
+                    <label for="IN7">A-t-on relevé un défaut de qualité de la relation avec le patient et sa famille ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                 <!-- IN8 -->
+                 <div class="md-auto">
+                    <input type="checkbox" id="IN8" name="IN8" required>
+                    <label for="IN8">Autre</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
                 </div>
                 <div class="md-auto">
-                    <label for="facteur3">L'erreur est-elle liée à des facteurs concernant l'équipe ?</label>
-                    <select class="md-auto" name="facteur3" size="1">
-                    <?php
-                        // Requête SQL pour remplir le select avec les facteurs concernant l'équipe
-                        $facteurEquipe="SELECT libelle FROM facteur WHERE categorie='Equipe'";
-                        $params = array();
-                        $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
-                        $stmt = sqlsrv_query($conn, $facteurEquipe, $params, $options);
-                        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-                            echo "<option>",utf8_encode(implode("",$row)),"</option>";
-                        }
-                    ?>
-                    <option>Autre</option>
-                    </select>
+                    <label for="facteur3"><strong>L'erreur est-elle liée à des facteurs concernant l'équipe ?</strong></label>
+                </div>
+                 <!-- EQ1 -->
+                 <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">La composition de l'équipe chargée du soin était-elle mauvaise ou inadaptée ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                 <!-- EQ2 -->
+                 <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">A-t-on relevé un défaut de communication interne orale et/ou écrite au sein de l'équipe ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                 <!-- EQ3 -->
+                 <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">A-t-on relevé une collaboration insuffisante entre professionnels ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                 <!-- EQ4 -->
+                 <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Existe-t-il des conflits ou une mauvaise ambiance au sein de l'équipe / un défaut de cohésion ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                 <!-- EQ5 -->
+                 <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">La supervision des responsables et des autres personnels a-t-elle été inadéquate ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                 <!-- EQ6 -->
+                 <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Y a-t-il un manque ou un défaut de recherche d'aide, d'avis, de collaboration ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                 <!-- EQ7 -->
+                 <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Autre</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
                 </div>
                 <div class="md-auto">
-                    <label for="facteur4">L'erreur est-elle liée à des tâches à accomplir ?</label>
-                    <select class="md-auto" name="facteur4" size="1">
-                    <?php
-                        // Requête SQL pour remplir le select avec les facteurs liés aux tâches à accomplir
-                        $facteurTache="SELECT libelle FROM facteur WHERE categorie='Tache'";
-                        $params = array();
-                        $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
-                        $stmt = sqlsrv_query($conn, $facteurTache, $params, $options);
-                        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-                            echo "<option>",utf8_encode(implode("",$row)),"</option>";
-                        }
-                    ?>
-                    <option>Autre</option>
-                    </select>
+                    <label for="facteur4"><strong>L'erreur est-elle liée à des tâches à accomplir ?</strong></label>
                 </div>
+                 <!-- TA1 -->
+                 <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Le(s) protocole(s) ou procédure(s) étaient-ils absents ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                 <!-- TA2 -->
+                 <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Le(s) protocole(s), procédure(s) étaient-ils inadaptés ou peu compréhensibles ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                 <!-- TA3 -->
+                 <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Le(s) protocole(s), procédure(s) étaient-ils indisponibles au moment de survenue de l'événement ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                 <!-- TA4 -->
+                 <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Le(s) protocole(s), procédure(s) étaient-ils inutilisables ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                 <!-- TA5 -->
+                 <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Le(s) protocole(s), procédure(s) étaient-ils insuffisamment diffusés et/ou connus ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                 <!-- TA6 -->
+                 <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Y a-t-il un retard dans la prestation ou la programmation des examens cliniques et paracliniques ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                 <!-- TA7 -->
+                 <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Y a-t-il eu défaut d'accessibilité, de disponibilité de l'information en temps voulu ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                 <!-- TA8 -->
+                 <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">La recherche d'information auprès d'un autre professionnel a-t-elle été difficile ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                 <!-- TA9 -->
+                 <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">La planification des tâches était-elle inadaptée ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                 <!-- TA10 -->
+                 <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Les soins/actes ne relevaient-ils pas du champ de compétence, d'activité du service ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                 <!-- TA11 -->
+                 <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Le(s) protocole(s), procédure(s) n'ont-ils pas été respectés ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                 <!-- TA12 -->
+                 <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Autre</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+
+
                 <div class="md-auto">
                     <label for="facteur5">L'erreur est-elle liée à des facteurs concernant l'environnement ?</label>
                     <select class="md-auto" name="facteur5" size="1">
@@ -352,6 +665,8 @@
                     ?>
                     <option>Autre</option>
                     </select>
+                    <input type="checkbox" id="evitable" name="evitable" required>
+                    <label for="evitable">Evitable</label>
                 </div>
                 <div class="md-auto">
                     <label for="facteur6">L'erreur est-elle liée à des facteurs concernant l'organisation ?</label>
@@ -368,6 +683,8 @@
                     ?>
                     <option>Autre</option>
                     </select>
+                    <input type="checkbox" id="evitable" name="evitable" required>
+                    <label for="evitable">Evitable</label>
                 </div>
                 <div class="md-auto">
                     <label for="facteur7">L'erreur est-elle liée à des facteurs concernant le contexte institutionnel ?</label>
@@ -384,6 +701,8 @@
                     ?>
                     <option>Autre</option>
                     </select>
+                    <input type="checkbox" id="evitable" name="evitable" required>
+                    <label for="evitable">Evitable</label>
                 </div>
             </div>
             <h4>ETAPE 4 : Qu'est-ce qui aurait pu empêcher la survenue de l'événement ? </h4>

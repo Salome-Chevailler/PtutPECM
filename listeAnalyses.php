@@ -26,19 +26,20 @@
             <table class="table table-striped table-sm mb-4">
                 <thead>
                     <tr>
-                        <th class="col-md-1">Date <input class="videB" type="submit" name="triDate" value="v"/></th>
-                        <th class="col-md-1">Service <input class="videB" type="submit" name="triService" value="v"/></th>
-                        <th class="col-md-2">Patient à risque <input class="videB" type="submit" name="triPatient" value="v"/></th>
-                        <th class="col-md-2">Médicament à risque <input class="videB" type="submit" name="triMedicament" value="v"/></th>
-                        <th class="col-md-3">Voie d'administration à risque <input class="videB" type="submit" name="triAdministration" value="v"/></th>
-                        <th class="col-md-3">Description</th>
+                        <th class="col-md-1">Date </th>
+                        <th class="col-md-1">Service </th>
+                        <th class="col-md-2">Description</th>
+                        <th class="col-md-2">Conséquences</th>
+                        <th class="col-md-2">Patient à risque </th>
+                        <th class="col-md-2">Médicament à risque </th>
+                        <th class="col-md-3">Voie d'administration à risque </th>
                         <th class="col-md-2">Consulter</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                         // Récupération des événements déclarés à afficher dans le tableau
-                        $sql = "SELECT numero, d.nom as departement, date_EM, patient_risque, medicament_risque, administration_risque, details, est_analyse FROM evenement e JOIN departement d ON e.departement=d.id WHERE  est_analyse=1";
+                        $sql = "SELECT numero, d.nom as departement, date_EM, patient_risque, medicament_risque, administration_risque, details, est_analyse, consequences FROM evenement e JOIN departement d ON e.departement=d.id WHERE  est_analyse=1";
                         $params = array();
                         $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
                         $stmt = sqlsrv_query( $conn, $sql, $params, $options);
@@ -81,14 +82,16 @@
                             }
                             $details = sqlsrv_get_field( $stmt, 6);
                             $analyse = sqlsrv_get_field($stmt, 7);
+                            $consequences = sqlsrv_get_field($stmt, 8);
 
                             echo '<tr>';
                             echo "<td>$date</td>";
                             echo "<td>$departement</td>";
+                            echo "<td>$details</td>";
+                            echo "<td>$consequences</td>";
                             echo "<td>$patient_risque</td>";
                             echo "<td>$medicament_risque</td>";
                             echo "<td>$administration_risque</td>";
-                            echo "<td>$details</td>";
                             // Boutons permettant d'analyser un événement ou de le consulter
                             echo '<td><a href="consultationEManalyse.php?numero='.$numero.'&analyse='.$analyse.'"><input class="btn btn-outline-primary" type="submit" value="Consulter"></td>';
                             echo '</tr>';

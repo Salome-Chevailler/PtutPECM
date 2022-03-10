@@ -51,13 +51,13 @@
             <table class="table table-striped table-sm mb-4">
                 <thead>
                     <tr>
-                        <th class="col-md-1">Date <input class="videB" type="submit" name="triDate" value="v"/></th>
-                        <th class="col-md-1">Service <input class="videB" type="submit" name="triService" value="v"/></th>
-                        <th class="col-md-2">Patient à risque <input class="videB" type="submit" name="triPatient" value="v"/></th>
-                        <th class="col-md-2">Médicament à risque <input class="videB" type="submit" name="triMedicament" value="v"/></th>
-                        <th class="col-md-3">Voie d'administration à risque <input class="videB" type="submit" name="triAdministration" value="v"/></th>
-                        <th class="col-md-3">Description</th>
-                        <th class="col-md-3">Conséquences</th>
+                        <th class="col-md-1">Date</th>
+                        <th class="col-md-1">Service </th>
+                        <th class="col-md-2">Description</th>
+                        <th class="col-md-2">Conséquences</th>
+                        <th class="col-md-2">Patient à risque </th>
+                        <th class="col-md-2">Médicament à risque </th>
+                        <th class="col-md-3">Voie d'administration à risque </th>
                         <th class="col-md-2">Consulter/Analyser</th>
                     </tr>
                 </thead>
@@ -112,11 +112,11 @@
                             echo '<tr>';
                             echo "<td>$date</td>";
                             echo "<td>$departement</td>";
+                            echo "<td>$details</td>";
+                            echo "<td>$consequences</td>";
                             echo "<td>$patient_risque</td>";
                             echo "<td>$medicament_risque</td>";
                             echo "<td>$administration_risque</td>";
-                            echo "<td>$details</td>";
-                            echo "<td>$consequences</td>";
                             // Boutons permettant d'analyser un événement ou de le consulter
                             echo '<td><a href="analyseEM.php?numero='.$numero.'"><input class="btn btn-outline-primary" type="submit" value="Analyser"><a href="consultationEM.php?numero='.$numero.'&analyse='.$analyse.'"><input class="btn btn-outline-primary" type="submit" value="Consulter"></td>';
                             echo '</tr>';
