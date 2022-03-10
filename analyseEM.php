@@ -637,8 +637,212 @@
                     <input type="radio" id="evitable" name="evitable" value="Non" required>
                     <label for="Non">Non</label> 
                 </div>
-                 <!-- TA12 -->
-                 <div class="md-auto">
+                <!-- TA12 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Autre</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <div class="md-auto">
+                    <label for="facteur5"><strong>L'erreur est-elle liée à des facteurs concernant l'environnement ?</strong></label>
+                </div>
+                <!-- CT1 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Les locaux ou le matériel utilisé étaient-ils inadaptés ou indisponibles ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- CT2 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Les fournitures ou équipements étaient-ils défectueux, mal entretenus ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- CT3 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Les fournitures ou équipements étaient-ils inexistants ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- CT4 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Les fournitures ou équipements ont-ils été mal utilisés ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- CT5 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Les supports d'information, les notices d'utilisation étaient-ils indisponibles ou inadaptés ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- CT6 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">La formation ou entraînement des professionnels étaient-ils inexistants, inadaptés, non réalisés ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- CT7 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Les conditions de travail étaient-elles inadaptées ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- CT8 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">La charge de travail était-elle importante au moment de l'événement ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- CT9 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Autre</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <div class="md-auto">
+                    <label for="facteur6"><strong>L'erreur est-elle liée à des facteurs concernant l'organisation ?</strong></label>
+                </div>
+                <!-- OR1 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Y a-t-il eu un changement récent d'organisation interne ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- OR2 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Y a-t-il une limitation trop restrictive de la prise de décision des acteurs du terrain ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- OR3 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Les responsabilités et les tâches étaient-elles non ou mal définies ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- OR4 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Y a-t-il eu un défaut de coordination dans le servie ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- OR5 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Y a-t-il eu un défaut de coordination entre les services, les structurs ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- OR6 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Y a-t-il eu un défaut d'adaptation à une situation imprévue ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- OR7 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">La gestion des ressources humaines était-elle inadéquate ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- OR8 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">La procédure de sortie était-elle inadéquate ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- OR9 -->
+                <div class="md-auto">
                     <input type="checkbox" id="PA6" name="PA6" required>
                     <label for="PA6">Autre</label>
                     <input type="text" id="plus" name="plus" size=50>
@@ -651,58 +855,95 @@
 
 
                 <div class="md-auto">
-                    <label for="facteur5">L'erreur est-elle liée à des facteurs concernant l'environnement ?</label>
-                    <select class="md-auto" name="facteur5" size="1">
-                    <?php
-                        // Requête SQL pour remplir le select avec les facteurs environnementaux
-                        $facteurEnvironnemental="SELECT libelle FROM facteur WHERE categorie='Environnemental'";
-                        $params = array();
-                        $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
-                        $stmt = sqlsrv_query($conn, $facteurEnvironnemental, $params, $options);
-                        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-                            echo "<option>",utf8_encode(implode("",$row)),"</option>";
-                        }
-                    ?>
-                    <option>Autre</option>
-                    </select>
-                    <input type="checkbox" id="evitable" name="evitable" required>
-                    <label for="evitable">Evitable</label>
+                    <label for="facteur7"><strong>L'erreur est-elle liée à des facteurs concernant le contexte institutionnel ?</strong></label>
                 </div>
+                <!-- IT1 -->
                 <div class="md-auto">
-                    <label for="facteur6">L'erreur est-elle liée à des facteurs concernant l'organisation ?</label>
-                    <select class="md-auto" name="facteur6" size="1">
-                    <?php
-                        // Requête SQL pour remplir le select avec les facteurs organisationnels
-                        $facteurOrganisationnel="SELECT libelle FROM facteur WHERE categorie='Organisationnel'";
-                        $params = array();
-                        $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
-                        $stmt = sqlsrv_query($conn, $facteurOrganisationnel, $params, $options);
-                        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-                            echo "<option>",utf8_encode(implode("",$row)),"</option>";
-                        }
-                    ?>
-                    <option>Autre</option>
-                    </select>
-                    <input type="checkbox" id="evitable" name="evitable" required>
-                    <label for="evitable">Evitable</label>
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Les contraintes financières au niveau de l'établissement sont-elles à l'origine de l'événement ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
                 </div>
+                <!-- IT2 -->
                 <div class="md-auto">
-                    <label for="facteur7">L'erreur est-elle liée à des facteurs concernant le contexte institutionnel ?</label>
-                    <select class="md-auto" name="facteur7" size="1">
-                    <?php
-                        // Requête SQL pour remplir le select avec les facteurs institutionnels
-                        $facteurInstitutionnel="SELECT libelle FROM facteur WHERE categorie='Institutionnel'";
-                        $params = array();
-                        $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
-                        $stmt = sqlsrv_query($conn, $facteurInstitutionnel, $params, $options);
-                        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-                            echo "<option>",utf8_encode(implode("",$row)),"</option>";
-                        }
-                    ?>
-                    <option>Autre</option>
-                    </select>
-                    <input type="checkbox" id="evitable" name="evitable" required>
-                    <label for="evitable">Evitable</label>
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Les ressources sanitaires sont-elles insuffisantes, inadaptées ou défectueuses ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- IT3 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Les échanges ou relations avec d'autres structures de soins sont-ils faibles ou difficiles ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- IT4 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Peut-on relever une absence de stratégie, politique/une absence de priorité/ou des stratégies contradictoires ou inadaptées ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- IT5 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">La sécurité et gestion des risques ne sont-elles pas perçues comme des objectifs importants ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- IT6 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">La culture du signalement des EI et de propositions de corrections est-elle inexistante ou défectueuse ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- IT7 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Le contexte social était-il difficile ?</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
+                </div>
+                <!-- IT8 -->
+                <div class="md-auto">
+                    <input type="checkbox" id="PA6" name="PA6" required>
+                    <label for="PA6">Autre</label>
+                    <input type="text" id="plus" name="plus" size=50>
+                    <label for="evitable">Cela était-il évitable ?</label>
+                    <input type="radio" id="evitable" name="evitable" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="evitable" name="evitable" value="Non" required>
+                    <label for="Non">Non</label> 
                 </div>
             </div>
             <h4>ETAPE 4 : Qu'est-ce qui aurait pu empêcher la survenue de l'événement ? </h4>

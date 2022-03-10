@@ -16,7 +16,7 @@
     </head>
     <body>
         
-        <div class="header" style="height: 100px"><img src=logoCHIC.png/><h1>Outil de déclaration et d'analyse des erreurs médicamenteuses</h1></div>
+        <div class="header" style="height: 100px"><!--<img src=logoCHIC.png/>--><h1>Outil de déclaration et d'analyse des erreurs médicamenteuses</h1></div>
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-4 text-center" style="height: 50px"><a href="ajoutEM.php"><input class="btn btn-outline-primary" type="submit" value="Déclarer un événement"></a></div>

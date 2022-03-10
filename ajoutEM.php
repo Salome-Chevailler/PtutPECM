@@ -85,7 +85,7 @@
                 <!-- Qui est concerné ? -->
                 <div class="md-auto">
                     <label for="personne_concernee">Qui est concerné ?</label>
-                    <input class="col-3" maxlength="100" id="personne_concernee" name="personne_concernee" required></textarea>
+                    <input class="col-3" maxlength="100" id="personne_concernee" name="personne_concernee"></textarea>
                 </div>
                 <!-- Never event -->
                 <div class="md-auto">

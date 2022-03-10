@@ -55,6 +55,7 @@
                         <th class="col-md-1">Service </th>
                         <th class="col-md-2">Description</th>
                         <th class="col-md-2">Conséquences</th>
+                        <th class="col-md-2">Never-event</th>
                         <th class="col-md-2">Patient à risque </th>
                         <th class="col-md-2">Médicament à risque </th>
                         <th class="col-md-3">Voie d'administration à risque </th>
@@ -64,7 +65,7 @@
                 <tbody>
                     <?php
                         // Récupération des événements déclarés à afficher dans le tableau
-                        $sql = "SELECT numero, d.nom as departement, date_EM, patient_risque, medicament_risque, administration_risque, details, est_analyse, consequences FROM evenement e JOIN departement d ON e.departement=d.id WHERE est_analyse=0 OR est_analyse=''";
+                        $sql = "SELECT numero, d.nom as departement, date_EM, patient_risque, medicament_risque, administration_risque, details, est_analyse, consequences, est_neverevent FROM evenement e JOIN departement d ON e.departement=d.id WHERE est_analyse=0 OR est_analyse=''";
                         $params = array();
                         $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
                         $stmt = sqlsrv_query( $conn, $sql, $params, $options);
@@ -85,35 +86,19 @@
                             $departement = sqlsrv_get_field( $stmt, 1);
                             $date = sqlsrv_get_field( $stmt, 2)->format('d/m/Y');
                             $patient_risque = sqlsrv_get_field( $stmt, 3);
-                            // On transforme le bit en string 
-                            if ($patient_risque===0){
-                                $patient_risque = "Non";
-                            } else {
-                                $patient_risque = "Oui";
-                            }
                             $medicament_risque = sqlsrv_get_field( $stmt, 4);
-                            // On transforme le bit en string
-                            if ($medicament_risque===0){
-                                $medicament_risque = "Non";
-                            } else {
-                                $medicament_risque = "Oui";
-                            }
                             $administration_risque = sqlsrv_get_field( $stmt, 5);
-                            // On transforme le bit en string
-                            if ($administration_risque===0){
-                                $administration_risque = "Non";
-                            } else {
-                                $administration_risque = "Oui";
-                            }
                             $details = sqlsrv_get_field( $stmt, 6);
                             $analyse = sqlsrv_get_field($stmt, 7);
                             $consequences = sqlsrv_get_field($stmt, 8);
+                            $neverevent = sqlsrv_get_field($stmt, 9);
 
                             echo '<tr>';
                             echo "<td>$date</td>";
                             echo "<td>$departement</td>";
                             echo "<td>$details</td>";
                             echo "<td>$consequences</td>";
+                            echo "<td>$neverevent</td>";
                             echo "<td>$patient_risque</td>";
                             echo "<td>$medicament_risque</td>";
                             echo "<td>$administration_risque</td>";
