@@ -68,6 +68,7 @@
                     <div class="col-3 md-auto">
                         <label for="service">Service :</label>
                         <select class="col-7" name="service" size="1">
+                            <option></option>
                         <?php
                         // Requête SQL pour remplir le select avec les départements de la base
                         $rechercheDepartement="SELECT nom FROM departement ORDER BY nom";
@@ -201,6 +202,7 @@
                 <div class="md-auto">
                     <label for="degre">Degré de réalisation :</label>
                     <select class="md-auto" name="degre" size="1">
+                        <option></option>
                         <option>EM avérée et identifiée après atteinte du patient</option>
                         <option>EM avérée et interceptée avant atteinte du patient</option>
                         <option>EM potentielle</option>
@@ -210,6 +212,7 @@
                 <div class="md-auto">
                     <label for="etape">Etape de survenue dans le circuit médicament :</label>
                     <select class="md-auto" name="etape" size="1">
+                        <option></option>
                         <option>Administration</option>
                         <option>Dispensation</option>
                         <option>Information du patient</option>
@@ -226,6 +229,7 @@
                 <div class="md-auto">
                     <label for="gravite">Gravité :</label>
                     <select name="gravite" size="1">
+                        <option></option>
                         <option>1 - Mineure</option>
                         <option>2 - Significative</option>
                         <option>3 - Majeure</option>
@@ -236,6 +240,7 @@
                 <div class="md-auto">
                     <label for="occurrence">Occurrence :</label>
                     <select name="occurrence" size="1">
+                        <option></option>
                         <option>1 - Très improbable</option>
                         <option>2 - Très peu probable</option>
                         <option>3 - Peu probable</option>
@@ -246,6 +251,7 @@
                 <div class="md-auto">
                     <label for="maitrise">Niveau de maîtrise :</label>
                     <select name="maitrise" size="1">
+                        <option></option>
                         <option>1 - Très bon</option>
                         <option>2 - Bon</option>
                         <option>3 - Moyen</option>
@@ -256,6 +262,7 @@
                 <div class="md-auto">
                     <label for="criticite">Criticité :</label>
                     <select name="criticite" size="1">
+                        <option></option>
                         <option>1 à 14 - Risque acceptable</option>
                         <option>15 à 44 - Risque acceptable sous contrôle</option>
                         <option>45 à 125 - Risque inacceptable</option>

@@ -25,13 +25,14 @@
         <!-- Formulaire pour le filtrage des événements -->
             <form method="POST">
                 <!-- Filtrage par date -->
-                <label class="col-auto ml-2" for="date">Filtrer par date : </label>
+                <label class="col-auto ml-2" for="date">Choisir une période : du</label>
                 <input class="col-auto nom mr-2" type="date" name="dateDebut">
                 <label class="col-auto mr-2">au</label>
                 <input class="col-auto nom mr-3" type="date" name="dateFin">
-                <label class="col-auto mr-2">et/ou par service : </label>
+                <label class="col-auto mr-2">et/ou un service : </label>
                 <!-- Filtrage par service -->
                 <select name="departement" size="1">
+                    <option></option>
                     <?php
                     // Requête SQL pour remplir le select avec les départements de la base
                     $rechercheDepartement="SELECT nom FROM departement ORDER BY nom";

@@ -22,6 +22,32 @@
             </div>
         </div>
         <div>
+        <!-- Formulaire pour le filtrage des événements -->
+            <form method="POST">
+                <!-- Filtrage par date -->
+                <label class="col-auto ml-2" for="date">Choisir une période : du</label>
+                <input class="col-auto nom mr-2" type="date" name="dateDebut">
+                <label class="col-auto mr-2">au</label>
+                <input class="col-auto nom mr-3" type="date" name="dateFin">
+                <label class="col-auto mr-2">et/ou un service : </label>
+                <!-- Filtrage par service -->
+                <select name="departement" size="1">
+                    <option></option>
+                    <?php
+                    // Requête SQL pour remplir le select avec les départements de la base
+                    $rechercheDepartement="SELECT nom FROM departement ORDER BY nom";
+                    $params = array();
+                    $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+                    $stmt = sqlsrv_query($conn, $rechercheDepartement, $params, $options);
+                    while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+                        echo "<option>",utf8_encode(implode("",$row)),"</option>";
+                    }
+                    ?>
+                </select>        
+                <!-- Bouton lançant la recherche -->        
+                <input class="btn btn-outline-primary" type="submit" name="Rechercher" value="Rechercher">
+            </form>
+        </div>
         <div class="container-fluid">
             <table class="table table-striped table-sm mb-4">
                 <thead>

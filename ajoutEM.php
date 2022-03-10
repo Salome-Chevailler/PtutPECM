@@ -69,6 +69,7 @@
                     <div class="md-auto">
                         <label for="departement">Service :</label>
                         <select name="departement" size="1">
+                            <option></option>
                         <?php
                         // Requête SQL pour remplir le select avec les départements de la base
                         $rechercheDepartement="SELECT nom FROM departement ORDER BY nom";
