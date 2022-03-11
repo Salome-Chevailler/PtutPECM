@@ -46,12 +46,12 @@
         <link rel="icon" type="image/png" href="iconeCHIC.png">
         <link rel="stylesheet" href="bootstrap.min.css" type="text/css" media="screen">
 		<link rel="stylesheet" href="bootstrap.css" type="text/css" media="screen">
-        <title>Consultation d'un événement déclaré</title>
+        <title>Consultation d'une erreur médicamenteuse déclarée</title>
     </head>
     <body>
         <div class="row justify-content-center">
             <div class="header">
-                <h1>Consultation d'un événement déclaré</h1>
+                <h1>Consultation d'une erreur médicamenteuse déclarée</h1>
             </div>
             <div class="col-auto">
                 <a href="listeEM.php"><input class="btn btn-outline-primary" type="submit" value="Retour"></a>

@@ -10,12 +10,12 @@
         <link rel="icon" type="image/png" href="iconeCHIC.png">
         <link rel="stylesheet" href="bootstrap.min.css" type="text/css" media="screen">
 		<link rel="stylesheet" href="bootstrap.css" type="text/css" media="screen">
-        <title>Consultation des événements déclarés</title>
+        <title>Consultation des erreurs médicamenteuses déclarées</title>
     </head>
     <body>
         <div class="row justify-content-center">
             <div class="header">
-                <h1>Consultation des événements déclarés</h1>
+                <h1>Consultation des erreurs médicamenteuses déclarées</h1>
             </div>
             <div class="col-auto">
                 <a href="accueil.php"><input class="btn btn-outline-primary" type="submit" value="Retour"></a>

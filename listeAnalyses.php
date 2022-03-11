@@ -10,12 +10,12 @@
         <link rel="icon" type="image/png" href="iconeCHIC.png">
         <link rel="stylesheet" href="bootstrap.min.css" type="text/css" media="screen">
 		<link rel="stylesheet" href="bootstrap.css" type="text/css" media="screen">
-        <title>Consultation des événements analysés au CREX</title>
+        <title>Consultation des erreurs médicamenteuses analysées au CREX</title>
     </head>
     <body>
         <div class="row justify-content-center">
             <div class="header">
-                <h1>Consultation des événements analysés au CREX</h1>
+                <h1>Consultation des erreurs médicamenteuses analysées au CREX</h1>
             </div>
             <div class="col-auto">
                 <a href="accueil.php"><input class="btn btn-outline-primary" type="submit" value="Retour"></a>

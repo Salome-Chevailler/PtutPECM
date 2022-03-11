@@ -12,7 +12,6 @@
     $departement = sqlsrv_get_field($stmt, 0);
     $details = isset($_POST['details']) ? $_POST['details'] : '';
     $consequences = isset($_POST['consequences']) ? $_POST['consequences'] : '';
-    $personne_concernee = isset($_POST['personne_concernee']) ? $_POST['personne_concernee'] : '';
     $est_neverevent = isset($_POST['est_neverevent']) ? $_POST['est_neverevent'] : '';
     $patient_risque = isset($_POST['patient_risque']) ? $_POST['patient_risque'] : '';
     $precisions_patient = isset($_POST['precisions_patient']) ? $_POST['precisions_patient'] : '';
@@ -24,8 +23,8 @@
     $etape = isset($_POST['etape_circuit']) ? $_POST['etape_circuit'] : '';
 
     // Création d'un nouvel événement dans la base à partir des données entrées dans le formulaire
-    $insertEvenement="INSERT INTO evenement(date_declaration,date_em,details,est_neverevent,patient_risque,departement,medicament_risque,administration_risque,administration_precisions,consequences,personne_concernee,precisions_patient,precisions_medicament,degre_realisation,etape_circuit,est_analyse) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-    $values=array($date_declaration,$date,$details,$est_neverevent,$patient_risque,$departement,$medicament_risque,$administration_risque,$precisions,$consequences,$personne_concernee,$precisions_patient,$precisions_medicament,$degre,$etape,0);
+    $insertEvenement="INSERT INTO evenement(date_declaration,date_em,details,est_neverevent,patient_risque,departement,medicament_risque,administration_risque,administration_precisions,consequences,precisions_patient,precisions_medicament,degre_realisation,etape_circuit,est_analyse) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    $values=array($date_declaration,$date,$details,$est_neverevent,$patient_risque,$departement,$medicament_risque,$administration_risque,$precisions,$consequences,$precisions_patient,$precisions_medicament,$degre,$etape,0);
     $stmt=sqlsrv_query($conn,$insertEvenement,$values);
     if( $stmt === false ) {
         die( print_r( sqlsrv_errors(), true));
@@ -41,12 +40,13 @@
         <link rel="icon" type="image/png" href="iconeCHIC.png">
         <link rel="stylesheet" href="bootstrap.min.css" type="text/css" media="screen">
 		<link rel="stylesheet" href="bootstrap.css" type="text/css" media="screen">
-        <title>Déclarer un événement</title>
+        <title>Déclarer une erreur médicamenteuse</title>
     </head>
     <body>
         <div class="row justify-content-center">
             <div class="header">
-                <h1>Déclarer un événement</h1>
+                <h1>Déclarer une erreur médicamenteuse</h1>
+                <p>Ne sont pas concernés les événements indésirables consécutifs à la prise d'un médicament, ceci relevant de la pharmacovigilance</p>
             </div>
             <div class="col-auto">
                 <a href="accueil.php"><input class="btn btn-outline-primary" type="submit" value="Retour"></a>
@@ -82,11 +82,6 @@
                         ?>
                         </select>
                     </div>
-                </div>
-                <!-- Qui est concerné ? -->
-                <div class="md-auto">
-                    <label for="personne_concernee">Qui est concerné ?</label>
-                    <input class="col-3" maxlength="100" id="personne_concernee" name="personne_concernee"></textarea>
                 </div>
                 <!-- Never event -->
                 <div class="md-auto">
@@ -148,12 +143,12 @@
                 <!-- Degré de réalisation -->
                 <div class="md-auto">
                         <label for="degre">Degré de réalisation :</label>
-                        <input type="radio" id="degre_realisation" name="degre_realisation" value="EM avérée et identifiée après atteinte du patient" required>
-                        <label for="EM avérée et identifiée après atteinte du patient">EM avérée et identifiée après atteinte du patient</label>
-                        <input type="radio" id="degre_realisation" name="degre_realisation" value="EM avérée et interceptée avant atteinte du patient" required>
-                        <label for="EM avérée et interceptée avant atteinte du patient">EM avérée et interceptée avant atteinte du patient</label> 
-                        <input type="radio" id="degre_realisation" name="degre_realisation" value="EM potentielle" required>
-                        <label for="EM potentielle">EM potentielle</label> 
+                        <input type="radio" id="degre_realisation" name="degre_realisation" value="EM a atteint le patient" required>
+                        <label for="EM a atteint le patient">EM a atteint le patient</label>
+                        <input type="radio" id="degre_realisation" name="degre_realisation" value="EM a été interceptée" required>
+                        <label for="EM a été interceptée">EM a été interceptée</label> 
+                        <input type="radio" id="degre_realisation" name="degre_realisation" value="Evénement porteur de risque (EPR)" required>
+                        <label for="Evénement porteur de risque (EPR)">Evénement porteur de risque (EPR)</label> 
                         <input type="radio" id="degre_realisation" name="degre_realisation" value="Je ne sais pas" required>
                         <label for="Jenesaispas">Je ne sais pas</label>  
                 </div>
@@ -180,7 +175,7 @@
                 </div>
                 <!-- Conséquences -->
                 <div class="row mb-1"> 	
-                    <label class="col-md-auto" for="consequences">Quelles sont les conséquences de l'événement ? </label>
+                    <label class="col-md-auto" for="consequences">Quel impact cela a-t-il eu ? </label>
                     <textarea class="col-4" maxlength="1000" id="consequences" name="consequences" required></textarea>
                 </div>
                

@@ -22,10 +22,10 @@
                 <div class="col-4 text-center" style="height: 50px"><a href="ajoutEM.php"><input class="btn btn-outline-primary" type="submit" value="Déclarer un événement"></a></div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-4 text-center" style="height: 50px"><a href="listeEM.php"><input class="btn btn-outline-primary" type="submit" value="Consulter les événements déclarés"></a></div>
+                <div class="col-4 text-center" style="height: 50px"><a href="listeEM.php"><input class="btn btn-outline-primary" type="submit" value="Consulter les erreurs médicamenteuses déclarées"></a></div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-4 text-center"><a href="listeAnalyses.php"><input class="btn btn-outline-primary" type="submit" value="Consulter les événements analysés"></a></div>
+                <div class="col-4 text-center"><a href="listeAnalyses.php"><input class="btn btn-outline-primary" type="submit" value="Consulter les erreurs médicamenteuses analysées"></a></div>
             </div>
 
         </div>
