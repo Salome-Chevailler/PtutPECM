@@ -21,10 +21,15 @@
     $precisions = isset($_POST['precisions']) ? $_POST['precisions'] : '';
     $degre = isset($_POST['degre_realisation']) ? $_POST['degre_realisation'] : '';
     $etape = isset($_POST['etape_circuit']) ? $_POST['etape_circuit'] : '';
+    $anonyme = isset($_POST['anonyme']) ? $_POST['anonyme'] : '';
+    $nom = isset($_POST['nom']) ? $_POST['nom'] : '';
+    $prenom = isset($_POST['prenom']) ? $_POST['prenom'] : '';
+    $fonction = isset($_POST['fonction']) ? $_POST['fonction'] : '';
+    $medicament_classe = isset($_POST['medicament_classe']) ? $_POST['medicament_classe'] : '';
 
     // Création d'un nouvel événement dans la base à partir des données entrées dans le formulaire
-    $insertEvenement="INSERT INTO evenement(date_declaration,date_em,details,est_neverevent,patient_risque,departement,medicament_risque,administration_risque,administration_precisions,consequences,precisions_patient,precisions_medicament,degre_realisation,etape_circuit,est_analyse) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-    $values=array($date_declaration,$date,$details,$est_neverevent,$patient_risque,$departement,$medicament_risque,$administration_risque,$precisions,$consequences,$precisions_patient,$precisions_medicament,$degre,$etape,0);
+    $insertEvenement="INSERT INTO evenement(date_declaration,date_em,details,est_neverevent,patient_risque,departement,medicament_risque,administration_risque,administration_precisions,consequences,precisions_patient,precisions_medicament,degre_realisation,etape_circuit,est_analyse,anonyme,nom,prenom,fonction,medicament_classe) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    $values=array($date_declaration,$date,$details,$est_neverevent,$patient_risque,$departement,$medicament_risque,$administration_risque,$precisions,$consequences,$precisions_patient,$precisions_medicament,$degre,$etape,0,$anonyme,$nom,$prenom,$fonction,$medicament_classe);
     $stmt=sqlsrv_query($conn,$insertEvenement,$values);
     if( $stmt === false ) {
         die( print_r( sqlsrv_errors(), true));
@@ -54,6 +59,24 @@
         </div>
         <div class="container-fluid">
             <form method="POST" action="">
+                <!-- Identité de la personne qui déclare -->
+                <div class="md-auto">
+                    <p>Vous pouvez déclarer de manière anonyme ou renseigner votre identité :<p>
+                    <label for="anonyme">Déclarer de manière anonyme : </label>
+                    <input type="radio" id="anonyme" name="anonyme" value="Oui" required>
+                    <label for="Oui">Oui</label>
+                    <input type="radio" id="anonyme" name="anonyme" value="Non" required>
+                    <label for="Non">Non</label>
+                </div>
+                <div class="md-auto">
+                    <label for="anonyme">Si non : </label>
+                    <label for="nom">Nom :</label>
+                    <input type="text" id="nom" name="nom">
+                    <label for="prenom">Prénom :</label>
+                    <input type="text" id="prenom" name="prenom">
+                    <label for="fonction">Fonction :</label>
+                    <input type="text" id="fonction" name="fonction">
+                </div>
                 <!-- Date de la déclaration -->
                 <div class="md-auto">
                         <label for="date_declaration">Date de la déclaration : </label>
@@ -120,8 +143,14 @@
                 </div>
                 <!-- Précisions sur le médicament -->
                 <div class="md-auto">
-                        <label for="precisions_medicament">Précisions sur le médicament :</label>
-                        <input type="text" id="precisions_medicament" name="precisions_medicament">
+                    <label for="precisions_medicament">Précisions sur le médicament :</label>
+                    <input type="text" id="precisions_medicament" name="precisions_medicament">
+                </div>
+                <!-- Classe du médicament --> 
+                <div class="md-auto">
+                    <label for="medicament_classe">Classe du médicament :</label>
+                    <select name="medicament_classe" size="1">
+                    </select>
                 </div>
                 <!-- Voie d'administration à risque -->
                 <div class="md-auto">
@@ -178,12 +207,10 @@
                     <label class="col-md-auto" for="consequences">Quel impact cela a-t-il eu ? </label>
                     <textarea class="col-4" maxlength="1000" id="consequences" name="consequences" required></textarea>
                 </div>
-               
-            
-            <!-- Bouton d'ajout -->
-            <div class="row justify-content-center">
-                <div class="ajouter"><input class="btn btn-outline-primary" type="submit" value="Ajouter l'événement" name="nouvelEvenement"></div>
-            </div>   
+                <!-- Bouton de validation -->
+                <div class="row justify-content-center">
+                    <div class="ajouter"><p>Attention, toute validation est définitive</p><input class="btn btn-outline-primary" type="submit" value="Valider la déclaration" name="nouvelEvenement"></div>
+                </div>   
             </form>
         </div>
     </body>
