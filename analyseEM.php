@@ -1,6 +1,38 @@
 <!-- Affiche le formulaire d'analyse de l'événement et ajoute les éléments dans la base lors de la validation --> 
 <?php
     include "bdd.php";
+
+    // Récupération du numéro dans l'URL de l'événement choisi 
+    $numero = trim($_GET['numero']);
+
+    // On récupère les infos entrées lors de la déclaration
+    $sql = "SELECT anonyme, e.nom, prenom, fonction, date_EM, d.nom as departement, est_neverevent, patient_risque, precisions_patient, medicament_risque, precisions_medicament, medicament_classe, administration_risque, administration_precisions, degre_realisation, etape_circuit, details, consequences FROM evenement e JOIN departement d ON e.departement=d.id WHERE e.numero='$numero'";
+    $stmt = sqlsrv_query( $conn, $sql);
+    if( $stmt === false ) {
+        die( print_r( sqlsrv_errors(), true));
+    }
+    if( sqlsrv_fetch( $stmt ) === false) {
+        die( print_r( sqlsrv_errors(), true));
+    }
+    $anonyme = sqlsrv_get_field($stmt, 0);
+    $nom = sqlsrv_get_field($stmt, 1);
+    $prenom = sqlsrv_get_field($stmt, 2);
+    $fonction = sqlsrv_get_field($stmt, 3);
+    $date_EM = sqlsrv_get_field( $stmt, 4)->format('d/m/Y');
+    $departement = sqlsrv_get_field($stmt, 5);
+    $neverevent = sqlsrv_get_field($stmt, 6);
+    $patient_risque = sqlsrv_get_field($stmt, 7);
+    $precisions_patient = sqlsrv_get_field($stmt, 8);
+    $medicament_risque = sqlsrv_get_field($stmt, 9);
+    $precisions_medicament = sqlsrv_get_field($stmt, 10);
+    $medicament_classe = sqlsrv_get_field($stmt, 11);
+    $administration_risque = sqlsrv_get_field($stmt, 12);
+    $administration_precisions = sqlsrv_get_field($stmt, 13);
+    $degre = sqlsrv_get_field($stmt, 14);
+    $etape = sqlsrv_get_field($stmt, 15);
+    $details = sqlsrv_get_field($stmt, 16);
+    $impact = sqlsrv_get_field($stmt, 17);
+
 ?>
 
 <!DOCTYPE html> 
@@ -30,10 +62,7 @@
                 <label for="Non">Non</label>
             </div>
             <div class="md-auto">
-                <label for="anonyme">Si non, elle a été déclarée par : </label>
-                <label for="nom">Nom : <?php  ?></label>
-                <label for="prenom">Prénom : <?php  ?></label>
-                <label for="fonction">Fonction : <?php  ?></label>
+                <label for="anonyme">Si non, elle a été déclarée par : <?php echo $nom.' '; echo $prenom; echo ', '.$fonction ?></label>
             </div> 
             <div class="row mb-1">
                 <!-- Date de l'analyse -->
@@ -54,12 +83,12 @@
                 <!-- Que s'est-il passé ? -->
                 <div class="row mb-1">
                     <label class="col-md-auto" for="quoi">Quoi ? Que s'est-il passé ?</label>
-                    <textarea class="col-4" maxlength="1000" id="quoi" name="quoi" required></textarea>
+                    <textarea class="col-4" maxlength="1000" id="quoi" name="quoi" required><?php echo $details ?></textarea>
                 </div>
                 <!-- Quelles sont les conséquences ? -->
                 <div class="row mb-1">
                     <label class="col-md-auto" for="consequences">Quel impact cela a-t-il eu ?</label>
-                    <textarea class="col-4" maxlength="1000" id="consequences" name="consequences" required></textarea>
+                    <textarea class="col-4" maxlength="1000" id="consequences" name="consequences" required><?php echo $impact ?></textarea>
                 </div>
                 <!-- En quoi est-ce un problème ?-->
                 <div class="row mb-1">

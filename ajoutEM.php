@@ -2,38 +2,77 @@
 <?php
     include "bdd.php";
 
-    // Récupération des données entrées dans le formulaire
-    $date_declaration = isset($_POST['date_declaration']) ? $_POST['date_declaration'] : '';
-    $date = isset($_POST['date']) ? $_POST['date'] : '';
-    $depart=isset($_POST['departement']) ? utf8_decode($_POST['departement']) : 'Urgences';
-    $queryDepartement = "SELECT id FROM departement WHERE nom='$depart'";
-    $stmt = sqlsrv_query($conn, $queryDepartement);
-    sqlsrv_fetch($stmt);
-    $departement = sqlsrv_get_field($stmt, 0);
-    $details = isset($_POST['details']) ? $_POST['details'] : '';
-    $consequences = isset($_POST['consequences']) ? $_POST['consequences'] : '';
-    $est_neverevent = isset($_POST['est_neverevent']) ? $_POST['est_neverevent'] : '';
-    $patient_risque = isset($_POST['patient_risque']) ? $_POST['patient_risque'] : '';
-    $precisions_patient = isset($_POST['precisions_patient']) ? $_POST['precisions_patient'] : '';
-    $medicament_risque = isset($_POST['medicament_risque']) ? $_POST['medicament_risque'] : '';
-    $precisions_medicament = isset($_POST['precisions_medicament']) ? $_POST['precisions_medicament'] : '';
-    $administration_risque = isset($_POST['administration_risque']) ? $_POST['administration_risque'] : '';
-    $precisions = isset($_POST['precisions']) ? $_POST['precisions'] : '';
-    $degre = isset($_POST['degre_realisation']) ? $_POST['degre_realisation'] : '';
-    $etape = isset($_POST['etape_circuit']) ? $_POST['etape_circuit'] : '';
-    $anonyme = isset($_POST['anonyme']) ? $_POST['anonyme'] : '';
-    $nom = isset($_POST['nom']) ? $_POST['nom'] : '';
-    $prenom = isset($_POST['prenom']) ? $_POST['prenom'] : '';
-    $fonction = isset($_POST['fonction']) ? $_POST['fonction'] : '';
-    $medicament_classe = isset($_POST['medicament_classe']) ? $_POST['medicament_classe'] : '';
-
-    // Création d'un nouvel événement dans la base à partir des données entrées dans le formulaire
-    $insertEvenement="INSERT INTO evenement(date_declaration,date_em,details,est_neverevent,patient_risque,departement,medicament_risque,administration_risque,administration_precisions,consequences,precisions_patient,precisions_medicament,degre_realisation,etape_circuit,est_analyse,anonyme,nom,prenom,fonction,medicament_classe) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-    $values=array($date_declaration,$date,$details,$est_neverevent,$patient_risque,$departement,$medicament_risque,$administration_risque,$precisions,$consequences,$precisions_patient,$precisions_medicament,$degre,$etape,0,$anonyme,$nom,$prenom,$fonction,$medicament_classe);
-    $stmt=sqlsrv_query($conn,$insertEvenement,$values);
+    // On récupère le nombre d'événements dans la base
+    $sql = "SELECT count(*) FROM evenement";
+    $stmt = sqlsrv_query( $conn, $sql);
     if( $stmt === false ) {
         die( print_r( sqlsrv_errors(), true));
     }
+    if( sqlsrv_fetch( $stmt ) === false) {
+        die( print_r( sqlsrv_errors(), true));
+    }
+    $count = sqlsrv_get_field($stmt, 0);
+
+    // On crée le numéro de l'événement en fonction du nombre total d'événements dans la base
+    if ($count === 0){
+        $numero = 1;
+    } else {
+        $sql = "SELECT MAX(numero) FROM evenement";
+        $stmt = sqlsrv_query( $conn, $sql);
+        if( $stmt === false ) {
+            die( print_r( sqlsrv_errors(), true));
+        }
+        if( sqlsrv_fetch( $stmt ) === false) {
+            die( print_r( sqlsrv_errors(), true));
+        }
+        $max = sqlsrv_get_field($stmt, 0);
+        $numero = $max + 1;
+    }
+
+    if(isset($_POST['nouvelEvenement'])){
+        // Récupération des données entrées dans le formulaire
+        $date_declaration = $_POST['date_declaration'];
+        $date = $_POST['date'];
+        $depart=utf8_decode($_POST['departement']);
+        $queryDepartement = "SELECT id FROM departement WHERE nom='$depart'";
+        $stmt = sqlsrv_query($conn, $queryDepartement);
+        sqlsrv_fetch($stmt);
+        $departement = sqlsrv_get_field($stmt, 0);
+        $details = $_POST['details'];
+        $consequences = $_POST['consequences'];
+        $est_neverevent = $_POST['est_neverevent'];
+        $patient_risque = $_POST['patient_risque'];
+        $precisions_patient = $_POST['precisions_patient'];
+        $medicament_risque = $_POST['medicament_risque'];
+        $precisions_medicament = $_POST['precisions_medicament'];
+        $administration_risque = $_POST['administration_risque'];
+        $precisions = $_POST['precisions'];
+        $degre = $_POST['degre_realisation'];
+        if ($_POST['etape_circuit']==="Autre"){
+            $etape = $_POST['autre2'];
+        } else {
+            $etape = $_POST['etape_circuit'];
+        }
+        $anonyme = $_POST['anonyme'];
+        if ($anonyme='Oui'){
+            $anonyme=1;
+        }else {
+            $anonyme=0;
+        }
+        $nom = $_POST['nom'];
+        $prenom = $_POST['prenom'];
+        $fonction = $_POST['fonction'];
+        //$medicament_classe = $_POST['medicament_classe'];
+
+        // Création d'un nouvel événement dans la base à partir des données entrées dans le formulaire
+        $insertEvenement="INSERT INTO evenement(date_declaration,date_em,details,est_neverevent,patient_risque,departement,medicament_risque,administration_risque,administration_precisions,consequences,precisions_patient,precisions_medicament,degre_realisation,etape_circuit,est_analyse,anonyme,nom,prenom,fonction,/*medicament_classe, */numero) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $values=array($date_declaration,$date,$details,$est_neverevent,$patient_risque,$departement,$medicament_risque,$administration_risque,$precisions,$consequences,$precisions_patient,$precisions_medicament,$degre,$etape,0,$anonyme,$nom,$prenom,$fonction,/*$medicament_classe*/$numero);
+        $stmt=sqlsrv_query($conn,$insertEvenement,$values);
+        if( $stmt === false ) {
+            die( print_r( sqlsrv_errors(), true));
+        }    
+    }
+
 
 ?>
 
@@ -119,30 +158,130 @@
                 <!-- Types de never event-->
                 <div class="md-auto">
                     <label for="neverevent2">Si oui, précisez le(s)quel(s) :</label>
-                    <input type="checkbox" id="n1" name="n1" required>
-                    <label for="n1">NE1</label>
-                    <input type="checkbox" id="n2" name="n2" required>
-                    <label for="n2">NE2</label>
-                    <input type="checkbox" id="n3" name="n3" required>
-                    <label for="n3">NE3</label>
-                    <input type="checkbox" id="n4" name="n4" required>
-                    <label for="n4">NE4</label>
-                    <input type="checkbox" id="n5" name="n5" required>
-                    <label for="n5">NE5</label>
-                    <input type="checkbox" id="n6" name="n6" required>
-                    <label for="n6">NE6</label>
-                    <input type="checkbox" id="n7" name="n7" required>
-                    <label for="n7">NE7</label>
-                    <input type="checkbox" id="n8" name="n8" required>
-                    <label for="n8">NE8</label>
-                    <input type="checkbox" id="n9" name="n9" required>
-                    <label for="n9">NE9</label>
-                    <input type="checkbox" id="n10" name="n10" required>
-                    <label for="n10">NE10</label>
-                    <input type="checkbox" id="n11" name="n11" required>
-                    <label for="n11">NE11</label>
-                    <input type="checkbox" id="n12" name="n12" required>
-                    <label for="n12">NE12</label>
+                    <input type="checkbox" id="1" name="1">
+                    <label for="1">NE1</label>
+                    <input type="checkbox" id="2" name="2">
+                    <label for="2">NE2</label>
+                    <input type="checkbox" id="3" name="3">
+                    <label for="3">NE3</label>
+                    <input type="checkbox" id="4" name="4">
+                    <label for="4">NE4</label>
+                    <input type="checkbox" id="5" name="5">
+                    <label for="5">NE5</label>
+                    <input type="checkbox" id="6" name="6">
+                    <label for="6">NE6</label>
+                    <input type="checkbox" id="7" name="7">
+                    <label for="7">NE7</label>
+                    <input type="checkbox" id="8" name="8">
+                    <label for="8">NE8</label>
+                    <input type="checkbox" id="9" name="9">
+                    <label for="9">NE9</label>
+                    <input type="checkbox" id="10" name="10">
+                    <label for="10">NE10</label>
+                    <input type="checkbox" id="11" name="11">
+                    <label for="11">NE11</label>
+                    <input type="checkbox" id="12" name="12">
+                    <label for="12">NE12</label>
+
+                    <?php 
+                    if (isset($_POST['1'])){
+                       $insertRef="INSERT INTO refevenement(num_evenement,num_neverevent) VALUES (?,?)";
+                        $values=array($numero,1);
+                        $stmt=sqlsrv_query($conn,$insertRef,$values);
+                        if( $stmt === false ) {
+                            die( print_r( sqlsrv_errors(), true));
+                        }
+                    }
+                    if (isset($_POST['2'])){
+                        $insertRef="INSERT INTO refevenement(num_evenement,num_neverevent) VALUES (?,?)";
+                         $values=array($numero,2);
+                         $stmt=sqlsrv_query($conn,$insertRef,$values);
+                         if( $stmt === false ) {
+                             die( print_r( sqlsrv_errors(), true));
+                         }
+                     }
+                     if (isset($_POST['3'])){
+                        $insertRef="INSERT INTO refevenement(num_evenement,num_neverevent) VALUES (?,?)";
+                         $values=array($numero,3);
+                         $stmt=sqlsrv_query($conn,$insertRef,$values);
+                         if( $stmt === false ) {
+                             die( print_r( sqlsrv_errors(), true));
+                         }
+                     }
+                     if (isset($_POST['4'])){
+                        $insertRef="INSERT INTO refevenement(num_evenement,num_neverevent) VALUES (?,?)";
+                         $values=array($numero,4);
+                         $stmt=sqlsrv_query($conn,$insertRef,$values);
+                         if( $stmt === false ) {
+                             die( print_r( sqlsrv_errors(), true));
+                         }
+                     }
+                     if (isset($_POST['5'])){
+                        $insertRef="INSERT INTO refevenement(num_evenement,num_neverevent) VALUES (?,?)";
+                         $values=array($numero,5);
+                         $stmt=sqlsrv_query($conn,$insertRef,$values);
+                         if( $stmt === false ) {
+                             die( print_r( sqlsrv_errors(), true));
+                         }
+                     }
+                     if (isset($_POST['6'])){
+                        $insertRef="INSERT INTO refevenement(num_evenement,num_neverevent) VALUES (?,?)";
+                         $values=array($numero,6);
+                         $stmt=sqlsrv_query($conn,$insertRef,$values);
+                         if( $stmt === false ) {
+                             die( print_r( sqlsrv_errors(), true));
+                         }
+                     }
+                     if (isset($_POST['7'])){
+                        $insertRef="INSERT INTO refevenement(num_evenement,num_neverevent) VALUES (?,?)";
+                         $values=array($numero,7);
+                         $stmt=sqlsrv_query($conn,$insertRef,$values);
+                         if( $stmt === false ) {
+                             die( print_r( sqlsrv_errors(), true));
+                         }
+                     }
+                     if (isset($_POST['8'])){
+                        $insertRef="INSERT INTO refevenement(num_evenement,num_neverevent) VALUES (?,?)";
+                         $values=array($numero,8);
+                         $stmt=sqlsrv_query($conn,$insertRef,$values);
+                         if( $stmt === false ) {
+                             die( print_r( sqlsrv_errors(), true));
+                         }
+                     }
+                     if (isset($_POST['9'])){
+                        $insertRef="INSERT INTO refevenement(num_evenement,num_neverevent) VALUES (?,?)";
+                         $values=array($numero,9);
+                         $stmt=sqlsrv_query($conn,$insertRef,$values);
+                         if( $stmt === false ) {
+                             die( print_r( sqlsrv_errors(), true));
+                         }
+                     }
+                     if (isset($_POST['10'])){
+                        $insertRef="INSERT INTO refevenement(num_evenement,num_neverevent) VALUES (?,?)";
+                         $values=array($numero,10);
+                         $stmt=sqlsrv_query($conn,$insertRef,$values);
+                         if( $stmt === false ) {
+                             die( print_r( sqlsrv_errors(), true));
+                         }
+                     }
+                     if (isset($_POST['11'])){
+                        $insertRef="INSERT INTO refevenement(num_evenement,num_neverevent) VALUES (?,?)";
+                         $values=array($numero,11);
+                         $stmt=sqlsrv_query($conn,$insertRef,$values);
+                         if( $stmt === false ) {
+                             die( print_r( sqlsrv_errors(), true));
+                         }
+                     }
+                     if (isset($_POST['12'])){
+                        $insertRef="INSERT INTO refevenement(num_evenement,num_neverevent) VALUES (?,?)";
+                         $values=array($numero,12);
+                         $stmt=sqlsrv_query($conn,$insertRef,$values);
+                         if( $stmt === false ) {
+                             die( print_r( sqlsrv_errors(), true));
+                         }
+                     }
+
+                    ?>
                 </div>
                 <!-- Patient à risque -->
                 <div class="md-auto">
@@ -225,9 +364,9 @@
                         <label for="Administration">Administration</label>
                         <input type="radio" id="etape_circuit" name="etape_circuit" value="Je ne sais pas" required>
                         <label for="Jenesaispas">Je ne sais pas</label>
-                        <input type="radio" id="autre" name="autre" value="Autre" required>
+                        <input type="radio" id="etape_circuit" name="etape_circuit" value="Autre" required>
                         <label for="Autre">Autre</label>  
-                        <input type="text" id="etape_circuit" name="autre">                       
+                        <input type="text" id="etape_circuit" name="autre2">   
                 </div>
 
                 <!-- A VOIR AVEC RAFIKA POUR TROUVER UNE FORMULATION -->
