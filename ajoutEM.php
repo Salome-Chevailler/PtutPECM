@@ -54,7 +54,7 @@
             $etape = $_POST['etape_circuit'];
         }
         $anonyme = $_POST['anonyme'];
-        if ($anonyme='Oui'){
+        if ($anonyme==='Oui'){
             $anonyme=1;
         }else {
             $anonyme=0;
