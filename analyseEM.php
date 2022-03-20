@@ -22,6 +22,19 @@
             </div>
         </div>
         <div class="container-fluid">
+            <div class="md-auto">
+                <label for="anonyme">L'erreur médicamenteuse a été déclarée de manière anonyme : </label>
+                <input type="radio" id="anonyme" name="anonyme" value="Oui" required>
+                <label for="Oui">Oui</label>
+                <input type="radio" id="anonyme" name="anonyme" value="Non" required>
+                <label for="Non">Non</label>
+            </div>
+            <div class="md-auto">
+                <label for="anonyme">Si non, elle a été déclarée par : </label>
+                <label for="nom">Nom : <?php  ?></label>
+                <label for="prenom">Prénom : <?php  ?></label>
+                <label for="fonction">Fonction : <?php  ?></label>
+            </div> 
             <div class="row mb-1">
                 <!-- Date de l'analyse -->
                 <div class="col-3 md-auto">
@@ -45,13 +58,8 @@
                 </div>
                 <!-- Quelles sont les conséquences ? -->
                 <div class="row mb-1">
-                    <label class="col-md-auto" for="consequences">Quelles sont les conséquences de l'événement ?</label>
+                    <label class="col-md-auto" for="consequences">Quel impact cela a-t-il eu ?</label>
                     <textarea class="col-4" maxlength="1000" id="consequences" name="consequences" required></textarea>
-                </div>
-                <!-- Qui est concerné ? -->
-                <div class="row mb-1">
-                    <label class="col-md-auto" for="quoi">Qui est concerné ?</label>
-                    <input class="col-3" maxlength="100" id="quoi" name="qui" required></textarea>
                 </div>
                 <!-- En quoi est-ce un problème ?-->
                 <div class="row mb-1">
@@ -100,11 +108,19 @@
                     <label for="Oui">Oui</label>
                     <input type="radio" id="medicament" name="medicament" value="Non" required>
                     <label for="Non">Non</label> 
+                    <input type="radio" id="medicament" name="medicament" value="Je ne sais pas" required>
+                    <label for="Je ne sais pas">Je ne sais pas</label> 
                 </div>
                 <!-- Précisions sur le médicament -->
                 <div class="md-auto">
                         <label for="precisions_medicament">Précisions sur le médicament :</label>
                         <input type="text" id="precisions_medicament" name="precisions_medicament">
+                </div>
+                <!-- Classe du médicament --> 
+                <div class="md-auto">
+                    <label for="medicament_classe">Classe du médicament :</label>
+                    <select name="medicament_classe" size="1">
+                    </select>
                 </div>
                 <div class="md-auto">
                     <label for="medicament">Elle concerne :</label>
@@ -156,6 +172,8 @@
                     <label for="Oui">Oui</label>
                     <input type="radio" id="admin" name="admin" value="Non" required>
                     <label for="Non">Non</label> 
+                    <input type="radio" id="admin" name="admin" value="Je ne sais pas" required>
+                    <label for="Je ne sais pas">Je ne sais pas</label> 
                 </div>
                 <!-- Précisions -->
                 <div class="md-auto">
@@ -168,7 +186,9 @@
                     <input type="radio" id="neverevent" name="neverevent" value="Oui" required>
                     <label for="Oui">Oui</label>
                     <input type="radio" id="neverevent" name="neverevent" value="Non" required>
-                    <label for="Non">Non</label> 
+                    <label for="Non">Non</label>
+                    <input type="radio" id="neverevent" name="neverevent" value="Je ne sais pas" required>
+                    <label for="Je ne sais pas">Je ne sais pas</label>  
                 </div>
                 <!-- Types de never event-->
                 <div class="md-auto">
@@ -200,26 +220,41 @@
                 </div>
                 <!-- Degré de réalisation -->
                 <div class="md-auto">
-                    <label for="degre">Degré de réalisation :</label>
-                    <select class="md-auto" name="degre" size="1">
-                        <option></option>
-                        <option>EM avérée et identifiée après atteinte du patient</option>
-                        <option>EM avérée et interceptée avant atteinte du patient</option>
-                        <option>EM potentielle</option>
-                    </select>
+                        <label for="degre">Degré de réalisation :</label>
+                        <input type="radio" id="degre_realisation" name="degre_realisation" value="EM a atteint le patient" required>
+                        <label for="EM a atteint le patient">EM a atteint le patient</label>
+                        <input type="radio" id="degre_realisation" name="degre_realisation" value="EM a été interceptée" required>
+                        <label for="EM a été interceptée">EM a été interceptée</label> 
+                        <input type="radio" id="degre_realisation" name="degre_realisation" value="Evénement porteur de risque (EPR)" required>
+                        <label for="Evénement porteur de risque (EPR)">Evénement porteur de risque (EPR)</label> 
+                        <input type="radio" id="degre_realisation" name="degre_realisation" value="Je ne sais pas" required>
+                        <label for="Jenesaispas">Je ne sais pas</label>  
                 </div>
                 <!-- Etape de survenue dans le circuit médicament -->
                 <div class="md-auto">
-                    <label for="etape">Etape de survenue dans le circuit médicament :</label>
-                    <select class="md-auto" name="etape" size="1">
-                        <option></option>
-                        <option>Administration</option>
-                        <option>Dispensation</option>
-                        <option>Information du patient</option>
-                        <option>Prescription</option>
-                        <option>Transport</option>
-                    </select>
+                        <label for="etape">Etape de survenue dans le circuit médicament :</label>
+                        <input type="radio" id="etape_circuit" name="etape_circuit" value="Prescription" required>
+                        <label for="Prescription">Prescription</label>
+                        <input type="radio" id="etape_circuit" name="etape_circuit" value="Dispensation" required>
+                        <label for="Dispensation">Dispensation</label> 
+                        <input type="radio" id="etape_circuit" name="etape_circuit" value="Transport" required>
+                        <label for="Transport">Transport</label>  
+                        <input type="radio" id="etape_circuit" name="etape_circuit" value="Administration" required>
+                        <label for="Administration">Administration</label>
+                        <input type="radio" id="etape_circuit" name="etape_circuit" value="Je ne sais pas" required>
+                        <label for="Jenesaispas">Je ne sais pas</label>
+                        <input type="radio" id="autre" name="autre" value="Autre" required>
+                        <label for="Autre">Autre</label>  
+                        <input type="text" id="etape_circuit" name="autre">                       
                 </div>
+
+                <!-- A VOIR AVEC RAFIKA POUR TROUVER UNE FORMULATION -->
+                <!-- Information du patient 
+                <div class="md-auto">
+                    <input type="radio" id="etape_circuit" name="etape_circuit" value="Information du patient" required>
+                    <label for="Information du patient">Information du patient</label> 
+                </div> -->
+
             </div>
             <!-- Cotation -->
             <div class="cotation">

@@ -52,8 +52,11 @@
             <table class="table table-striped table-sm mb-4">
                 <thead>
                     <tr>
+                        <th class="col-md-1">Numéro</th>
                         <th class="col-md-1">Date</th>
                         <th class="col-md-1">Service </th>
+                        <th class="col-md-1">Etape</th>
+                        <th class="col-md-1">Degré</th>
                         <th class="col-md-2">Description</th>
                         <th class="col-md-2">Conséquences</th>
                         <th class="col-md-2">Never-event</th>
@@ -66,7 +69,7 @@
                 <tbody>
                     <?php
                         // Récupération des événements déclarés à afficher dans le tableau
-                        $sql = "SELECT numero, d.nom as departement, date_EM, patient_risque, medicament_risque, administration_risque, details, est_analyse, consequences, est_neverevent FROM evenement e JOIN departement d ON e.departement=d.id WHERE est_analyse=0 OR est_analyse=''";
+                        $sql = "SELECT numero, d.nom as departement, date_EM, patient_risque, medicament_risque, administration_risque, details, est_analyse, consequences, est_neverevent, numero, etape_circuit, degre_realisation FROM evenement e JOIN departement d ON e.departement=d.id WHERE est_analyse=0 OR est_analyse=''";
                         $params = array();
                         $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
                         $stmt = sqlsrv_query( $conn, $sql, $params, $options);
@@ -93,10 +96,16 @@
                             $analyse = sqlsrv_get_field($stmt, 7);
                             $consequences = sqlsrv_get_field($stmt, 8);
                             $neverevent = sqlsrv_get_field($stmt, 9);
+                            $numero = sqlsrv_get_field($stmt, 10);
+                            $etape = sqlsrv_get_field($stmt, 11);
+                            $degre = sqlsrv_get_field($stmt, 12);
 
                             echo '<tr>';
+                            echo "<td>$numero</td>";
                             echo "<td>$date</td>";
                             echo "<td>$departement</td>";
+                            echo "<td>$etape</td>";
+                            echo "<td>$degre</td>";
                             echo "<td>$details</td>";
                             echo "<td>$consequences</td>";
                             echo "<td>$neverevent</td>";

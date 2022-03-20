@@ -116,6 +116,34 @@
                     <input type="radio" id="est_neverevent" name="est_neverevent" value="Je ne sais pas" required>
                     <label for="Jenesaispas">Je ne sais pas</label>       
                 </div>
+                <!-- Types de never event-->
+                <div class="md-auto">
+                    <label for="neverevent2">Si oui, précisez le(s)quel(s) :</label>
+                    <input type="checkbox" id="n1" name="n1" required>
+                    <label for="n1">NE1</label>
+                    <input type="checkbox" id="n2" name="n2" required>
+                    <label for="n2">NE2</label>
+                    <input type="checkbox" id="n3" name="n3" required>
+                    <label for="n3">NE3</label>
+                    <input type="checkbox" id="n4" name="n4" required>
+                    <label for="n4">NE4</label>
+                    <input type="checkbox" id="n5" name="n5" required>
+                    <label for="n5">NE5</label>
+                    <input type="checkbox" id="n6" name="n6" required>
+                    <label for="n6">NE6</label>
+                    <input type="checkbox" id="n7" name="n7" required>
+                    <label for="n7">NE7</label>
+                    <input type="checkbox" id="n8" name="n8" required>
+                    <label for="n8">NE8</label>
+                    <input type="checkbox" id="n9" name="n9" required>
+                    <label for="n9">NE9</label>
+                    <input type="checkbox" id="n10" name="n10" required>
+                    <label for="n10">NE10</label>
+                    <input type="checkbox" id="n11" name="n11" required>
+                    <label for="n11">NE11</label>
+                    <input type="checkbox" id="n12" name="n12" required>
+                    <label for="n12">NE12</label>
+                </div>
                 <!-- Patient à risque -->
                 <div class="md-auto">
                     <label for="patient_risque">S'agit-il d'un patient à risque ?</label>
@@ -184,19 +212,31 @@
                 <!-- Etape de survenue dans le circuit médicament -->
                 <div class="md-auto">
                         <label for="etape">Etape de survenue dans le circuit médicament :</label>
-                        <input type="radio" id="etape_circuit" name="etape_circuit" value="Administration" required>
-                        <label for="Administration">Administration</label>
-                        <input type="radio" id="etape_circuit" name="etape_circuit" value="Dispensation" required>
-                        <label for="Dispensation">Dispensation</label> 
-                        <input type="radio" id="etape_circuit" name="etape_circuit" value="Information du patient" required>
-                        <label for="Information du patient">Information du patient</label> 
+                        <div class="md-auto">
+                        <label for="etape">* Si vous ne savez pas, merci d'être plus précis dans la description</label>
+                        </div>
                         <input type="radio" id="etape_circuit" name="etape_circuit" value="Prescription" required>
                         <label for="Prescription">Prescription</label>
+                        <input type="radio" id="etape_circuit" name="etape_circuit" value="Dispensation" required>
+                        <label for="Dispensation">Dispensation</label> 
                         <input type="radio" id="etape_circuit" name="etape_circuit" value="Transport" required>
                         <label for="Transport">Transport</label>  
+                        <input type="radio" id="etape_circuit" name="etape_circuit" value="Administration" required>
+                        <label for="Administration">Administration</label>
                         <input type="radio" id="etape_circuit" name="etape_circuit" value="Je ne sais pas" required>
-                        <label for="Jenesaispas">Je ne sais pas</label>  
+                        <label for="Jenesaispas">Je ne sais pas</label>
+                        <input type="radio" id="autre" name="autre" value="Autre" required>
+                        <label for="Autre">Autre</label>  
+                        <input type="text" id="etape_circuit" name="autre">                       
                 </div>
+
+                <!-- A VOIR AVEC RAFIKA POUR TROUVER UNE FORMULATION -->
+                <!-- Information du patient 
+                <div class="md-auto">
+                    <input type="radio" id="etape_circuit" name="etape_circuit" value="Information du patient" required>
+                    <label for="Information du patient">Information du patient</label> 
+                </div> -->
+
                 <!-- Description -->
                 <div class="row mb-1"> 	
                     <label class="col-md-auto" for="details">Description de l'événement : </label>
