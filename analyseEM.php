@@ -75,7 +75,7 @@
         $criticite = $_POST['criticite'];
 
         // Modification de l'événement à partir des données entrées dans le formulaire
-        $updateEvenement="UPDATE evenement SET details='".$details2."',consequences='".$consequences2."',justification='".$justification."',prem_actions='".$prem_actions."',medicament_risque='".$medicament_risque2."',precisions_medicament='".$precisions_medicament2."',medicament_type='".$medicament_type."',patient_risque='".$patient_risque2."',precisions_patient='".$precisions_patient2."',administration_risque='".$administration_risque2."',administration_precisions='".$administration_precisions2."',est_neverevent='".$neverevent2."',degre_realisation='".$degre2."',etape_circuit='".$etape2."',est_analyse=1,est_refrigere='".$est_refrigere."' WHERE numero=".$numero."";
+        $updateEvenement="UPDATE evenement SET details='".$details2."',consequences='".$consequences2."',justification='".$justification."',prem_actions='".$prem_actions."',medicament_risque='".$medicament_risque2."',precisions_medicament='".$precisions_medicament2."',medicament_type='".$medicament_type."',patient_risque='".$patient_risque2."',precisions_patient='".$precisions_patient2."',administration_risque='".$administration_risque2."',administration_precisions='".$administration_precisions2."',est_neverevent='".$neverevent2."',degre_realisation='".$degre2."',etape_circuit='".$etape2."',est_analyse=1,est_refrigere=".$est_refrigere." WHERE numero=".$numero."";
         $stmt=sqlsrv_query($conn,$updateEvenement);
         if( $stmt === false ) {
             die( print_r( sqlsrv_errors(), true));

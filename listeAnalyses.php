@@ -24,49 +24,85 @@
         <div>
         <!-- Formulaire pour le filtrage des événements -->
             <form method="POST">
-                <!-- Filtrage par date -->
-                <label class="col-auto ml-2" for="date">Choisir une période : du</label>
-                <input class="col-auto nom mr-2" type="date" name="dateDebut">
-                <label class="col-auto mr-2">au</label>
-                <input class="col-auto nom mr-3" type="date" name="dateFin">
-                <label class="col-auto mr-2">et/ou un service : </label>
-                <!-- Filtrage par service -->
-                <select name="departement" size="1">
-                    <option></option>
-                    <?php
-                    // Requête SQL pour remplir le select avec les départements de la base
-                    $rechercheDepartement="SELECT nom FROM departement ORDER BY nom";
-                    $params = array();
-                    $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
-                    $stmt = sqlsrv_query($conn, $rechercheDepartement, $params, $options);
-                    while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-                        echo "<option>",utf8_encode(implode("",$row)),"</option>";
-                    }
-                    ?>
-                </select>        
-                <!-- Bouton lançant la recherche -->        
-                <input class="btn btn-outline-primary" type="submit" name="Rechercher" value="Rechercher">
+                <div class="md-auto">
+                    <!-- Filtrage par date -->
+                    <label class="col-auto ml-2" for="date">Choisir une période : du</label>
+                    <input class="col-auto nom mr-2" type="date" name="dateDebut">
+                    <label class="col-auto mr-2">au</label>
+                    <input class="col-auto nom mr-3" type="date" name="dateFin">
+                    <label class="col-auto mr-2">et/ou un service : </label>
+                    <!-- Filtrage par service -->
+                    <select name="tri_departement" size="1">
+                        <option></option>
+                        <?php
+                        // Requête SQL pour remplir le select avec les départements de la base
+                        $rechercheDepartement="SELECT nom FROM departement ORDER BY nom";
+                        $params = array();
+                        $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+                        $stmt = sqlsrv_query($conn, $rechercheDepartement, $params, $options);
+                        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+                            echo "<option>",utf8_encode(implode("",$row)),"</option>";
+                        }
+                        ?>
+                    </select>     
+                </div>   
+                <div class="md-auto">
+                    <!-- Filtrage par médicament à risque -->
+                    <label class="col-auto ml-2">Médicament à risque : </label>
+                    <input type="checkbox" id="tri_medicament_risque" name="tri_medicament_risque">Oui</input>
+                    <!-- Filtrage par classe de médicament -->
+                    <label class="col-auto ml-2">Classe du médicament : </label>
+                    <select name="tri_classe" size="1">
+                    </select>
+                    <!-- Filtrage par degré -->
+                    <label class="col-auto ml-2">Degré de réalisation : </label>
+                    <select name="tri_degre" size="1">
+                        <option></option>
+                        <option>EM a atteint le patient</option>
+                        <option>EM a été interceptée</option>
+                        <option>Evénement porteur de risque (EPR)</option>
+                    </select>
+                </div>
+                <div class="md-auto">
+                    <!-- Filtrage par étape -->
+                    <label class="col-auto ml-2">Etape de survenue dans le circuit médicament : </label>
+                    <select name="tri_etape" size="1">
+                        <option></option>
+                        <option>Prescription</option>
+                        <option>Dispensation</option>
+                        <option>Transport</option>
+                        <option>Administration</option>
+                        <option>Suivi et réévaluation</option>
+                    </select>
+                    <!-- Filtrage par never event -->
+                    <label class="col-auto ml-2">Never event : </label>
+                    <input type="checkbox" id="tri_neverevent" name="tri_neverevent">Oui</input>
+                     <!-- Bouton lançant la recherche -->        
+                     <input class="btn btn-outline-primary" type="submit" name="Rechercher" value="Rechercher">
+                </div>
             </form>
         </div>
         <div class="container-fluid">
             <table class="table table-striped table-sm mb-4">
                 <thead>
                     <tr>
-                        <th class="col-md-1">Date </th>
+                        <th class="col-md-1">Numéro</th>
+                        <th class="col-md-1">Date</th>
                         <th class="col-md-1">Service </th>
+                        <th class="col-md-1">Etape</th>
+                        <th class="col-md-1">Degré</th>
+                        <th class="col-md-2">Médicament à risque</th>
+                        <th class="col-md-2">Classe du médicament</th>
+                        <th class="col-md-1">Never-event</th>
                         <th class="col-md-2">Description</th>
                         <th class="col-md-2">Conséquences</th>
-                        <th class="col-md-2">Never-event</th>
-                        <th class="col-md-2">Patient à risque </th>
-                        <th class="col-md-2">Médicament à risque </th>
-                        <th class="col-md-3">Voie d'administration à risque </th>
-                        <th class="col-md-2">Consulter</th>
+                        <th class="col-md-2">Consulter/Analyser</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                        // Récupération des événements déclarés à afficher dans le tableau
-                        $sql = "SELECT numero, d.nom as departement, date_EM, patient_risque, medicament_risque, administration_risque, details, est_analyse, consequences, est_neverevent FROM evenement e JOIN departement d ON e.departement=d.id WHERE  est_analyse=1";
+                <?php
+                        // Récupération des événements analysés à afficher dans le tableau
+                        $sql = "SELECT numero, d.nom as departement, date_EM, patient_risque, medicament_risque, administration_risque, details, est_analyse, consequences, est_neverevent, numero, etape_circuit, degre_realisation, medicament_classe FROM evenement e JOIN departement d ON e.departement=d.id WHERE est_analyse=1";
                         $params = array();
                         $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
                         $stmt = sqlsrv_query( $conn, $sql, $params, $options);
@@ -93,17 +129,23 @@
                             $analyse = sqlsrv_get_field($stmt, 7);
                             $consequences = sqlsrv_get_field($stmt, 8);
                             $neverevent = sqlsrv_get_field($stmt, 9);
+                            $numero = sqlsrv_get_field($stmt, 10);
+                            $etape = sqlsrv_get_field($stmt, 11);
+                            $degre = sqlsrv_get_field($stmt, 12);
+                            $medicament_classe = sqlsrv_get_field($stmt, 13);
 
                             echo '<tr>';
+                            echo "<td>$numero</td>";
                             echo "<td>$date</td>";
                             echo "<td>$departement</td>";
+                            echo "<td>$etape</td>";
+                            echo "<td>$degre</td>";
+                            echo "<td>$medicament_risque</td>";
+                            echo "<td>$medicament_classe</td>";
+                            echo "<td>$neverevent</td>";
                             echo "<td>$details</td>";
                             echo "<td>$consequences</td>";
-                            echo "<td>$neverevent</td>";
-                            echo "<td>$patient_risque</td>";
-                            echo "<td>$medicament_risque</td>";
-                            echo "<td>$administration_risque</td>";
-                            // Boutons permettant d'analyser un événement ou de le consulter
+                            // Boutons permettant de consulter l'événement
                             echo '<td><a href="consultationEManalyse.php?numero='.$numero.'&analyse='.$analyse.'"><input class="btn btn-outline-primary" type="submit" value="Consulter"></td>';
                             echo '</tr>';
                         }

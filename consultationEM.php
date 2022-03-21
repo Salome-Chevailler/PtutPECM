@@ -93,6 +93,7 @@
         </div>
         <div class="container-fluid">
             <form method="POST" action="">
+                <!-- Personne déclarante -->
                 <div class="row mb-1">
                     <label class="col-6" for="anonyme"><strong>Déclaration anonyme : </strong><?php echo $anonyme; ?></label>
                     <?php if ($anonyme === "Non"){
@@ -100,14 +101,17 @@
                     }
                     ?>
                 </div>
+                <!-- Dates -->
                 <div class="row mb-1">
                     <label class="col-6" for="DateEM"><strong>Date de l'événement : </strong><?php echo $date_EM; ?></label>
                     <label class="col-6" for="date_declaration"><strong>Date de la déclaration : </strong><?php echo $date_declaration ?></label>
                 </div>
+                <!-- Service -->
                 <div class="row mb-1">
                     <label class="col-6" for="Service"><strong>Service : </strong><?php echo $departement ?></label>
                     <label class="col-6" for="departement_risque"><strong>Service à risque : </strong><?php echo $departement_risque ?></label>
                 </div>
+                <!-- Never-event -->
                 <div class="md-auto">
                     <label for="Neverevent"><strong>Est-ce un never-event (NE) ? </strong></label>
                     <?php 
@@ -135,6 +139,7 @@
                         }
                     ?>
                 </div>
+                <!-- Patient à risque -->
                 <div class="md-auto">
                     <label for="Patient"><strong>Patient à risque : </strong></label>
                     <?php 
@@ -162,10 +167,12 @@
                         }
                     ?>
                 </div>
+                <!-- Précisions sur le patient -->
                 <div class="md-auto">
                     <label for="precisions_patient"><strong>Précisions sur le patient : </strong></label>
                     <input type="text" id="precisions_patient2" name="precisions_patient2" value="<?php echo $precisions_patient ?>">
                 </div>
+                <!-- Médicament à risque -->
                 <div class="md-auto">
                     <label for="Medicament"><strong>Médicament à risque : </strong></label>
                     <?php
@@ -193,6 +200,7 @@
                         }
                     ?>
                 </div>
+                <!-- Précisions sur le médicament -->
                 <div class="md-auto">
                     <label for="precisions_medicament"><strong>Précisions sur le médicament : </strong></label>
                     <input type="text" id="precisions_medicament2" name="precisions_medicament2" value="<?php echo $precisions_medicament ?>">
@@ -201,6 +209,7 @@
                 <div class="md-auto">
                     <label for="medicament_classe2"><strong>Classe du médicament : </strong><?php echo $medicament_classe ?></label>
                 </div>
+                <!-- Voie d'administration à risque -->
                 <div class="md-auto">
                     <label for="Administration"><strong>Voie d'administration à risque : </strong></label>
                     <?php
@@ -228,10 +237,12 @@
                         }
                     ?>
                 </div>
+                <!-- Précisions sur la voie d'administration -->
                 <div class="md-auto">
                     <label for="Precisions"><strong>Précisions sur la voie d'administration : </strong></label>
                     <input type="text" id="administration_precisions2" name="administration_precisions2" value="<?php echo $administration_precisions ?>">
                 </div>
+                <!-- Degré de réalisation -->
                 <div class="md-auto">
                     <label for="Degre"><strong>Degré de réalisation : </strong></label>
                     <?php 
@@ -274,6 +285,7 @@
                         }
                     ?>  
                 </div>
+                <!-- Etape circuit -->
                 <div class="md-auto">
                     <label for="Etape"><strong>Etape de survenue dans le circuit médicament : </strong></label>
                     <?php 
@@ -392,10 +404,12 @@
                         }
                     ?>          
                 </div>
+                <!-- Description -->
                 <div class="row mb-1">
                     <label class="col-md-auto" for="details2"><strong>Description :</strong></label>
                     <textarea class="col-4" maxlength="1000" id="details2" name="details2" required><?php echo $details ?></textarea>
                 </div>
+                <!-- Impact -->
                 <div class="row mb-1">
                     <label class="col-md-auto" for="consequences2"><strong>Impact :</strong></label>
                     <textarea class="col-4" maxlength="1000" id="consequences2" name="consequences2" required><?php echo $consequences ?></textarea>
