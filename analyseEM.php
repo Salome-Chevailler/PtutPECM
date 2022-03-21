@@ -50,7 +50,18 @@
         $precisions_medicament2 = $_POST['precisions_medicament2'];
         //$medicament_classe2 = $_POST['medicament_classe2'];
         $medicament_type = $_POST['medicament_type'];
-        //$est_refrigere = $_POST['est_refrigere'];
+        if (!empty($_POST['est_refrigere'])) {
+            $est_refrigere = $_POST['est_refrigere'];
+        } else {
+            $est_refrigere = null;
+        }
+        if ($est_refrigere === "Réfrigéré"){
+            $est_refrigere = 1;
+        } else if ($est_refrigere === "Non réfrigéré"){
+            $est_refrigere = 0;
+        } else {
+            $est_refrigere = null;
+        }
         $patient_risque2 = $_POST['patient_risque2'];
         $precisions_patient2 = $_POST['precisions_patient2'];
         $administration_risque2 = $_POST['administration_risque2'];
@@ -58,13 +69,33 @@
         $neverevent2 = $_POST['neverevent2'];
         $degre2 = $_POST['degre_realisation'];
         $etape2 = $_POST['etape_circuit'];
+        $gravite = $_POST['gravite'];
+        $occurrence = $_POST['occurrence'];
+        $maitrise = $_POST['maitrise'];
+        $criticite = $_POST['criticite'];
 
         // Modification de l'événement à partir des données entrées dans le formulaire
-        $updateEvenement="UPDATE evenement SET details='".$details2."',consequences='".$consequences2."',justification='".$justification."',prem_actions='".$prem_actions."',medicament_risque='".$medicament_risque2."',precisions_medicament='".$precisions_medicament2."',medicament_type='".$medicament_type."',patient_risque='".$patient_risque2."',precisions_patient='".$precisions_patient2."',administration_risque='".$administration_risque2."',administration_precisions='".$administration_precisions2."',est_neverevent='".$neverevent2."',degre_realisation='".$degre2."',etape_circuit='".$etape2."',est_analyse=1 WHERE numero=".$numero."";
+        $updateEvenement="UPDATE evenement SET details='".$details2."',consequences='".$consequences2."',justification='".$justification."',prem_actions='".$prem_actions."',medicament_risque='".$medicament_risque2."',precisions_medicament='".$precisions_medicament2."',medicament_type='".$medicament_type."',patient_risque='".$patient_risque2."',precisions_patient='".$precisions_patient2."',administration_risque='".$administration_risque2."',administration_precisions='".$administration_precisions2."',est_neverevent='".$neverevent2."',degre_realisation='".$degre2."',etape_circuit='".$etape2."',est_analyse=1,est_refrigere='".$est_refrigere."' WHERE numero=".$numero."";
         $stmt=sqlsrv_query($conn,$updateEvenement);
         if( $stmt === false ) {
             die( print_r( sqlsrv_errors(), true));
         }
+
+        // Création d'un rapport CREX
+        $insertRapport="INSERT INTO rapportcrex(date_crex,date_analyse,evenement) VALUES (?,?,?)";
+        $values=array($date_crex,$date_analyse,$numero);
+        $stmt=sqlsrv_query($conn,$insertRapport,$values);
+        if( $stmt === false ) {
+            die( print_r( sqlsrv_errors(), true));
+        } 
+
+        // Création d'une cotation 
+        $insertCotation="INSERT INTO cotation(gravite,occurrence,niveau_maitrise,criticite,evenement) VALUES (?,?,?,?,?)";
+        $values=array($gravite,$occurrence,$maitrise,$criticite,$numero);
+        $stmt=sqlsrv_query($conn,$insertCotation,$values);
+        if( $stmt === false ) {
+            die( print_r( sqlsrv_errors(), true));
+        } 
     }
 ?>
 
@@ -489,7 +520,7 @@
                     </div>
                     <div class="md-auto">
                         <label for="gravite">Gravité :</label>
-                        <select name="gravite" size="1">
+                        <select name="gravite" size="1" required>
                             <option></option>
                             <option>1 - Mineure</option>
                             <option>2 - Significative</option>
@@ -500,7 +531,7 @@
                     </div>
                     <div class="md-auto">
                         <label for="occurrence">Occurrence :</label>
-                        <select name="occurrence" size="1">
+                        <select name="occurrence" size="1" required>
                             <option></option>
                             <option>1 - Très improbable</option>
                             <option>2 - Très peu probable</option>
@@ -511,7 +542,7 @@
                     </div>
                     <div class="md-auto">
                         <label for="maitrise">Niveau de maîtrise :</label>
-                        <select name="maitrise" size="1">
+                        <select name="maitrise" size="1" required>
                             <option></option>
                             <option>1 - Très bon</option>
                             <option>2 - Bon</option>
@@ -522,7 +553,7 @@
                     </div>
                     <div class="md-auto">
                         <label for="criticite">Criticité :</label>
-                        <select name="criticite" size="1">
+                        <select name="criticite" size="1" required>
                             <option></option>
                             <option>1 à 14 - Risque acceptable</option>
                             <option>15 à 44 - Risque acceptable sous contrôle</option>
