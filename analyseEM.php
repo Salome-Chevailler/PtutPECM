@@ -408,7 +408,7 @@
                                 echo '<label for="EM a été interceptée">EM a été interceptée</label>';
                                 echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="Evénement porteur de risque (EPR)" required>';
                                 echo '<label for="Evénement porteur de risque (EPR)">Evénement porteur de risque (EPR)</label>';
-                                echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="Je ne sais pas" required>';
+                                echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="Je ne sais pas" required checked="checked">';
                                 echo '<label for="Jenesaispas">Je ne sais pas</label>'; 
                             }
                             ?>  
@@ -426,6 +426,8 @@
                                 echo '<label for="Transport">Transport</label>';  
                                 echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Administration" required>';
                                 echo '<label for="Administration">Administration</label>';
+                                echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Suivi et réévaluation" required>';
+                                echo '<label for="Suivi et réévaluation">Suivi et réévaluation</label>';
                                 echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Je ne sais pas" required>';
                                 echo '<label for="Jenesaispas">Je ne sais pas</label>';
                                 echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Autre" required>';
@@ -440,6 +442,8 @@
                                 echo '<label for="Transport">Transport</label>';  
                                 echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Administration" required>';
                                 echo '<label for="Administration">Administration</label>';
+                                echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Suivi et réévaluation" required>';
+                                echo '<label for="Suivi et réévaluation">Suivi et réévaluation</label>';
                                 echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Je ne sais pas" required>';
                                 echo '<label for="Jenesaispas">Je ne sais pas</label>';
                                 echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Autre" required>';
@@ -454,6 +458,8 @@
                                 echo '<label for="Transport">Transport</label>';  
                                 echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Administration" required>';
                                 echo '<label for="Administration">Administration</label>';
+                                echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Suivi et réévaluation" required>';
+                                echo '<label for="Suivi et réévaluation">Suivi et réévaluation</label>';
                                 echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Je ne sais pas" required>';
                                 echo '<label for="Jenesaispas">Je ne sais pas</label>';
                                 echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Autre" required>';
@@ -468,6 +474,24 @@
                                 echo '<label for="Transport">Transport</label>';  
                                 echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Administration" required checked="checked">';
                                 echo '<label for="Administration">Administration</label>';
+                                echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Suivi et réévaluation" required>';
+                                echo '<label for="Suivi et réévaluation">Suivi et réévaluation</label>';
+                                echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Je ne sais pas" required>';
+                                echo '<label for="Jenesaispas">Je ne sais pas</label>';
+                                echo '<input type="radio" id="autre" name="etape_circuit" value="etape_circuit" required>';
+                                echo '<label for="Autre">Autre</label>';  
+                                echo '<input type="text" id="etape_circuit" name="autre">';
+                            } else if ($etape === "Suivi et réévaluation"){
+                                echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Prescription" required>';
+                                echo '<label for="Prescription">Prescription</label>';
+                                echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Dispensation" required>';
+                                echo '<label for="Dispensation">Dispensation</label>';
+                                echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Transport" required>';
+                                echo '<label for="Transport">Transport</label>';  
+                                echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Administration" required>';
+                                echo '<label for="Administration">Administration</label>';
+                                echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Suivi et réévaluation" required checked="checked">';
+                                echo '<label for="Suivi et réévaluation">Suivi et réévaluation</label>';
                                 echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Je ne sais pas" required>';
                                 echo '<label for="Jenesaispas">Je ne sais pas</label>';
                                 echo '<input type="radio" id="autre" name="etape_circuit" value="etape_circuit" required>';
@@ -482,6 +506,8 @@
                                 echo '<label for="Transport">Transport</label>';  
                                 echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Administration" required>';
                                 echo '<label for="Administration">Administration</label>';
+                                echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Suivi et réévaluation" required>';
+                                echo '<label for="Suivi et réévaluation">Suivi et réévaluation</label>';
                                 echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Je ne sais pas" required checked="checked">';
                                 echo '<label for="Jenesaispas">Je ne sais pas</label>';
                                 echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Autre" required>';
@@ -496,6 +522,8 @@
                                 echo '<label for="Transport">Transport</label>';  
                                 echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Administration" required>';
                                 echo '<label for="Administration">Administration</label>';
+                                echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Suivi et réévaluation" required>';
+                                echo '<label for="Suivi et réévaluation">Suivi et réévaluation</label>';
                                 echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Je ne sais pas" required>';
                                 echo '<label for="Jenesaispas">Je ne sais pas</label>';
                                 echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Autre" required checked="checked">';

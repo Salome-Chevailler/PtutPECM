@@ -72,6 +72,7 @@
                         <option>Dispensation</option>
                         <option>Transport</option>
                         <option>Administration</option>
+                        <option>Suivi et réévaluation</option>
                     </select>
                     <!-- Filtrage par never event -->
                     <label class="col-auto ml-2">Never event : </label>

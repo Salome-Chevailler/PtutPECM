@@ -153,7 +153,8 @@
                     <input type="radio" id="est_neverevent" name="est_neverevent" value="Non" required>
                     <label for="Non">Non</label> 
                     <input type="radio" id="est_neverevent" name="est_neverevent" value="Je ne sais pas" required>
-                    <label for="Jenesaispas">Je ne sais pas</label>       
+                    <label for="Jenesaispas">Je ne sais pas</label>   
+                    <a href="neverevents.pdf" target="_blank">Cliquez pour afficher la liste des 12 never-events</a>    
                 </div>
                 <!-- Types de never event-->
                 <div class="md-auto">
@@ -362,6 +363,8 @@
                         <label for="Transport">Transport</label>  
                         <input type="radio" id="etape_circuit" name="etape_circuit" value="Administration" required>
                         <label for="Administration">Administration</label>
+                        <input type="radio" id="etape_circuit" name="etape_circuit" value="Suivi et réévaluation" required>
+                        <label for="Suivi et réévaluation">Suivi et réévaluation</label>
                         <input type="radio" id="etape_circuit" name="etape_circuit" value="Je ne sais pas" required>
                         <label for="Jenesaispas">Je ne sais pas</label>
                         <input type="radio" id="etape_circuit" name="etape_circuit" value="Autre" required>
