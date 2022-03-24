@@ -68,8 +68,8 @@
     if( sqlsrv_fetch( $stmt2 ) === false) {
         die( print_r( sqlsrv_errors(), true));
     }
-    $date_analyse = sqlsrv_get_field($stmt2, 0);
-    $date_crex = sqlsrv_get_field($stmt2, 1);
+    $date_analyse = sqlsrv_get_field($stmt2, 0)->format('d/m/Y');
+    $date_crex = sqlsrv_get_field($stmt2, 1)->format('d/m/Y');
 
     // On récupère les infos de cotation
     $sql2 = "SELECT gravite, occurrence, niveau_maitrise, criticite FROM cotation WHERE evenement=$numero";
@@ -109,11 +109,22 @@
         } else {
             $est_refrigere2 = 0;
         }
+        $gravite2 = $_POST['gravite'];
+        $occurrence2 = $_POST['occurrence'];
+        $niveau_maitrise2 = $_POST['maitrise'];
+        $criticite2 = $_POST['criticite'];
 
         // Modification de l'événement à partir des données entrées dans le formulaire
         // NE PAS OUBLIER DE RAJOUTER MEDICAMENT_CLASSE
         $updateEvenement="UPDATE evenement SET est_neverevent='".$est_neverevent2."',patient_risque='".$patient_risque2."',precisions_patient='".$precisions_patient2."',medicament_risque='".$medicament_risque2."',precisions_medicament='".$precisions_medicament2."',administration_risque='".$administration_risque2."',administration_precisions='".$administration_precisions2."',degre_realisation='".$degre_realisation2."',etape_circuit='".$etape_circuit2."',details='".$details2."',consequences='".$consequences2."',justification='".$justification2."',prem_actions='".$prem_actions2."',medicament_type='".$medicament_type2."',est_refrigere='".$est_refrigere2."' WHERE numero=".$numero."";
         $stmt=sqlsrv_query($conn,$updateEvenement);
+        if( $stmt === false ) {
+            die( print_r( sqlsrv_errors(), true));
+        }
+
+        // Modification de la cotation à partir des données entrées dans le formulaire
+        $updateCotation="UPDATE cotation SET gravite='".$gravite2."',occurrence='".$occurrence2."',niveau_maitrise='".$niveau_maitrise2."',criticite='".$criticite2."' WHERE evenement=".$numero."";
+        $stmt=sqlsrv_query($conn,$updateCotation);
         if( $stmt === false ) {
             die( print_r( sqlsrv_errors(), true));
         }
@@ -530,13 +541,47 @@
                 <div class="md-auto">
                     <h4>Cotation de l'événement</h4>
                 </div>
-                <div class="row mb-1">
-                    <label class="col-6" for="Gravite"><strong>Gravité : </strong><?php echo $gravite ?></label>
-                    <label class="col-6" for="Occurrence"><strong>Occurrence : </strong><?php echo $occurrence ?></label>
+                <div class="md-auto">
+                    <label for="Gravite"><strong>Gravité : </strong></label>
+                    <select name="gravite" size="1" required>
+                        <option><?php echo $gravite ?></option>
+                        <option>1 - Mineure</option>
+                        <option>2 - Significative</option>
+                        <option>3 - Majeure</option>
+                        <option>4 - Critique</option>
+                        <option>5 - Catastrophique</option>
+                    </select>
                 </div>
-                <div class="row mb-1">
-                    <label class="col-6" for="Niveau"><strong>Niveau de maîtrise : </strong><?php echo $niveau_maitrise ?></label>
-                    <label class="col-6" for="Criticite"><strong>Criticité : </strong><?php echo $criticite ?></label>
+                <div class="md-auto">
+                    <label for="Occurrence"><strong>Occurrence : </strong></label>
+                    <select name="occurrence" size="1" required>
+                        <option><?php echo $occurrence ?></option>
+                        <option>1 - Très improbable</option>
+                        <option>2 - Très peu probable</option>
+                        <option>3 - Peu probable</option>
+                        <option>4 - Possible/probable</option>
+                        <option>5 - Très probable à certain</option>
+                    </select>
+                </div>
+                <div class="md-auto">
+                    <label for="Niveau"><strong>Niveau de maîtrise : </strong></label>
+                    <select name="maitrise" size="1" required>
+                        <option><?php echo $niveau_maitrise ?></option>
+                        <option>1 - Très bon</option>
+                        <option>2 - Bon</option>
+                        <option>3 - Moyen</option>
+                        <option>4 - Faible</option>
+                        <option>5 - Inexistant</option>
+                    </select>
+                </div>
+                <div class="md-auto">
+                    <label for="Criticite"><strong>Criticité : </strong></label>
+                    <select name="criticite" size="1" required>
+                        <option><?php echo $criticite ?></option>
+                        <option>1 à 14 - Risque acceptable</option>
+                        <option>15 à 44 - Risque acceptable sous contrôle</option>
+                        <option>45 à 125 - Risque inacceptable</option>
+                    </select>
                 </div>
                 <div class="md-auto">
                     <h4>Causes latentes systémiques</h4>
