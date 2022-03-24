@@ -104,19 +104,24 @@
     <head>
         <meta charset="utf-8">
         <link rel="icon" type="image/png" href="iconeCHIC.png">
-        <link rel="stylesheet" href="bootstrap.min.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="bootstrap.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="style.css" type="text/css" media="screen">
         <title>Analyse des causes d'une erreur médicamenteuse</title>
     </head>
-    <body>
-        <div class="row justify-content-center">
-            <div class="header">
-                <h1>Analyse des causes d'une erreur médicamenteuse</h1>
-            </div>
-            <div class="col-auto">
-                <a href="listeEM.php"><input class="btn btn-outline-primary" type="submit" value="Retour"></a>
-            </div>
+
+    <header class="header">
+        <div class="logo-box">
+            <span class="logo">logo</span>
         </div>
+        <div class="text-title">
+            <h1 class="main-title">
+                <span class="heading-primary-main">Outil de déclaration et d'analyse des erreurs médicamenteuses</span>
+                <span class="heading-secondary">Consultation des erreurs médicamenteuses analysées au CREX</span>
+            </h1>
+        </div>
+        <a href="accueil.html" class="btn btn-white"> <img src="home.png" class="favicon" alt="homebutton"></a>
+    </header>
+
+    <body>
         <div class="container-fluid">
             <form method="POST" action="">
                 <div class="row mb-1">

@@ -1,4 +1,207 @@
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #eee;
+}
+
 .header {
+    height: 30vh;
+    background: linear-gradient(to right bottom, rgba(30, 108, 217, 0.8), rgba(76, 216, 255, 0.8));
+    background-size: cover;
+    background-position: top;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+    margin: -10px;
+}
+
+/*
+Page accueil.html
+ */
+
+.logo-box {
+    display: block;
+    position: absolute;
+    width: auto;
+    left: 10px;
+}
+
+.logo {
+    font-size: 20px;
+}
+
+.text-title {
+    position: absolute;
+    width: fit-content;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.heading-primary {
+    color: #fff;
+    backface-visibility: hidden;
+}
+
+.heading-primary-main {
+    display: block;
+    font-size: 26px;
+    font-weight: 400;
+}
+
+.heading-secondary {
+    display: block;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.btn {
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all .2s;
+    position: relative;
+    background-color: #fff;
+    top: 60%;
+    left: 10px;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.favicon {
+    padding-top: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+#loupe {
+    padding-left: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.buttonsHomePage {
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+    text-align: center;
+
+}
+
+.buttonHomePage {
+    background-color: #0077B6;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 38px;
+    box-shadow: 6px 7px 9px #666666;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 23px;
+    justify-content: center;
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    padding: 17px 30px 17px 30px;
+    width: auto;
+}
+
+.buttonHomePage:hover,
+.buttonHomePage:focus {
+    background-color: #FFFFFF;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    color: #0077B6;
+}
+
+.buttonHomePage:hover {
+    border-color: #0077B6;
+    transform: translateY(-1px);
+}
+
+.buttonHomePage:active {
+    background-color: #FFFFFF;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+    color: #0077B6;
+    transform: translateY(0);
+}
+
+/*
+Page
+ */
+.form-box {
+    position: absolute;
+    top: 30vh;
+    width: content-box;
+    padding: 10px 40px 40px 40px;
+    background: rgba(0, 0, 0, .5);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+    border-radius: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.warning{
+    font-weight:bolder ;
+    font-size: large;
+    color: #000000;
+    text-decoration: underline;
+}
+.form-box h2 {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+}
+.user-box {
+    position: relative;
+}
+.user-box input {
+    width: auto;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+.user-box label {
+    position: absolute;
+    top:0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+/* .header {
     height: 100px;
     margin: 0;
     padding: 25px;

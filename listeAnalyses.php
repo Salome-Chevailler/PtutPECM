@@ -8,20 +8,25 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
         <link rel="icon" type="image/png" href="iconeCHIC.png">
-        <link rel="stylesheet" href="bootstrap.min.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="bootstrap.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="style.css" type="text/css" media="screen">
         <title>Consultation des erreurs médicamenteuses analysées au CREX</title>
     </head>
-    <body>
-        <div class="row justify-content-center">
-            <div class="header">
-                <h1>Consultation des erreurs médicamenteuses analysées au CREX</h1>
-            </div>
-            <div class="col-auto">
-                <a href="accueil.php"><input class="btn btn-outline-primary" type="submit" value="Retour"></a>
-            </div>
+
+    <header class="header">
+        <div class="logo-box">
+            <span class="logo">logo</span>
         </div>
-        <div>
+        <div class="text-title">
+            <h1 class="main-title">
+                <span class="heading-primary-main">Outil de déclaration et d'analyse des erreurs médicamenteuses</span>
+                <span class="heading-secondary">Consultation des erreurs médicamenteuses analysées au CREX</span>
+            </h1>
+        </div>
+        <a href="accueil.html" class="btn btn-white"> <img src="home.png" class="favicon" alt="homebutton"></a>
+    </header>
+
+    <body>
+        <div class="form-box">
         <!-- Formulaire pour le filtrage des événements -->
             <form method="POST">
                 <div class="md-auto">
