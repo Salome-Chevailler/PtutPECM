@@ -110,11 +110,11 @@
                 <div class="md-auto">
                     <label for="anonyme">Si non : </label>
                     <label for="nom">Nom :</label>
-                    <input type="text" id="nom" name="nom">
+                    <input type="text" id="nom" name="nom" autocomplete="off">
                     <label for="prenom">Prénom :</label>
-                    <input type="text" id="prenom" name="prenom">
+                    <input type="text" id="prenom" name="prenom" autocomplete="off">
                     <label for="fonction">Fonction :</label>
-                    <input type="text" id="fonction" name="fonction">
+                    <input type="text" id="fonction" name="fonction" autocomplete="off">
                 </div>
                 <!-- Date de la déclaration -->
                 <div class="md-auto">
@@ -297,7 +297,7 @@
                 <!-- Précisions sur le patient -->
                 <div class="md-auto">
                     <label for="precisions_patient">Précisions sur le patient :</label>
-                    <input type="text" id="precisions_patient" name="precisions_patient">
+                    <input type="text" id="precisions_patient" name="precisions_patient" autocomplete="off">
                 </div>
                 <!-- Médicament à risque -->
                 <div class="md-auto">
@@ -312,7 +312,7 @@
                 <!-- Précisions sur le médicament -->
                 <div class="md-auto">
                     <label for="precisions_medicament">Précisions sur le médicament :</label>
-                    <input type="text" id="precisions_medicament" name="precisions_medicament">
+                    <input type="text" id="precisions_medicament" name="precisions_medicament" autocomplete="off">
                 </div>
                 <!-- Classe du médicament --> 
                 <div class="md-auto">
@@ -334,7 +334,7 @@
                     <!-- Précisions -->
                     <div class="md-auto">
                         <label for="precisions">Précisions sur la voie d'administration :</label>
-                        <input type="text" id="precisions" name="precisions">
+                        <input type="text" id="precisions" name="precisions" autocomplete="off">
                     </div>
                 </div>
                 <!-- Degré de réalisation -->
@@ -369,7 +369,7 @@
                         <label for="Jenesaispas">Je ne sais pas</label>
                         <input type="radio" id="etape_circuit" name="etape_circuit" value="Autre" required>
                         <label for="Autre">Autre</label>  
-                        <input type="text" id="etape_circuit" name="autre2">   
+                        <input type="text" id="etape_circuit" name="autre2" autocomplete="off">   
                 </div>
 
                 <!-- A VOIR AVEC RAFIKA POUR TROUVER UNE FORMULATION -->

@@ -216,7 +216,7 @@
                 <!-- Précisions sur la voie d'administration -->
                 <div class="md-auto">
                     <label for="Precisions"><strong>Précisions sur la voie d'administration : </strong></label>
-                    <input type="text" id="administration_precisions2" name="administration_precisions2" value="<?php echo $administration_precisions ?>">
+                    <input type="text" id="administration_precisions2" name="administration_precisions2" autocomplete="off" value="<?php echo $administration_precisions ?>">
                 </div>
                 <!-- Patient à risque -->
                 <div class="md-auto">
@@ -249,7 +249,7 @@
                 <!-- Précisions sur le patient -->
                 <div class="md-auto">
                     <label for="precisions_patient"><strong>Précisions sur le patient : </strong></label>
-                    <input type="text" id="precisions_patient2" name="precisions_patient2" value="<?php echo $precisions_patient ?>">
+                    <input type="text" id="precisions_patient2" name="precisions_patient2" autocomplete="off" value="<?php echo $precisions_patient ?>">
                 </div>
                 <!-- Médicament à risque -->
                 <div class="md-auto">
@@ -282,7 +282,7 @@
                 <!-- Précisions sur le médicament -->
                 <div class="md-auto">
                     <label for="precisions_medicament"><strong>Précisions sur le médicament : </strong></label>
-                    <input type="text" id="precisions_medicament2" name="precisions_medicament2" value="<?php echo $precisions_medicament ?>">
+                    <input type="text" id="precisions_medicament2" name="precisions_medicament2" autocomplete="off" value="<?php echo $precisions_medicament ?>">
                 </div>
                 <!-- A faire quand on aura la liste des classes de médicament -->
                 <div class="md-auto">
@@ -427,7 +427,7 @@
                             echo '<label for="Jenesaispas">Je ne sais pas</label>';
                             echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Autre" required>';
                             echo '<label for="Autre">Autre</label>';  
-                            echo '<input type="text" id="etape_circuit" name="autre">';  
+                            echo '<input type="text" id="etape_circuit" autocomplete="off" name="autre">';  
                         } else if ($etape_circuit === "Dispensation"){
                             echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Prescription" required>';
                             echo '<label for="Prescription">Prescription</label>';
@@ -443,7 +443,7 @@
                             echo '<label for="Jenesaispas">Je ne sais pas</label>';
                             echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Autre" required>';
                             echo '<label for="Autre">Autre</label>';  
-                            echo '<input type="text" id="etape_circuit" name="autre">'; 
+                            echo '<input type="text" id="etape_circuit" autocomplete="off" name="autre">'; 
                         } else if ($etape_circuit === "Transport"){
                             echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Prescription" required>';
                             echo '<label for="Prescription">Prescription</label>';
@@ -459,7 +459,7 @@
                             echo '<label for="Jenesaispas">Je ne sais pas</label>';
                             echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Autre" required>';
                             echo '<label for="Autre">Autre</label>';  
-                            echo '<input type="text" id="etape_circuit" name="autre">'; 
+                            echo '<input type="text" id="etape_circuit" autocomplete="off" name="autre">'; 
                         } else if ($etape_circuit === "Administration"){
                             echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Prescription" required>';
                             echo '<label for="Prescription">Prescription</label>';
@@ -475,7 +475,7 @@
                             echo '<label for="Jenesaispas">Je ne sais pas</label>';
                             echo '<input type="radio" id="autre" name="etape_circuit" value="etape_circuit" required>';
                             echo '<label for="Autre">Autre</label>';  
-                            echo '<input type="text" id="etape_circuit" name="autre">';
+                            echo '<input type="text" id="etape_circuit" autocomplete="off" name="autre">';
                         } else if ($etape_circuit === "Suivi et réévaluation"){
                             echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Prescription" required>';
                             echo '<label for="Prescription">Prescription</label>';
@@ -491,7 +491,7 @@
                             echo '<label for="Jenesaispas">Je ne sais pas</label>';
                             echo '<input type="radio" id="autre" name="etape_circuit" value="etape_circuit" required>';
                             echo '<label for="Autre">Autre</label>';  
-                            echo '<input type="text" id="etape_circuit" name="autre">'; 
+                            echo '<input type="text" id="etape_circuit" autocomplete="off" name="autre">'; 
                         } else if ($etape_circuit === "Je ne sais pas"){
                             echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Prescription" required>';
                             echo '<label for="Prescription">Prescription</label>';
@@ -507,7 +507,7 @@
                             echo '<label for="Jenesaispas">Je ne sais pas</label>';
                             echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Autre" required>';
                             echo '<label for="Autre">Autre</label>';  
-                            echo '<input type="text" id="etape_circuit" name="autre">'; 
+                            echo '<input type="text" id="etape_circuit" autocomplete="off" name="autre">'; 
                         } else {
                             echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Prescription" required>';
                             echo '<label for="Prescription">Prescription</label>';
@@ -523,7 +523,7 @@
                             echo '<label for="Jenesaispas">Je ne sais pas</label>';
                             echo '<input type="radio" id="etape_circuit" name="etape_circuit" value="Autre" required checked="checked">';
                             echo '<label for="Autre">Autre</label>';  
-                            echo '<input type="text" id="etape_circuit" name="autre" value="'.$etape_circuit.'">'; 
+                            echo '<input type="text" id="etape_circuit" autocomplete="off" name="autre" value="'.$etape_circuit.'">'; 
                         }
                         ?>                  
                     </div>

@@ -26,6 +26,7 @@
             <form method="POST">
                 <div class="md-auto">
                     <!-- Filtrage par date -->
+                    <br>
                     <label class="col-auto ml-2" for="date">Choisir une période : du</label>
                     <input class="col-auto nom mr-2" type="date" name="dateDebut">
                     <label class="col-auto mr-2">au</label>
@@ -44,16 +45,26 @@
                             echo "<option>",utf8_encode(implode("",$row)),"</option>";
                         }
                         ?>
-                    </select>     
+                    </select>  
+                    <!-- Bouton lançant la recherche -->        
+                    <input class="btn btn-outline-primary" type="submit" name="Rechercher" value="Rechercher">   
                 </div>   
+                <div class="md-auto">
+                    <br>
+                    <label class="col-auto ml-2"><strong>Filtrer les événements déclarés avec plus de précision :</strong></label>
+                </div>
                 <div class="md-auto">
                     <!-- Filtrage par médicament à risque -->
                     <label class="col-auto ml-2">Médicament à risque : </label>
                     <input type="checkbox" id="tri_medicament_risque" name="tri_medicament_risque">Oui</input>
+                </div>
+                <div class="md-auto">
                     <!-- Filtrage par classe de médicament -->
                     <label class="col-auto ml-2">Classe du médicament : </label>
                     <select name="tri_classe" size="1">
                     </select>
+                </div>
+                <div class="md-auto">
                     <!-- Filtrage par degré -->
                     <label class="col-auto ml-2">Degré de réalisation : </label>
                     <select name="tri_degre" size="1">
@@ -74,9 +85,13 @@
                         <option>Administration</option>
                         <option>Suivi et réévaluation</option>
                     </select>
+                </div>
+                <div class="md-auto">
                     <!-- Filtrage par never event -->
                     <label class="col-auto ml-2">Never event : </label>
                     <input type="checkbox" id="tri_neverevent" name="tri_neverevent">Oui</input>
+                </div>
+                <div class="col-2">
                      <!-- Bouton lançant la recherche -->        
                      <input class="btn btn-outline-primary" type="submit" name="Rechercher" value="Rechercher">
                 </div>
@@ -153,8 +168,8 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-auto">
+        <!-- <div class="col-auto">
                 <a href="tableauPriorisation.php"><input class="btn btn-outline-primary" type="submit" value="Tableau de bord"></a>
-        </div>
+        </div>-->
     </body>
 </html>
