@@ -22,7 +22,7 @@
                 <span class="heading-secondary">Consultation des erreurs médicamenteuses analysées au CREX</span>
             </h1>
         </div>
-        <a href="accueil.html" class="btn btn-white"> <img src="home.png" class="favicon" alt="homebutton"></a>
+        <a href="accueil.php" class="btn btn-white"> <img src="home.png" class="favicon" alt="homebutton"></a>
     </header>
 
     <body>

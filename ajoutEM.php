@@ -97,7 +97,7 @@ if (isset($_POST['nouvelEvenement'])) {
             <span class="heading-secondary">Déclarer une erreur médicamenteuse</span>
         </h1>
     </div>
-    <a href="accueil.html" class="btn btn-white" type="submit" value="home"> <img src="home.png" class="favicon"
+    <a href="accueil.php" class="btn btn-white" type="submit" value="home"> <img src="home.png" class="favicon"
                                                                                   alt="homebutton"></a>
 </header>
 
