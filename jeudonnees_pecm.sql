@@ -50,6 +50,7 @@ INSERT INTO NEVEREVENT(NOM) VALUES ('NE10');
 INSERT INTO NEVEREVENT(NOM) VALUES ('NE11');
 INSERT INTO NEVEREVENT(NOM) VALUES ('NE12');
 
+/*
 -- INSERTING into FACTEUR
 INSERT INTO FACTEUR(CATEGORIE,LIBELLE) VALUES ('Patient', 'L''état de santé du patient est-il complexe, grave ?');
 INSERT INTO FACTEUR(CATEGORIE,LIBELLE) VALUES ('Patient', 'L''EI est-il survenu dans un contexte de prise en charge en urgence ?');
@@ -103,3 +104,4 @@ INSERT INTO FACTEUR(CATEGORIE,LIBELLE) VALUES ('Institutionnel','Peut-on relever
 INSERT INTO FACTEUR(CATEGORIE,LIBELLE) VALUES ('Institutionnel','La sécurité et gestion des risques ne sont-elles pas perçues comme des objectifs importants ?');
 INSERT INTO FACTEUR(CATEGORIE,LIBELLE) VALUES ('Institutionnel','La culture du signalement des EI et de propositions de corrections est-elle inexistante ou défectueuse ?');
 INSERT INTO FACTEUR(CATEGORIE,LIBELLE) VALUES ('Institutionnel','Le contexte social était-il difficile ?');
+*/

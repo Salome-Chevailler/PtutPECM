@@ -314,19 +314,19 @@
                 <!-- Classe du médicament --> 
                 <div class="md-auto">
                     <label for="medicament_classe">Catégorie du médicament à risque :</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="1" required>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="1">
                     <label for="1">1</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="2" required>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="2">
                     <label for="2">2</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="3" required>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="3" >
                     <label for="3">3</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="4" required>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="4" >
                     <label for="4">4</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="5" required>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="5" >
                     <label for="5">5</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="6" required>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="6" >
                     <label for="6">6</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="7" required>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="7" >
                     <label for="7">7</label>
                 </div>
                 <!-- Nom du médicament -->
