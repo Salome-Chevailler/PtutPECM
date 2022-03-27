@@ -61,19 +61,19 @@
                 <div class="md-auto">
                     <!-- Filtrage par classe de médicament -->
                     <label class="col-auto ml-2">Classe du médicament à risque :</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="1" required>
+                    <input type="checkbox" id="1" name="1">
                     <label for="1">1</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="2" required>
+                    <input type="checkbox" id="2" name="2">
                     <label for="2">2</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="3" required>
+                    <input type="checkbox" id="3" name="3">
                     <label for="3">3</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="4" required>
+                    <input type="checkbox" id="4" name="4">
                     <label for="4">4</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="5" required>
+                    <input type="checkbox" id="5" name="5">
                     <label for="5">5</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="6" required>
+                    <input type="checkbox" id="6" name="6">
                     <label for="6">6</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="7" required>
+                    <input type="checkbox" id="7" name="7">
                     <label for="7">7</label>
                 </div>
                 <div class="md-auto">
@@ -101,7 +101,30 @@
                 <div class="md-auto">
                     <!-- Filtrage par never event -->
                     <label class="col-auto ml-2">Never event : </label>
-                    <input type="checkbox" id="tri_neverevent" name="tri_neverevent">Oui</input>
+                    <input type="checkbox" id="1" name="1">
+                    <label for="1">NE1</label>
+                    <input type="checkbox" id="2" name="2">
+                    <label for="2">NE2</label>
+                    <input type="checkbox" id="3" name="3">
+                    <label for="3">NE3</label>
+                    <input type="checkbox" id="4" name="4">
+                    <label for="4">NE4</label>
+                    <input type="checkbox" id="5" name="5">
+                    <label for="5">NE5</label>
+                    <input type="checkbox" id="6" name="6">
+                    <label for="6">NE6</label>
+                    <input type="checkbox" id="7" name="7">
+                    <label for="7">NE7</label>
+                    <input type="checkbox" id="8" name="8">
+                    <label for="8">NE8</label>
+                    <input type="checkbox" id="9" name="9">
+                    <label for="9">NE9</label>
+                    <input type="checkbox" id="10" name="10">
+                    <label for="10">NE10</label>
+                    <input type="checkbox" id="11" name="11">
+                    <label for="11">NE11</label>
+                    <input type="checkbox" id="12" name="12">
+                    <label for="12">NE12</label>
                 </div>
                 <div class="col-2">
                      <!-- Bouton lançant la recherche -->        

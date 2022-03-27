@@ -62,11 +62,11 @@
         $nom = $_POST['nom'];
         $prenom = $_POST['prenom'];
         $fonction = $_POST['fonction'];
-        //$medicament_classe = $_POST['medicament_classe'];
+        $medicament_classe = $_POST['medicament_classe'];
 
         // Création d'un nouvel événement dans la base à partir des données entrées dans le formulaire
-        $insertEvenement="INSERT INTO evenement(date_declaration,date_em,details,est_neverevent,patient_risque,departement,medicament_risque,administration_risque,administration_precisions,consequences,precisions_patient,precisions_medicament,degre_realisation,etape_circuit,est_analyse,anonyme,nom,prenom,fonction,/*medicament_classe, */numero) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        $values=array($date_declaration,$date,$details,$est_neverevent,$patient_risque,$departement,$medicament_risque,$administration_risque,$precisions,$consequences,$precisions_patient,$precisions_medicament,$degre,$etape,0,$anonyme,$nom,$prenom,$fonction,/*$medicament_classe*/$numero);
+        $insertEvenement="INSERT INTO evenement(date_declaration,date_em,details,est_neverevent,patient_risque,departement,medicament_risque,administration_risque,administration_precisions,consequences,precisions_patient,precisions_medicament,degre_realisation,etape_circuit,est_analyse,anonyme,nom,prenom,fonction,medicament_classe,numero) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $values=array($date_declaration,$date,$details,$est_neverevent,$patient_risque,$departement,$medicament_risque,$administration_risque,$precisions,$consequences,$precisions_patient,$precisions_medicament,$degre,$etape,0,$anonyme,$nom,$prenom,$fonction,$medicament_classe,$numero);
         $stmt=sqlsrv_query($conn,$insertEvenement,$values);
         if( $stmt === false ) {
             die( print_r( sqlsrv_errors(), true));
@@ -314,19 +314,19 @@
                 <!-- Classe du médicament --> 
                 <div class="md-auto">
                     <label for="medicament_classe">Catégorie du médicament à risque :</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="1">
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="1" required>
                     <label for="1">1</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="2">
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="2" required>
                     <label for="2">2</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="3" >
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="3" required >
                     <label for="3">3</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="4" >
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="4" required >
                     <label for="4">4</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="5" >
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="5" required>
                     <label for="5">5</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="6" >
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="6" required>
                     <label for="6">6</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="7" >
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="7" required>
                     <label for="7">7</label>
                 </div>
                 <!-- Nom du médicament -->

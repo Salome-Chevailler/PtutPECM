@@ -48,7 +48,7 @@
         $prem_actions = $_POST['prem_actions'];
         $medicament_risque2 = $_POST['medicament_risque2'];
         $precisions_medicament2 = $_POST['precisions_medicament2'];
-        //$medicament_classe2 = $_POST['medicament_classe2'];
+        $medicament_classe2 = $_POST['medicament_classe'];
         $medicament_type = $_POST['medicament_type'];
         if (!empty($_POST['est_refrigere'])) {
             $est_refrigere = $_POST['est_refrigere'];
@@ -79,7 +79,7 @@
         $defaillance = $_POST['defaillance'];
 
         // Modification de l'événement à partir des données entrées dans le formulaire
-        $updateEvenement="UPDATE evenement SET details='".$details2."',consequences='".$consequences2."',justification='".$justification."',prem_actions='".$prem_actions."',medicament_risque='".$medicament_risque2."',precisions_medicament='".$precisions_medicament2."',medicament_type='".$medicament_type."',patient_risque='".$patient_risque2."',precisions_patient='".$precisions_patient2."',administration_risque='".$administration_risque2."',est_analyse=1,est_refrigere='".$est_refrigere."',administration_precisions='".$administration_precisions2."',est_neverevent='".$neverevent2."',degre_realisation='".$degre2."',etape_circuit='".$etape2."',defaillance='".$defaillance."' WHERE numero=".$numero."";
+        $updateEvenement="UPDATE evenement SET details='".$details2."',consequences='".$consequences2."',justification='".$justification."',prem_actions='".$prem_actions."',medicament_risque='".$medicament_risque2."',precisions_medicament='".$precisions_medicament2."',medicament_type='".$medicament_type."',patient_risque='".$patient_risque2."',precisions_patient='".$precisions_patient2."',administration_risque='".$administration_risque2."',est_analyse=1,est_refrigere='".$est_refrigere."',administration_precisions='".$administration_precisions2."',est_neverevent='".$neverevent2."',degre_realisation='".$degre2."',etape_circuit='".$etape2."',defaillance='".$defaillance."',medicament_classe='".$medicament_classe2."' WHERE numero=".$numero."";
         $stmt=sqlsrv_query($conn,$updateEvenement);
         if( $stmt === false ) {
             die( print_r( sqlsrv_errors(), true));
@@ -219,9 +219,115 @@
                     </div>
                     <!-- Classe du médicament --> 
                     <div class="md-auto">
-                        <label for="medicament_classe2">Classe du médicament :</label>
-                        <select name="medicament_classe2" size="1">
-                        </select>
+                        <label for="medicament_classe">Catégorie du médicament à risque :</label>
+                    <?php
+                        if ($medicament_classe==="1"){
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="1" checked="checked" required>';
+                            echo '<label for="1">1</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="2" required>';
+                            echo '<label for="2">2</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="3" required>';
+                            echo '<label for="3">3</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="4" required>';
+                            echo '<label for="4">4</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="5" required>';
+                            echo '<label for="5">5</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="6" required>';
+                            echo '<label for="6">6</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="7" required>';
+                            echo '<label for="7">7</label>';
+                        } else if ($medicament_classe==="2"){
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="1" required>';
+                            echo '<label for="1">1</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="2" required checked="checked">';
+                            echo '<label for="2">2</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="3" required>';
+                            echo '<label for="3">3</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="4" required>';
+                            echo '<label for="4">4</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="5" required>';
+                            echo '<label for="5">5</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="6" required>';
+                            echo '<label for="6">6</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="7" required>';
+                            echo '<label for="7">7</label>';
+                        } else if ($medicament_classe==="3"){
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="1" required>';
+                            echo '<label for="1">1</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="2" required>';
+                            echo '<label for="2">2</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="3" required checked="checked">';
+                            echo '<label for="3">3</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="4" required>';
+                            echo '<label for="4">4</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="5" required>';
+                            echo '<label for="5">5</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="6" required>';
+                            echo '<label for="6">6</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="7" required>';
+                            echo '<label for="7">7</label>';
+                        } else if ($medicament_classe==="4"){
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="1" required>';
+                            echo '<label for="1">1</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="2" required>';
+                            echo '<label for="2">2</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="3" required>';
+                            echo '<label for="3">3</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="4" required checked="checked">';
+                            echo '<label for="4">4</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="5" required>';
+                            echo '<label for="5">5</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="6" required>';
+                            echo '<label for="6">6</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="7" required>';
+                            echo '<label for="7">7</label>';
+                        } else if ($medicament_classe==="5"){
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="1" required>';
+                            echo '<label for="1">1</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="2" required>';
+                            echo '<label for="2">2</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="3" required>';
+                            echo '<label for="3">3</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="4" required >';
+                            echo '<label for="4">4</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="5" required checked="checked">';
+                            echo '<label for="5">5</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="6" required>';
+                            echo '<label for="6">6</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="7" required>';
+                            echo '<label for="7">7</label>';
+                        } else if ($medicament_classe==="6"){
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="1" required>';
+                            echo '<label for="1">1</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="2" required>';
+                            echo '<label for="2">2</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="3" required>';
+                            echo '<label for="3">3</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="4" required >';
+                            echo '<label for="4">4</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="5" required>';
+                            echo '<label for="5">5</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="6" required checked="checked">';
+                            echo '<label for="6">6</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="7" required>';
+                            echo '<label for="7">7</label>';
+                        } else {
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="1" required>';
+                            echo '<label for="1">1</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="2" required>';
+                            echo '<label for="2">2</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="3" required>';
+                            echo '<label for="3">3</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="4" required >';
+                            echo '<label for="4">4</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="5" required>';
+                            echo '<label for="5">5</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="6" required>';
+                            echo '<label for="6">6</label>';
+                            echo '<input type="radio" id="medicament_classe" name="medicament_classe" value="7" required checked="checked">';
+                            echo '<label for="7">7</label>';
+                        }
+                    ?>
                     </div>
                     <div class="md-auto">
                         <label for="medicament">Elle concerne :</label>
