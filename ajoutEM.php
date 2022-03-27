@@ -292,11 +292,12 @@
                     <input type="radio" id="patient_risque" name="patient_risque" value="Non" required>
                     <label for="Non">Non</label> 
                     <input type="radio" id="patient_risque" name="patient_risque" value="Je ne sais pas" required>
-                    <label for="Jenesaispas">Je ne sais pas</label>       
+                    <label for="Jenesaispas">Je ne sais pas</label>      
+                    <a href="" target="_blank">Cliquez pour consulter les patients à risque</a> 
                 </div>
                 <!-- Précisions sur le patient -->
                 <div class="md-auto">
-                    <label for="precisions_patient">Précisions sur le patient :</label>
+                    <label for="precisions_patient">Commentaires sur l'état du patient :</label>
                     <input type="text" id="precisions_patient" name="precisions_patient" autocomplete="off">
                 </div>
                 <!-- Médicament à risque -->
@@ -307,18 +308,31 @@
                     <input type="radio" id="medicament_risque" name="medicament_risque" value="Non" required>
                     <label for="Non">Non</label> 
                     <input type="radio" id="medicament_risque" name="medicament_risque" value="Je ne sais pas" required>
-                    <label for="Jenesaispas">Je ne sais pas</label>       
-                </div>
-                <!-- Précisions sur le médicament -->
-                <div class="md-auto">
-                    <label for="precisions_medicament">Précisions sur le médicament :</label>
-                    <input type="text" id="precisions_medicament" name="precisions_medicament" autocomplete="off">
+                    <label for="Jenesaispas">Je ne sais pas</label>      
+                    <a href="medicaments_risque.pdf" target="_blank">Cliquez pour consulter les médicaments à risque</a>  
                 </div>
                 <!-- Classe du médicament --> 
                 <div class="md-auto">
-                    <label for="medicament_classe">Classe du médicament :</label>
-                    <select name="medicament_classe" size="1">
-                    </select>
+                    <label for="medicament_classe">Catégorie du médicament à risque :</label>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="1" required>
+                    <label for="1">1</label>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="2" required>
+                    <label for="2">2</label>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="3" required>
+                    <label for="3">3</label>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="4" required>
+                    <label for="4">4</label>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="5" required>
+                    <label for="5">5</label>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="6" required>
+                    <label for="6">6</label>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="7" required>
+                    <label for="7">7</label>
+                </div>
+                <!-- Nom du médicament -->
+                <div class="md-auto">
+                    <label for="precisions_medicament">Nom du médicament :</label>
+                    <input type="text" id="precisions_medicament" name="precisions_medicament" autocomplete="off">
                 </div>
                 <!-- Voie d'administration à risque -->
                 <div class="md-auto">
@@ -329,25 +343,27 @@
                         <input type="radio" id="administration_risque" name="administration_risque" value="Non" required>
                         <label for="Non">Non</label> 
                         <input type="radio" id="administration_risque" name="administration_risque" value="Je ne sais pas" required>
-                        <label for="Jenesaispas">Je ne sais pas</label>   
+                        <label for="Jenesaispas">Je ne sais pas</label>  
+                        <a href="" target="_blank">Cliquez pour consulter les voies d'administration à risque</a>  
                     </div>    
                     <!-- Précisions -->
                     <div class="md-auto">
-                        <label for="precisions">Précisions sur la voie d'administration :</label>
+                        <label for="precisions">Commentaires sur la voie d'administration :</label>
                         <input type="text" id="precisions" name="precisions" autocomplete="off">
                     </div>
                 </div>
                 <!-- Degré de réalisation -->
                 <div class="md-auto">
                         <label for="degre">Degré de réalisation :</label>
-                        <input type="radio" id="degre_realisation" name="degre_realisation" value="EM a atteint le patient" required>
-                        <label for="EM a atteint le patient">EM a atteint le patient</label>
-                        <input type="radio" id="degre_realisation" name="degre_realisation" value="EM a été interceptée" required>
-                        <label for="EM a été interceptée">EM a été interceptée</label> 
+                        <input type="radio" id="degre_realisation" name="degre_realisation" value="Erreur médicamenteuse a atteint le patient" required>
+                        <label for="Erreur médicamenteuse a atteint le patient">Erreur médicamenteuse a atteint le patient</label>
+                        <input type="radio" id="degre_realisation" name="degre_realisation" value="Erreur médicamenteuse a été interceptée" required>
+                        <label for="Erreur médicamenteuse a été interceptée">Erreur médicamenteuse a été interceptée</label> 
                         <input type="radio" id="degre_realisation" name="degre_realisation" value="Evénement porteur de risque (EPR)" required>
                         <label for="Evénement porteur de risque (EPR)">Evénement porteur de risque (EPR)</label> 
                         <input type="radio" id="degre_realisation" name="degre_realisation" value="Je ne sais pas" required>
                         <label for="Jenesaispas">Je ne sais pas</label>  
+                        <a href="" target="_blank">Cliquez pour avoir des précisions</a> 
                 </div>
                 <!-- Etape de survenue dans le circuit médicament -->
                 <div class="md-auto">

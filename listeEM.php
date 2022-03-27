@@ -60,17 +60,29 @@
                 </div>
                 <div class="md-auto">
                     <!-- Filtrage par classe de médicament -->
-                    <label class="col-auto ml-2">Classe du médicament : </label>
-                    <select name="tri_classe" size="1">
-                    </select>
+                    <label class="col-auto ml-2">Classe du médicament à risque :</label>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="1" required>
+                    <label for="1">1</label>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="2" required>
+                    <label for="2">2</label>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="3" required>
+                    <label for="3">3</label>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="4" required>
+                    <label for="4">4</label>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="5" required>
+                    <label for="5">5</label>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="6" required>
+                    <label for="6">6</label>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="7" required>
+                    <label for="7">7</label>
                 </div>
                 <div class="md-auto">
                     <!-- Filtrage par degré -->
                     <label class="col-auto ml-2">Degré de réalisation : </label>
                     <select name="tri_degre" size="1">
                         <option></option>
-                        <option>EM a atteint le patient</option>
-                        <option>EM a été interceptée</option>
+                        <option>Erreur médicamenteuse a atteint le patient</option>
+                        <option>Erreur médicamenteuse a été interceptée</option>
                         <option>Evénement porteur de risque (EPR)</option>
                     </select>
                 </div>
@@ -107,17 +119,17 @@
                         <th class="col-md-1">Etape</th>
                         <th class="col-md-1">Degré</th>
                         <th class="col-md-2">Médicament à risque</th>
-                        <th class="col-md-2">Classe du médicament</th>
+                        <th class="col-md-2">Nom du médicament</th>
                         <th class="col-md-1">Never-event</th>
                         <th class="col-md-2">Description</th>
-                        <th class="col-md-2">Conséquences</th>
+                        <th class="col-md-2">Impact</th>
                         <th class="col-md-2">Consulter/Analyser</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                         // Récupération des événements déclarés à afficher dans le tableau
-                        $sql = "SELECT numero, d.nom as departement, date_EM, patient_risque, medicament_risque, administration_risque, details, est_analyse, consequences, est_neverevent, numero, etape_circuit, degre_realisation, medicament_classe FROM evenement e JOIN departement d ON e.departement=d.id WHERE est_analyse=0 OR est_analyse=''";
+                        $sql = "SELECT numero, d.nom as departement, date_EM, patient_risque, medicament_risque, administration_risque, details, est_analyse, consequences, est_neverevent, numero, etape_circuit, degre_realisation, precisions_medicament FROM evenement e JOIN departement d ON e.departement=d.id WHERE est_analyse=0 OR est_analyse=''";
                         $params = array();
                         $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
                         $stmt = sqlsrv_query( $conn, $sql, $params, $options);
@@ -147,7 +159,7 @@
                             $numero = sqlsrv_get_field($stmt, 10);
                             $etape = sqlsrv_get_field($stmt, 11);
                             $degre = sqlsrv_get_field($stmt, 12);
-                            $medicament_classe = sqlsrv_get_field($stmt, 13);
+                            $precisions_medicament = sqlsrv_get_field($stmt, 13);
 
                             echo '<tr>';
                             echo "<td>$numero</td>";
@@ -156,7 +168,7 @@
                             echo "<td>$etape</td>";
                             echo "<td>$degre</td>";
                             echo "<td>$medicament_risque</td>";
-                            echo "<td>$medicament_classe</td>";
+                            echo "<td>$precisions_medicament</td>";
                             echo "<td>$neverevent</td>";
                             echo "<td>$details</td>";
                             echo "<td>$consequences</td>";

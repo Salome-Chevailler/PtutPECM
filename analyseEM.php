@@ -374,38 +374,38 @@
                     <div class="md-auto">
                             <label for="degre">Degré de réalisation :</label>
                             <?php 
-                            if ($degre === "EM a atteint le patient"){
-                                echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="EM a atteint le patient" required checked="checked">';
-                                echo '<label for="EM a atteint le patient">EM a atteint le patient</label>';
-                                echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="EM a été interceptée" required>';
-                                echo '<label for="EM a été interceptée">EM a été interceptée</label>';
+                            if ($degre === "Erreur médicamenteuse a atteint le patient"){
+                                echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="Erreur médicamenteuse a atteint le patient" required checked="checked">';
+                                echo '<label for="Erreur médicamenteuse a atteint le patient">Erreur médicamenteuse a atteint le patient</label>';
+                                echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="Erreur médicamenteuse a été interceptée" required>';
+                                echo '<label for="Erreur médicamenteuse a été interceptée">Erreur médicamenteuse a été interceptée</label>';
                                 echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="Evénement porteur de risque (EPR)" required>';
                                 echo '<label for="Evénement porteur de risque (EPR)">Evénement porteur de risque (EPR)</label>';
                                 echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="Je ne sais pas" required>';
                                 echo '<label for="Jenesaispas">Je ne sais pas</label>'; 
-                            } else if ($degre === "EM a été interceptée"){
-                                echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="EM a atteint le patient" required>';
-                                echo '<label for="EM a atteint le patient">EM a atteint le patient</label>';
-                                echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="EM a été interceptée" required checked="checked">';
-                                echo '<label for="EM a été interceptée">EM a été interceptée</label>';
+                            } else if ($degre === "Erreur médicamenteuse a été interceptée"){
+                                echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="Erreur médicamenteuse a atteint le patient" required>';
+                                echo '<label for="Erreur médicamenteuse a atteint le patient">Erreur médicamenteuse a atteint le patient</label>';
+                                echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="Erreur médicamenteuse a été interceptée" required checked="checked">';
+                                echo '<label for="Erreur médicamenteuse a été interceptée">Erreur médicamenteuse a été interceptée</label>';
                                 echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="Evénement porteur de risque (EPR)" required>';
                                 echo '<label for="Evénement porteur de risque (EPR)">Evénement porteur de risque (EPR)</label>';
                                 echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="Je ne sais pas" required>';
                                 echo '<label for="Jenesaispas">Je ne sais pas</label>'; 
                             } else if ($degre === "Evénement porteur de risque (EPR)"){
-                                echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="EM a atteint le patient" required>';
-                                echo '<label for="EM a atteint le patient">EM a atteint le patient</label>';
-                                echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="EM a été interceptée" required>';
-                                echo '<label for="EM a été interceptée">EM a été interceptée</label>';
+                                echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="Erreur médicamenteuse a atteint le patient" required>';
+                                echo '<label for="Erreur médicamenteuse a atteint le patient">Erreur médicamenteuse a atteint le patient</label>';
+                                echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="Erreur médicamenteuse a été interceptée" required>';
+                                echo '<label for="Erreur médicamenteuse a été interceptée">Erreur médicamenteuse a été interceptée</label>';
                                 echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="Evénement porteur de risque (EPR)" required checked="checked">';
                                 echo '<label for="Evénement porteur de risque (EPR)">Evénement porteur de risque (EPR)</label>';
                                 echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="Je ne sais pas" required>';
                                 echo '<label for="Jenesaispas">Je ne sais pas</label>'; 
                             } else {
-                                echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="EM a atteint le patient" required>';
-                                echo '<label for="EM a atteint le patient">EM a atteint le patient</label>';
-                                echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="EM a été interceptée" required>';
-                                echo '<label for="EM a été interceptée">EM a été interceptée</label>';
+                                echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="Erreur médicamenteuse a atteint le patient" required>';
+                                echo '<label for="Erreur médicamenteuse a atteint le patient">Erreur médicamenteuse a atteint le patient</label>';
+                                echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="Erreur médicamenteuse a été interceptée" required>';
+                                echo '<label for="Erreur médicamenteuse a été interceptée">Erreur médicamenteuse a été interceptée</label>';
                                 echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="Evénement porteur de risque (EPR)" required>';
                                 echo '<label for="Evénement porteur de risque (EPR)">Evénement porteur de risque (EPR)</label>';
                                 echo '<input type="radio" id="degre_realisation" name="degre_realisation" value="Je ne sais pas" required checked="checked">';
@@ -1292,15 +1292,17 @@
                     <thead>
                         <tr>
                             <th>Cause latente</th>
+                            <th>Action préventive</th>
                             <th>Action corrective</th>
                             <th>Effet attendu</th>
+                            <th>Pilotes</th>
                             <th>Echéance prévue</th>
                             <th>Echéance effective</th>
-                            <th>Pilotes</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
+                            <td contenteditable="true">A compléter</td>
                             <td contenteditable="true">A compléter</td>
                             <td contenteditable="true">A compléter</td>
                             <td contenteditable="true">A compléter</td>
