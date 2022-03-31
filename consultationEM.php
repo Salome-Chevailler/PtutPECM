@@ -7,7 +7,7 @@
     $analyse = trim($_GET['analyse']);
     
     // On récupère les infos correspondantes
-    $sql = "SELECT date_EM, d.nom as departement, details, administration_risque, administration_precisions, patient_risque, medicament_risque, est_neverevent, date_declaration, d.risque, consequences, precisions_patient, precisions_medicament, degre_realisation, etape_circuit, anonyme, e.nom, prenom, fonction, medicament_classe FROM evenement e JOIN departement d ON e.departement=d.id WHERE e.numero='$numero'";
+    $sql = "SELECT date_EM, d.nom as departement, details, administration_risque, administration_precisions, patient_risque, medicament_risque, est_neverevent, date_declaration, d.risque, consequences, precisions_patient, precisions_medicament, degre_realisation, etape_circuit, anonyme, e.nom, prenom, fonction, medicament_classe, categorie_patient, categorie_administration FROM evenement e JOIN departement d ON e.departement=d.id WHERE e.numero='$numero'";
     $stmt = sqlsrv_query( $conn, $sql);
     if( $stmt === false ) {
         die( print_r( sqlsrv_errors(), true));
@@ -47,6 +47,8 @@
     $prenom = sqlsrv_get_field($stmt, 17);
     $fonction = sqlsrv_get_field($stmt, 18);
     $medicament_classe = sqlsrv_get_field($stmt, 19);
+    $categorie_patient = sqlsrv_get_field($stmt, 20);
+    $categorie_administration = sqlsrv_get_field($stmt, 21);
 ?>
 
 <!DOCTYPE html> 
@@ -96,6 +98,11 @@
                 <label class="col-6" for="patient_risque"><strong>S'agit-il d'un patient à risque ? </strong><?php echo $patient_risque ?></label>
                 <label class="col-6" for="precisions"><strong>Commentaires : </strong><?php echo $precisions_patient ?></label>
             </div>
+            <!-- Catégorie du patient -->
+            <div class="row mb-1">
+                <label class="col-6" for="categorie_patient"><strong>Catégorie du patient à risque : </strong><?php echo $categorie_patient ?></label>
+                <a class="col-6" href="patients_risque.pdf" target="_blank">Cliquez pour consulter les patients à risque</a> 
+            </div>
             <!-- Médicament à risque -->
             <div class="row mb-1">
                 <label class="col-6" for="medicament_risque"><strong>S'agit-il d'un médicament à risque ? </strong><?php echo $medicament_risque ?></label>
@@ -103,13 +110,18 @@
             </div>
             <!-- Classe du médicament -->
             <div class="row mb-1">
-                <label class="col-6" for="medicament_classe"><strong>Classe du médicament : </strong><?php echo $medicament_classe ?></label>
+                <label class="col-6" for="medicament_classe"><strong>Catégorie du médicament à risque : </strong><?php echo $medicament_classe ?></label>
                 <a class="col-6" href="medicaments_risque.pdf" target="_blank">Cliquez pour consulter les médicaments à risque</a> 
             </div>
             <!-- Voie d'administration à risque -->
             <div class="row mb-1">
                 <label class="col-6" for="administration_risque"><strong>S'agit-il d'une voie d'administration à risque ? </strong><?php echo $administration_risque ?></label>
                 <label class="col-6" for="precisions"><strong>Commentaires : </strong><?php echo $administration_precisions ?></label>
+            </div>
+            <!-- Catégorie de la voie d'administration -->
+            <div class="row mb-1">
+                <label class="col-6" for="categorie_administration"><strong>Catégorie de la voie d'administration à risque : </strong><?php echo $categorie_administration ?></label>
+                <a class="col-6" href="administration_risque.pdf" target="_blank">Cliquez pour consulter les voies d'administration à risque</a> 
             </div>
             <!-- Degré de réalisation et étape -->
             <div class="row mb-1">

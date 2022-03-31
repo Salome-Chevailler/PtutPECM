@@ -62,11 +62,26 @@
         $nom = $_POST['nom'];
         $prenom = $_POST['prenom'];
         $fonction = $_POST['fonction'];
-        $medicament_classe = $_POST['medicament_classe'];
+        if (isset($_POST['medicament_classe'])){
+            $medicament_classe = $_POST['medicament_classe'];
+        } else {
+            $medicament_classe = "";
+        }
+        if (isset($_POST['categorie_patient'])){
+            $categorie_patient = $_POST['categorie_patient'];
+        } else {
+            $categorie_patient = "";
+        }
+        if (isset($_POST['categorie_administration'])){
+            $categorie_administration = $_POST['categorie_administration'];
+        } else {
+            $categorie_administration = "";
+        }
+        
 
         // Création d'un nouvel événement dans la base à partir des données entrées dans le formulaire
-        $insertEvenement="INSERT INTO evenement(date_declaration,date_em,details,est_neverevent,patient_risque,departement,medicament_risque,administration_risque,administration_precisions,consequences,precisions_patient,precisions_medicament,degre_realisation,etape_circuit,est_analyse,anonyme,nom,prenom,fonction,medicament_classe,numero) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        $values=array($date_declaration,$date,$details,$est_neverevent,$patient_risque,$departement,$medicament_risque,$administration_risque,$precisions,$consequences,$precisions_patient,$precisions_medicament,$degre,$etape,0,$anonyme,$nom,$prenom,$fonction,$medicament_classe,$numero);
+        $insertEvenement="INSERT INTO evenement(date_declaration,date_em,details,est_neverevent,patient_risque,departement,medicament_risque,administration_risque,administration_precisions,consequences,precisions_patient,precisions_medicament,degre_realisation,etape_circuit,est_analyse,anonyme,nom,prenom,fonction,medicament_classe,numero,categorie_patient,categorie_administration) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $values=array($date_declaration,$date,$details,$est_neverevent,$patient_risque,$departement,$medicament_risque,$administration_risque,$precisions,$consequences,$precisions_patient,$precisions_medicament,$degre,$etape,0,$anonyme,$nom,$prenom,$fonction,$medicament_classe,$numero,$categorie_patient,$categorie_administration);
         $stmt=sqlsrv_query($conn,$insertEvenement,$values);
         if( $stmt === false ) {
             die( print_r( sqlsrv_errors(), true));
@@ -293,7 +308,19 @@
                     <label for="Non">Non</label> 
                     <input type="radio" id="patient_risque" name="patient_risque" value="Je ne sais pas" required>
                     <label for="Jenesaispas">Je ne sais pas</label>      
-                    <a href="" target="_blank">Cliquez pour consulter les patients à risque</a> 
+                    <a href="patients_risque.pdf" target="_blank">Cliquez pour consulter les patients à risque</a> 
+                </div>
+                <!-- Catégorie du patient à risque -->
+                <div class="md-auto">
+                    <label for="categorie_patient">Si oui, précisez la catégorie :</label>
+                    <input type="radio" id="categorie_patient" name="categorie_patient" value="1">
+                    <label for="1">1</label>
+                    <input type="radio" id="categorie_patient" name="categorie_patient" value="2">
+                    <label for="2">2</label> 
+                    <input type="radio" id="categorie_patient" name="categorie_patient" value="3">
+                    <label for="3">3</label>
+                    <input type="radio" id="categorie_patient" name="categorie_patient" value="4">
+                    <label for="4">4</label>
                 </div>
                 <!-- Précisions sur le patient -->
                 <div class="md-auto">
@@ -313,26 +340,26 @@
                 </div>
                 <!-- Classe du médicament --> 
                 <div class="md-auto">
-                    <label for="medicament_classe">Catégorie du médicament à risque :</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="1" required>
+                    <label for="medicament_classe">Si oui, précisez la catégorie :</label>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="1">
                     <label for="1">1</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="2" required>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="2">
                     <label for="2">2</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="3" required >
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="3" >
                     <label for="3">3</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="4" required >
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="4" >
                     <label for="4">4</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="5" required>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="5">
                     <label for="5">5</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="6" required>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="6">
                     <label for="6">6</label>
-                    <input type="radio" id="medicament_classe" name="medicament_classe" value="7" required>
+                    <input type="radio" id="medicament_classe" name="medicament_classe" value="7">
                     <label for="7">7</label>
                 </div>
                 <!-- Nom du médicament -->
                 <div class="md-auto">
                     <label for="precisions_medicament">Nom du médicament :</label>
-                    <input type="text" id="precisions_medicament" name="precisions_medicament" autocomplete="off">
+                    <input type="text" id="precisions_medicament" name="precisions_medicament" autocomplete="off" required>
                 </div>
                 <!-- Voie d'administration à risque -->
                 <div class="md-auto">
@@ -344,7 +371,17 @@
                         <label for="Non">Non</label> 
                         <input type="radio" id="administration_risque" name="administration_risque" value="Je ne sais pas" required>
                         <label for="Jenesaispas">Je ne sais pas</label>  
-                        <a href="" target="_blank">Cliquez pour consulter les voies d'administration à risque</a>  
+                        <a href="administration_risque.pdf" target="_blank">Cliquez pour consulter les voies d'administration à risque</a>  
+                    </div>
+                    <!-- Catégorie de la voie d'administration à risque -->
+                    <div class="md-auto">
+                        <label for="categorie_administration">Si oui, précisez la catégorie :</label>
+                        <input type="radio" id="categorie_administration" name="categorie_administration" value="1">
+                        <label for="1">1</label>
+                        <input type="radio" id="categorie_administration" name="categorie_administration" value="2">
+                        <label for="2">2</label> 
+                        <input type="radio" id="categorie_administration" name="categorie_administration" value="3">
+                        <label for="3">3</label>
                     </div>    
                     <!-- Précisions -->
                     <div class="md-auto">
@@ -363,7 +400,7 @@
                         <label for="Evénement porteur de risque (EPR)">Evénement porteur de risque (EPR)</label> 
                         <input type="radio" id="degre_realisation" name="degre_realisation" value="Je ne sais pas" required>
                         <label for="Jenesaispas">Je ne sais pas</label>  
-                        <a href="" target="_blank">Cliquez pour avoir des précisions</a> 
+                        <a href="degres.pdf" target="_blank">Cliquez pour avoir des précisions</a> 
                 </div>
                 <!-- Etape de survenue dans le circuit médicament -->
                 <div class="md-auto">
