@@ -225,10 +225,6 @@
             <div class="row mb-1">
                 <label class="col-6" for="Actions"><strong>Quelles sont les actions correctives et préventives ? </strong></label>
             </div>
-            <!-- Bouton de validation -->
-            <div class="row justify-content-center">
-                <div class="ajouter"><input class="btn btn-outline-primary" type="submit" value="Modifier l'événement" name="modifEvenement"></div>
-            </div>
         </div>        
     </body>
 </html>

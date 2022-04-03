@@ -46,8 +46,6 @@
                         }
                         ?>
                     </select>  
-                    <!-- Bouton lançant la recherche -->        
-                    <input class="btn btn-outline-primary" type="submit" name="Rechercher" value="Rechercher">   
                 </div>   
                 <div class="md-auto">
                     <br>
