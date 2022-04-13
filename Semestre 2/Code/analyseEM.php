@@ -471,7 +471,7 @@
                     </div>
                     <!-- Précisions sur le patient -->
                     <div class="md-auto">
-                        <label for="precisions_patient2">Précisions sur le patient :</label>
+                        <label for="precisions_patient2">Commentaires sur l'état du patient :</label>
                         <input type="text" id="precisions_patient2" name="precisions_patient2" value="<?php echo $precisions_patient ?>" autocomplete="off">
                     </div>
                     <!-- Voie d'administration à risque -->
@@ -539,7 +539,7 @@
                     </div>
                     <!-- Précisions -->
                     <div class="md-auto">
-                        <label for="administration_precisions2">Précisions sur la voie d'administration :</label>
+                        <label for="administration_precisions2">Nom de la voie d'administration :</label>
                         <input type="text" id="administration_precisions2" name="administration_precisions2" value="<?php echo $administration_precisions ?>" autocomplete="off">
                     </div>
                     <!-- Never event -->
@@ -773,6 +773,9 @@
                 <div class="cotation">
                     <div class="section2">
                         <h5>Cotation de l'événement</h5>
+                    </div>
+                    <div class="md-auto">
+                        <a class="col-6" href="cotation.pdf" target="_blank">Cliquez pour consulter l'échelle de cotation des événements indésirables</a>
                     </div>
                     <div class="md-auto">
                         <label for="gravite">Gravité :</label>

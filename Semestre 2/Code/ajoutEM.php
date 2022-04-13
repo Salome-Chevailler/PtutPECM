@@ -385,7 +385,7 @@
                     </div>    
                     <!-- Précisions -->
                     <div class="md-auto">
-                        <label for="precisions">Commentaires sur la voie d'administration :</label>
+                        <label for="precisions">Nom de la voie d'administration :</label>
                         <input type="text" id="precisions" name="precisions" autocomplete="off">
                     </div>
                 </div>

@@ -156,7 +156,7 @@
             <!-- Voie d'administration à risque -->
             <div class="row mb-1">
                 <label class="col-6" for="administration_risque"><strong>S'agit-il d'une voie d'administration à risque ? </strong><?php echo $administration_risque ?></label>
-                <label class="col-6" for="administration_precisions"><strong>Commentaires : </strong><?php echo $administration_precisions ?></label>
+                <label class="col-6" for="administration_precisions"><strong>Nom de la voie d'administration : </strong><?php echo $administration_precisions ?></label>
             </div>
             <!-- Catégorie de la voie d'administration -->
             <div class="row mb-1">
